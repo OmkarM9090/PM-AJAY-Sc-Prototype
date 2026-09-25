@@ -40,6 +40,33 @@ export default function JudgeDashboardPage() {
     };
   }, []);
 
+  useEffect(() => {
+    let evtSource: EventSource | null = null;
+    if (currentSession?.sessionId) {
+      evtSource = new EventSource(`http://localhost:8000/api/events/${currentSession.sessionId}`);
+      
+      evtSource.addEventListener("PROFILE_UPDATED", (e) => {
+        const data = JSON.parse(e.data);
+        updateProfile(data);
+      });
+      
+      evtSource.addEventListener("RECOMMENDATIONS_UPDATED", (e) => {
+        const data = JSON.parse(e.data);
+        useAppStore.setState({ recommendations: data });
+      });
+      
+      evtSource.addEventListener("TRANSCRIPT_UPDATED", (e) => {
+        const data = JSON.parse(e.data);
+        if (data.speaker !== 'agent') {
+           addMessage(data.text, data.speaker);
+        }
+      });
+    }
+    return () => {
+      if (evtSource) evtSource.close();
+    };
+  }, [currentSession?.sessionId]);
+
   const handleStartWebCall = () => {
     startSession('web');
     startConversationFlow();
@@ -87,7 +114,10 @@ export default function JudgeDashboardPage() {
 
   const processUserResponse = async (text: string) => {
     updateSessionStatus('active');
-    const result = await ConversationEngine.processUserInput(text, profile);
+    
+    const sid = currentSession?.sessionId || "temp-session-" + Date.now();
+    const result = await ConversationEngine.processUserInput(text, profile, sid);
+    
     updateProfile(result.profileUpdates);
     
     addMessage(result.agentResponse, "agent");
