@@ -15,7 +15,7 @@ SYNONYMS = [
     {"driving", "vehicle checks", "road safety"},
     {"computer basics", "typing", "data accuracy", "digital services", "digital payments"},
     {"billing", "basic accounting", "inventory management", "record keeping"},
-    {"leather cutting", "cutting", "pattern making"},
+    {"leather cutting", "cutting", "fabric cutting"},
     {"design creation", "design reading", "design mapping", "design tracing"},
     {"weaving", "loom setting", "warping", "weft insertion", "knotting"},
 ]

@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Noto Sans, Segoe UI, sans-serif">
+  <defs>
+    <linearGradient id="hdr" x1="0" x2="1">
+      <stop offset="0%" stop-color="#1a237e"/>
+      <stop offset="100%" stop-color="#3949ab"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <style>
+      .t  { font-size: 15px; fill: #0f172a; }
+      .ts { font-size: 12px; fill: #475569; }
+      .th { font-size: 16px; font-weight: 700; fill: #1a237e; }
+      .tw { font-size: 17px; font-weight: 700; fill: #ffffff; }
+      .box { fill: #ffffff; stroke: #c7cce6; stroke-width: 1.5; rx: 10; }
+      .flow { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#f5f6fa"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1280" height="64" fill="url(#hdr)"/>
+  <text x="32" y="30" class="tw" font-size="21">JeevikaSetu — Voice-first Livelihood Mapping &amp; NSQF/RPL Skilling Engine</text>
+  <text x="32" y="51" fill="#dfe3f7" font-size="13">PM-AJAY (Grants-in-Aid) · Ministry of Social Justice &amp; Empowerment · SIH 2026 · PS 26097</text>
+  <rect x="0" y="64" width="426" height="4" fill="#FF9933"/>
+  <rect x="426" y="64" width="427" height="4" fill="#ffffff"/>
+  <rect x="853" y="64" width="427" height="4" fill="#138808"/>
+
+  <!-- Column 1: channels -->
+  <text x="40" y="104" class="th">1 · LAST-MILE CHANNELS</text>
+  <rect class="box" x="32" y="118" width="272" height="86"/>
+  <text x="48" y="146" class="t">WEB — voice in the browser</text>
+  <text x="48" y="168" class="ts">MediaRecorder / WebRTC · low bandwidth</text>
+  <text x="48" y="188" class="ts">Text fallback for noisy environments</text>
+
+  <rect class="box" x="32" y="216" width="272" height="86"/>
+  <text x="48" y="244" class="t">IVR — toll-free, feature phone</text>
+  <text x="48" y="266" class="ts">Keypad language menu · no internet</text>
+  <text x="48" y="286" class="ts">Exotel / Twilio media stream</text>
+
+  <rect class="box" x="32" y="314" width="272" height="86"/>
+  <text x="48" y="342" class="t">WHATSAPP — voice notes</text>
+  <text x="48" y="364" class="ts">Business API webhook → same engine</text>
+  <text x="48" y="384" class="ts">Voice note in, voice note out</text>
+
+  <rect class="box" x="32" y="426" width="272" height="112" fill="#eef1fa"/>
+  <text x="48" y="452" class="th" font-size="14">BENEFICIARY</text>
+  <text x="48" y="474" class="ts">SC household · low digital literacy</text>
+  <text x="48" y="494" class="ts">Speaks Hindi / Marathi / Tamil /</text>
+  <text x="48" y="512" class="ts">Telugu / Bengali / English</text>
+  <text x="48" y="530" class="ts">Zero typing required</text>
+
+  <!-- Column 2: speech pipeline -->
+  <text x="352" y="104" class="th">2 · SPEECH PIPELINE</text>
+  <rect class="box" x="344" y="118" width="248" height="182"/>
+  <text x="360" y="146" class="t">Speech-to-Text</text>
+  <text x="360" y="167" class="ts">OpenAI Whisper (live mode)</text>
+  <text x="360" y="185" class="ts">Web Speech API (offline mode)</text>
+  <line x1="360" y1="198" x2="576" y2="198" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="360" y="222" class="t">Language detection</text>
+  <text x="360" y="243" class="ts">Unicode script + marker words</text>
+  <text x="360" y="261" class="ts">Mid-conversation switching</text>
+  <line x1="360" y1="272" x2="576" y2="272" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="360" y="292" class="ts">Internal processing in English</text>
+
+  <rect class="box" x="344" y="314" width="248" height="120"/>
+  <text x="360" y="342" class="t">Text-to-Speech</text>
+  <text x="360" y="363" class="ts">OpenAI TTS (mp3) or browser</text>
+  <text x="360" y="381" class="ts">SpeechSynthesis — same language</text>
+  <text x="360" y="405" class="ts">UI states: Listening → Processing</text>
+  <text x="360" y="423" class="ts">→ Speaking, with live subtitles</text>
+
+  <!-- Column 3: intelligence -->
+  <text x="632" y="104" class="th">3 · INTELLIGENCE (FastAPI)</text>
+  <rect class="box" x="624" y="118" width="300" height="100"/>
+  <text x="640" y="146" class="t">Dialogue manager</text>
+  <text x="640" y="167" class="ts">9-topic empathetic interview, 1 Q/turn</text>
+  <text x="640" y="185" class="ts">Dynamic follow-up probes · clarification</text>
+  <text x="640" y="205" class="ts">GPT-4o-mini brain ⇄ rule-engine brain</text>
+
+  <rect class="box" x="624" y="230" width="300" height="94"/>
+  <text x="640" y="258" class="t">Profile &amp; skill extraction</text>
+  <text x="640" y="279" class="ts">Informal-skill lexicon: "chamde ka kaam" &#8594;</text>
+  <text x="640" y="297" class="ts">leather cutting · stitching · finishing</text>
+  <text x="640" y="315" class="ts">Structured Beneficiary Profile JSON</text>
+
+  <rect class="box" x="624" y="336" width="300" height="122"/>
+  <text x="640" y="364" class="t">NSQF matcher · gap · RPL</text>
+  <text x="640" y="385" class="ts">51 QPs scored, explainable weights</text>
+  <text x="640" y="403" class="ts">Gaps = required − demonstrated</text>
+  <text x="640" y="421" class="ts">RPL if overlap ≥ 70% / 80%</text>
+  <text x="640" y="441" class="ts">Constraints: education · mobility · health</text>
+
+  <rect class="box" x="624" y="470" width="300" height="86"/>
+  <text x="640" y="498" class="t">Opportunity &amp; GIA mapper</text>
+  <text x="640" y="519" class="ts">Haversine geo filter · 22 centres</text>
+  <text x="640" y="537" class="ts">30 jobs · 20 ventures · 7 GIA heads</text>
+
+  <!-- Column 4: outputs -->
+  <text x="964" y="104" class="th">4 · OUTPUTS</text>
+  <rect class="box" x="956" y="118" width="292" height="108"/>
+  <text x="972" y="146" class="t">Beneficiary view</text>
+  <text x="972" y="167" class="ts">Profile card + skill radar (editable)</text>
+  <text x="972" y="185" class="ts">Ranked pathways · gaps · roadmap</text>
+  <text x="972" y="203" class="ts">Centre map · GIA entitlements</text>
+  <text x="972" y="221" class="ts">PDF report (ReportLab)</text>
+
+  <rect class="box" x="956" y="238" width="292" height="108"/>
+  <text x="972" y="266" class="t">Official dashboard</text>
+  <text x="972" y="287" class="ts">Reach by channel &amp; language</text>
+  <text x="972" y="305" class="ts">Informal skills surfaced</text>
+  <text x="972" y="323" class="ts">District demand heat map</text>
+  <text x="972" y="341" class="ts">Indicative GIA utilisation</text>
+
+  <rect class="box" x="956" y="358" width="292" height="100" fill="#e8f5e9" stroke="#a5d6a7"/>
+  <text x="972" y="386" class="th" font-size="14">SYSTEM INTEGRATION (roadmap)</text>
+  <text x="972" y="408" class="ts">SIDH · NCS · Skill India Digital</text>
+  <text x="972" y="426" class="ts">NSDC / SSC assessment agencies</text>
+  <text x="972" y="444" class="ts">State SC Welfare Dept MIS</text>
+
+  <rect class="box" x="956" y="470" width="292" height="86" fill="#fff4e6" stroke="#ffcc80"/>
+  <text x="972" y="498" class="th" font-size="14">DATA &amp; PRIVACY</text>
+  <text x="972" y="519" class="ts">No Aadhaar / bank / certificate IDs</text>
+  <text x="972" y="537" class="ts">Audio discarded after transcription</text>
+
+  <!-- Store -->
+  <rect class="box" x="344" y="470" width="248" height="86" fill="#eef1fa"/>
+  <text x="360" y="498" class="t">SQLite (PostgreSQL-ready)</text>
+  <text x="360" y="519" class="ts">Sessions · turns · profiles ·</text>
+  <text x="360" y="537" class="ts">recommendations for analytics</text>
+
+  <!-- Flows -->
+  <path class="flow" d="M304 161 H336"/>
+  <path class="flow" d="M304 259 H326 V200 H336"/>
+  <path class="flow" d="M304 357 H320 V210 H336"/>
+  <path class="flow" d="M592 200 H616"/>
+  <path class="flow" d="M592 374 H608 V300 H616" stroke-dasharray="5 4"/>
+  <path class="flow" d="M924 170 H948"/>
+  <path class="flow" d="M924 290 H940 V292 H948"/>
+  <path class="flow" d="M770 458 V470"/>
+  <path class="flow" d="M624 512 H592" stroke-dasharray="5 4"/>
+
+  <text x="600" y="600" class="ts" text-anchor="middle" font-size="13">
+    Reply is spoken back in the SAME language (dashed path) — the loop repeats until all nine topics are covered.
+  </text>
+
+  <!-- Footer strip -->
+  <rect x="32" y="618" width="1216" height="76" rx="10" fill="#1a237e"/>
+  <text x="56" y="643" fill="#ffffff" font-size="14" font-weight="700">Differentiators</text>
+  <text x="56" y="665" fill="#dfe3f7" font-size="12.5">Voice-first (zero typing) &#183; 6 languages auto-detected &#183; informal skill &#8594; NSQF competency mapping &#183; RPL shortcut</text>
+  <text x="56" y="683" fill="#dfe3f7" font-size="12.5">Constraint-aware ranking &#183; GIA entitlement linkage &#183; web + IVR + WhatsApp &#183; runs fully offline for the demo</text>
+</svg>

@@ -11,6 +11,7 @@ import AshokaChakra from './AshokaChakra'
 const NAV = [
   { to: '/', label: { hi: 'मुख्य पृष्ठ', en: 'Home' } },
   { to: '/voice', label: { hi: 'आवाज़ सहायक', en: 'Voice Assistant' } },
+  { to: '/opportunities', label: { hi: 'अवसर', en: 'Opportunities' } },
   { to: '/ivr', label: { hi: 'IVR कॉल', en: 'IVR Call' } },
   { to: '/whatsapp', label: { hi: 'WhatsApp', en: 'WhatsApp' } },
   { to: '/dashboard', label: { hi: 'अधिकारी डैशबोर्ड', en: 'Official Dashboard' } },

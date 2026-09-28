@@ -12,6 +12,7 @@ import LandingPage from './pages/LandingPage'
 import VoiceConversationPage from './pages/VoiceConversationPage'
 import ProfilePage from './pages/ProfilePage'
 import RecommendationsPage from './pages/RecommendationsPage'
+import OpportunitiesPage from './pages/OpportunitiesPage'
 import IVRPage from './pages/IVRPage'
 import WhatsAppPage from './pages/WhatsAppPage'
 import DashboardPage from './pages/DashboardPage'
@@ -28,6 +29,7 @@ export default function App() {
               <Route path="/voice" element={<VoiceConversationPage />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/recommendations" element={<RecommendationsPage />} />
+              <Route path="/opportunities" element={<OpportunitiesPage />} />
               <Route path="/ivr" element={<IVRPage />} />
               <Route path="/whatsapp" element={<WhatsAppPage />} />
               <Route path="/dashboard" element={<DashboardPage />} />

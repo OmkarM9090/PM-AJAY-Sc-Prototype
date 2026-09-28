@@ -89,7 +89,7 @@ def _preference_fit(qp, preference):
     return 0.8
 
 
-def _gia_benefits(pathway, qp, profile, nearest_km):
+def _gia_benefits(pathway, qp, profile, nearest_km, mobility_km=10):
     ids = []
     if pathway in ("training", "training_plus_rpl"):
         ids += ["skill_training_support", "wage_compensation"]
@@ -100,7 +100,9 @@ def _gia_benefits(pathway, qp, profile, nearest_km):
             ids += ["toolkit_grant", "enterprise_capital"]
     if profile.get("employment_preference") in ("wage-employment", "either"):
         ids.append("placement_linkage")
-    if nearest_km and nearest_km > 10:
+    # Beyond the standard 10 km conveyance threshold OR beyond what this
+    # beneficiary said they can travel → conveyance / hostel support applies.
+    if nearest_km is not None and (nearest_km > 10 or nearest_km > (mobility_km or 10)):
         ids.append("travel_hostel_support")
     out, seen = [], set()
     for bid in ids:
@@ -258,7 +260,7 @@ def recommend(profile: dict, top_n: int = 5) -> dict:
                             for c in centers[:4]],
             "linked_jobs": jobs[:3],
             "linked_ventures": ventures[:3],
-            "gia_benefits": _gia_benefits(pathway, qp, profile, nearest_km),
+            "gia_benefits": _gia_benefits(pathway, qp, profile, nearest_km, mobility),
             "roadmap": _roadmap(pathway, qp, len(gap["gaps"]), nearest, profile),
             "why": _explain(gap, s_interest, nearest_km, mobility, pathway, qp),
         })

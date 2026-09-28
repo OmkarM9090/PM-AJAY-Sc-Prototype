@@ -49,6 +49,17 @@ cp .env.example .env          # optional: add OPENAI_API_KEY for live AI mode
 python main.py                # → http://localhost:8000  (docs at /docs)
 ```
 
+### Tests (32 engine tests, < 1 s)
+
+```bash
+cd jeevikasetu/backend && pip install pytest && pytest -q
+```
+
+They pin the behaviour a government evaluator would challenge: one question per
+turn in all 6 languages, informal work → NSQF competencies, RPL only when the
+overlap is real, education/mobility/health constraints respected, and a
+reproducible ranking.
+
 ### Frontend — React + Vite
 
 ```bash
@@ -92,7 +103,7 @@ so the flow can be shown even in a noisy hall or with no microphone.
 | 2 · Multilingual speech pipeline | `frontend/src/utils/audioUtils.js`, `backend/services/{whisper_service,tts_service,language}.py` |
 | 3 · Profiling & skill extraction | `backend/services/profile_extractor.py`, `backend/services/skill_lexicon.py` |
 | 4 · NSQF / RPL mapping & gap analysis | `backend/services/nsqf_matcher.py`, `backend/services/skill_gap_analyzer.py` |
-| 5 · Opportunity matching | `backend/services/data_store.py` (haversine distance, mobility & education filters) |
+| 5 · Opportunity matching | `backend/services/data_store.py` (haversine distance, mobility & education filters) + `frontend/src/components/OpportunityExplorer.jsx` (jobs / ventures / centres / NSQF catalogue with live filters) |
 | 6 · Web application | `frontend/src/pages/*`, `frontend/src/components/*` |
 | 7 · Backend API | `backend/main.py`, `backend/routers/*` |
 | 8 · WhatsApp voice notes | `frontend/src/components/WhatsAppChat.jsx` |
@@ -181,6 +192,7 @@ score = 0.28·skill_overlap + 0.26·interest_alignment + 0.14·income_potential
 | 11 | Scroll down | Leaflet map of nearby empanelled centres with distances |
 | 12 | GIA panel | Toolkit grant / enterprise capital / stipend the person qualifies for |
 | 13 | **Download report** | Government-formatted PDF |
+| 13b | `/opportunities` | Jobs, ventures, centres and the full 51-QP catalogue, filtered by district, radius and eligibility |
 | 14 | `/ivr` | Dial pad → language menu → same interview on a feature phone |
 | 15 | `/whatsapp` | Voice note in, voice note out |
 | 16 | `/dashboard` | Officer view: channel reach, languages, district heat map, GIA outlay |
@@ -191,7 +203,12 @@ demo** button to capture a `.webm` of the run for the PPT.
 
 ---
 
-## 8. Architecture
+## 8. Documentation for the submission
+
+* `docs/PPT_CONTENT.md` — slide-by-slide copy for the SIH idea submission
+* `docs/architecture.png` / `.svg` — slide-ready architecture diagram (1920 px)
+
+## 9. Architecture
 
 ```
 Beneficiary ──voice──┬── Web (browser mic, WebRTC/MediaRecorder)
@@ -214,7 +231,7 @@ Beneficiary ──voice──┬── Web (browser mic, WebRTC/MediaRecorder)
 Python 3.11 + FastAPI + SQLAlchemy + ReportLab · SQLite (Postgres-compatible
 schema via `JS_DATABASE_URL`) · OpenAI Whisper / GPT-4o-mini / TTS (optional).
 
-## 9. Privacy & governance notes
+## 10. Privacy & governance notes
 
 * No Aadhaar, bank or caste-certificate numbers are ever requested.
 * Voice is transcribed and discarded; only the derived profile is stored.
