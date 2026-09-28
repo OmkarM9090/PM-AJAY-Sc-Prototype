@@ -49,7 +49,7 @@ cp .env.example .env          # optional: add OPENAI_API_KEY for live AI mode
 python main.py                # → http://localhost:8000  (docs at /docs)
 ```
 
-### Tests (57 tests, < 3 s)
+### Tests (60 tests, < 3 s)
 
 ```bash
 cd jeevikasetu/backend && pip install -r requirements.txt && pytest -q
@@ -58,7 +58,7 @@ cd jeevikasetu/backend && pip install -r requirements.txt && pytest -q
 | File | What it pins |
 |---|---|
 | `tests/test_engines.py` | One question per turn in all 6 languages, informal work → NSQF competencies, RPL only when the overlap is real, education / mobility / health constraints respected, reproducible ranking |
-| `tests/test_channels.py` | Health probe, DPDP consent + withdrawal erasure, Twilio & Exotel IVR turns, WhatsApp webhook, dropped-call resume, no raw phone numbers in the DB, full journey conversation → profile → recommend → PDF |
+| `tests/test_channels.py` | Health probe, DPDP consent + withdrawal erasure, Twilio & Exotel IVR turns, WhatsApp webhook, Vapi & Retell custom-LLM contracts, dropped-call resume, no raw phone numbers in the DB, full journey conversation → profile → recommend → PDF |
 | `tests/test_report.py` | PDF renders Devanagari / Tamil / Telugu / Bengali names with embedded fonts, and the download header is RFC 5987-safe |
 
 Each run uses a throw-away SQLite file (`tests/conftest.py`), so results are
@@ -132,7 +132,15 @@ credentials:
 | `POST /api/telephony/exotel/voice` | Exotel Voicebot applet (JSON in, JSON out) |
 | `GET  /api/telephony/whatsapp/webhook` | Meta verification handshake |
 | `POST /api/telephony/whatsapp/webhook` | Inbound text / voice note → dialogue turn + reply payload |
+| `POST /api/telephony/vapi/chat/completions` | Vapi.ai "Custom LLM" provider — OpenAI-shaped in/out |
+| `POST /api/telephony/retell/llm-webhook` | Retell.ai custom-LLM contract (incl. `ping_pong`) |
 | `GET  /api/telephony/status` | Integration summary and which credentials are configured |
+
+The brief offered three routes for the calling agent; this prototype ships
+**Option C** (browser MediaRecorder → backend STT → engine → TTS) as the live
+demo *and* **Option A** as a drop-in backup: Vapi and Retell can drive the call
+with their own ASR/TTS while delegating the brain to the endpoints above, so
+moving to managed telephony needs no dialogue changes.
 
 Every channel calls the **same** `services/dialogue_manager.next_turn`, so the
 interview can never drift between web, phone and WhatsApp. A caller whose

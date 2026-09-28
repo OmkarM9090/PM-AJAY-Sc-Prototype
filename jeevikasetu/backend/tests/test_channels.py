@@ -232,3 +232,55 @@ def test_completed_interview_restarts_and_erases_the_old_transcript(client):
     fresh = client.post("/api/telephony/twilio/voice", data={**caller, "Digits": "2"})
     assert "Kavita" not in fresh.text, "a new call must not leak the previous transcript"
     assert "name" in fresh.text.lower(), "a new call starts from the first question"
+
+
+# ---------------------------------------------------------------------------
+# Managed voice agents (Vapi / Retell) — "Option A" in the problem brief.
+# The same interview must run through their contracts.
+# ---------------------------------------------------------------------------
+def test_vapi_custom_llm_returns_openai_shaped_completion(client):
+    def vapi(messages):
+        return client.post("/api/telephony/vapi/chat/completions", json={
+            "call": {"id": "vapi-test-1"}, "model": "jeevikasetu-interviewer",
+            "messages": messages}).json()
+
+    opening = vapi([{"role": "system", "content": "you are JeevikaSetu"}])
+    assert opening["object"] == "chat.completion"
+    reply = opening["choices"][0]["message"]["content"]
+    assert opening["choices"][0]["message"]["role"] == "assistant"
+    assert "नाम" in reply, "the call should open by asking for the name in Hindi"
+
+    second = vapi([{"role": "system", "content": "you are JeevikaSetu"},
+                   {"role": "assistant", "content": reply},
+                   {"role": "user", "content": "मेरा नाम गीता देवी है"}])
+    assert "कहाँ रहते" in second["choices"][0]["message"]["content"]
+    assert second["jeevikasetu"]["progress_percent"] > 0
+    assert second["jeevikasetu"]["completed"] is False
+
+
+def test_retell_custom_llm_contract(client):
+    ping = client.post("/api/telephony/retell/llm-webhook",
+                       json={"interaction_type": "ping_pong", "timestamp": 1730000000}).json()
+    assert ping["response_type"] == "ping_pong"
+
+    first = client.post("/api/telephony/retell/llm-webhook", json={
+        "interaction_type": "response_required", "response_id": 1,
+        "call": {"call_id": "retell-test-1"}, "transcript": []}).json()
+    assert first["response_id"] == 1
+    assert first["content_complete"] is True
+    assert first["end_call"] is False
+    assert "नाम" in first["content"]
+
+    second = client.post("/api/telephony/retell/llm-webhook", json={
+        "interaction_type": "response_required", "response_id": 2,
+        "call": {"call_id": "retell-test-1"},
+        "transcript": [{"role": "agent", "content": first["content"]},
+                       {"role": "user", "content": "My name is Anil Jadhav"}]}).json()
+    assert "where do you live" in second["content"].lower(), \
+        "it must follow the user's language switch to English"
+
+
+def test_status_advertises_managed_agent_routes(client):
+    body = client.get("/api/telephony/status").json()
+    assert "vapi_custom_llm" in body["managed_voice_agents"]
+    assert "retell_custom_llm" in body["managed_voice_agents"]

@@ -8,6 +8,8 @@ behaviour can never drift between channels.
 
 Point a provider at:
     Twilio Voice webhook   POST /api/telephony/twilio/voice      (returns TwiML)
+    Vapi custom LLM        POST /api/telephony/vapi/chat/completions  (OpenAI shape)
+    Retell custom LLM      POST /api/telephony/retell/llm-webhook
     Twilio speech result   POST /api/telephony/twilio/gather
     Exotel applet          POST /api/telephony/exotel/voice      (returns JSON)
     WhatsApp verification  GET  /api/telephony/whatsapp/webhook
@@ -293,6 +295,86 @@ async def whatsapp_webhook(request: Request, db: Session = Depends(get_db)):
     }
 
 
+# ---------------------------------------------------------------------------
+# Vapi.ai / Retell.ai — "Option A" managed voice-agent route
+# ---------------------------------------------------------------------------
+# Both platforms can drive a call with their own ASR + TTS while delegating the
+# *brain* to an HTTP endpoint. Exposing JeevikaSetu's interview engine in their
+# two contracts means the hackathon build can switch to a managed telephony
+# stack without changing a single line of dialogue logic — and the interview
+# stays identical to the web and IVR channels.
+def _messages_to_state(db: Session, session_id: str, transcript: list[dict]):
+    """Map an external transcript onto a JeevikaSetu session and take one turn.
+
+    Vapi/Retell resend the whole conversation each time, so we only feed the
+    newest user utterance to the engine — our own slot state is authoritative.
+    """
+    session, is_fresh = _get_or_create(db, session_id, "ivr", "hi")
+    latest_user = next((m.get("content") or m.get("message") or ""
+                        for m in reversed(transcript or [])
+                        if (m.get("role") or "").lower() in ("user", "human")), "")
+    if latest_user and not is_fresh:
+        session.language = detect_language(latest_user, session.language or "hi")
+        db.commit()
+    return _turn(db, session, latest_user if (latest_user and not is_fresh) else None)
+
+
+@router.post("/vapi/chat/completions")
+async def vapi_custom_llm(request: Request, db: Session = Depends(get_db)):
+    """Vapi 'Custom LLM' provider: OpenAI chat-completions in and out.
+
+    Point the Vapi assistant's model at this URL and it will speak whatever
+    our deterministic interviewer returns, in the caller's language.
+    """
+    body = await request.json()
+    call_id = (body.get("call") or {}).get("id") or body.get("user") or "vapi-demo"
+    session_id = _session_id_for(str(call_id), "ivr")
+    result = _messages_to_state(db, session_id, body.get("messages") or [])
+
+    return {
+        "id": f"chatcmpl-{session_id}",
+        "object": "chat.completion",
+        "model": body.get("model", "jeevikasetu-interviewer"),
+        "choices": [{
+            "index": 0,
+            "message": {"role": "assistant", "content": result.reply},
+            "finish_reason": "stop",
+        }],
+        # Non-standard extras Vapi passes through to your server events.
+        "jeevikasetu": {"session_id": session_id, "language": result.language,
+                        "progress_percent": result.progress.get("percent"),
+                        "completed": result.completed},
+    }
+
+
+@router.post("/vapi/webhook")
+async def vapi_events(request: Request):
+    """Vapi server events (status-update, end-of-call-report, transcripts)."""
+    body = await request.json()
+    event = (body.get("message") or {}).get("type") or body.get("type") or "unknown"
+    log.info("vapi event: %s", event)
+    return {"status": "ok", "event": event}
+
+
+@router.post("/retell/llm-webhook")
+async def retell_llm(request: Request, db: Session = Depends(get_db)):
+    """Retell.ai custom-LLM HTTP contract."""
+    body = await request.json()
+    call_id = (body.get("call") or {}).get("call_id") or body.get("call_id") or "retell-demo"
+    session_id = _session_id_for(str(call_id), "ivr")
+
+    if body.get("interaction_type") == "ping_pong":
+        return {"response_type": "ping_pong", "timestamp": body.get("timestamp")}
+
+    result = _messages_to_state(db, session_id, body.get("transcript") or [])
+    return {
+        "response_id": body.get("response_id", 0),
+        "content": result.reply,
+        "content_complete": True,
+        "end_call": result.completed,
+    }
+
+
 @router.get("/status")
 def telephony_status():
     """What an integrator needs to know, at a glance."""
@@ -303,6 +385,13 @@ def telephony_status():
             "exotel_applet": "POST /api/telephony/exotel/voice",
             "language_keypad_map": DTMF_LANGUAGES,
             "credentials_configured": bool(os.getenv("TWILIO_AUTH_TOKEN") or os.getenv("EXOTEL_API_KEY")),
+        },
+        "managed_voice_agents": {
+            "vapi_custom_llm": "POST /api/telephony/vapi/chat/completions",
+            "vapi_server_events": "POST /api/telephony/vapi/webhook",
+            "retell_custom_llm": "POST /api/telephony/retell/llm-webhook",
+            "note": "Same interview engine, exposed in each platform's contract, "
+                    "so the managed-telephony route needs no logic changes.",
         },
         "whatsapp": {
             "webhook": "/api/telephony/whatsapp/webhook",

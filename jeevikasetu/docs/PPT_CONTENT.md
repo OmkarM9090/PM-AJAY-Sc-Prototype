@@ -52,7 +52,7 @@ Three things happen in one 4-minute conversation:
 
 | Stage | What runs |
 |---|---|
-| Channel | Web voice · IVR toll-free (feature phone) · WhatsApp voice note |
+| Channel | Web voice · IVR toll-free (feature phone) · WhatsApp voice note — plus Vapi/Retell custom-LLM adapters for managed telephony |
 | Speech in | **Bhashini (MeitY)** first → OpenAI Whisper → browser Web Speech API |
 | Understanding | Language auto-detection (script + marker words) → dialogue manager (GPT-4o-mini or deterministic engine) |
 | Extraction | Beneficiary Profile JSON + **informal-skill lexicon** ("chamde ka kaam" → leather cutting, stitching, hide processing, finishing) |
@@ -82,6 +82,7 @@ Three things happen in one 4-minute conversation:
 9. **Multi-channel last mile** — web, IVR and WhatsApp on one engine, with real
    Twilio / Exotel / Meta webhooks implemented (`/api/telephony/*`), not mocked.
    A dropped rural call resumes on redial instead of restarting the interview.
+   Vapi.ai and Retell.ai can also drive the call while our engine stays the brain.
 10. **Officer dashboard** — reach by channel/language, skills surfaced, district
     demand heat map, indicative GIA outlay.
 
@@ -156,7 +157,7 @@ centre distance served, training-to-placement conversion, GIA disbursal per dist
 
 ## Slide 9 — Feasibility & viability
 
-* **Built, not conceptual** — FastAPI + React prototype, **57 automated tests**
+* **Built, not conceptual** — FastAPI + React prototype, **60 automated tests**
   (engine, channel webhooks, consent, PDF) passing, runs end-to-end on a laptop
   with no API keys.
 * **Cost** — voice-only interaction is ~₹2–4 per beneficiary at scale in live AI
@@ -178,7 +179,7 @@ centre distance served, training-to-placement conversion, GIA disbursal per dist
 **Frontend** React 19 · Vite · Tailwind · Framer Motion · Recharts · Leaflet
 **Backend** Python 3.11 · FastAPI · SQLAlchemy · ReportLab · SQLite/PostgreSQL
 **AI** Bhashini ULCA ASR/TTS/NMT (primary) · OpenAI Whisper · GPT-4o-mini · OpenAI TTS (fallbacks)
-**Channels** Browser WebRTC/MediaRecorder · Exotel/Twilio IVR · WhatsApp Business API
+**Channels** Browser WebRTC/MediaRecorder · Exotel/Twilio IVR · WhatsApp Business API · Vapi/Retell adapters
 
 Repository layout: `backend/` (routers, services, prompts, curated data, tests),
 `frontend/` (components, pages, data, utils), `docs/`.
