@@ -16,7 +16,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from config import AI_MODE, SUPPORTED_LANGUAGES
 from database import init_db
-from routers import conversation, dashboard, profile, recommend, report, voice
+from routers import (conversation, dashboard, profile, recommend, report,
+                     telephony, voice)
+from services import bhashini_service
 from seed_demo_data import seed
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
@@ -44,6 +46,7 @@ app.include_router(profile.router)
 app.include_router(recommend.router)
 app.include_router(dashboard.router)
 app.include_router(report.router)
+app.include_router(telephony.router)
 
 
 @app.on_event("startup")
@@ -69,6 +72,11 @@ def health():
             "browser_tts_fallback": True,
             "deterministic_dialogue_engine": True,
             "deterministic_recommender": True,
+        },
+        "providers": {
+            "bhashini": bhashini_service.status(),
+            "openai": {"configured": AI_MODE == "live-openai"},
+            "browser_fallback": {"configured": True},
         },
         "languages": list(SUPPORTED_LANGUAGES.keys()),
     }

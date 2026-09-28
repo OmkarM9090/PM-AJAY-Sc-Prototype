@@ -18,8 +18,8 @@ from dataclasses import dataclass, field
 from config import read_prompt
 from services import llm_service
 from services.language import (ACKS, CLARIFY, EMPATHY, GREETING, QUESTIONS,
-                               SLOT_ORDER, SUMMARY_CONFIRM, SUMMARY_INTRO,
-                               SUMMARY_LABELS, detect_language, t)
+                               RESUME_GREETING, SLOT_ORDER, SUMMARY_CONFIRM,
+                               SUMMARY_INTRO, SUMMARY_LABELS, detect_language, t)
 
 # Dynamic follow-up probes: asked once, only when the answer warrants it.
 PROBES = {
@@ -155,6 +155,13 @@ def offline_turn(slots, user_text, lang, asked_probes) -> TurnResult:
 
     # --- Opening turn -------------------------------------------------
     if user_text is None:
+        # Resuming a half-finished interview (dropped call, reopened tab):
+        # acknowledge what we already know and ask the pending question
+        # instead of making the person repeat everything.
+        if pending_before and any(slots.get(s) for s in SLOT_ORDER):
+            reply = f"{t(RESUME_GREETING, lang)} {_question_for(pending_before, lang)}"
+            return TurnResult(reply=reply, language=lang, next_slot=pending_before,
+                              slots=slots, progress=_progress(slots))
         return TurnResult(
             reply=t(GREETING, lang), language=lang, next_slot="name",
             slots=slots, progress=_progress(slots),

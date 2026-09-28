@@ -93,6 +93,17 @@ GREETING = {
     "bn": "নমস্কার! আমি জীবিকাসেতু, PM-AJAY প্রকল্পের ভয়েস সহায়ক। আপনার দক্ষতা বুঝে সঠিক প্রশিক্ষণ জানাবো। ধীরে ধীরে কথা বলি। প্রথমে — আপনার নাম কী?",
 }
 
+# Spoken when a beneficiary comes back to a half-finished interview (dropped
+# IVR call, closed browser tab). Reassures them that nothing was lost.
+RESUME_GREETING = {
+    "hi": "नमस्ते! आपकी पिछली बातचीत मुझे याद है, हम वहीं से आगे बढ़ते हैं।",
+    "en": "Namaste! I remember our earlier conversation, let us continue from where we stopped.",
+    "mr": "नमस्कार! आपली आधीची बातचीत मला आठवते, तिथूनच पुढे जाऊया.",
+    "ta": "வணக்கம்! நம் முந்தைய உரையாடல் எனக்கு நினைவிருக்கிறது, அங்கிருந்தே தொடரலாம்.",
+    "te": "నమస్కారం! మన గత సంభాషణ నాకు గుర్తుంది, అక్కడి నుంచే కొనసాగుదాం.",
+    "bn": "নমস্কার! আমাদের আগের কথা মনে আছে, সেখান থেকেই এগোই।",
+}
+
 QUESTIONS = {
     "name": {
         "hi": "आपका नाम क्या है?",

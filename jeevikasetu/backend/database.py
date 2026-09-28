@@ -48,6 +48,10 @@ class ConversationSession(Base):
     language = Column(String(8), default="hi")
     status = Column(String(20), default="active")        # active | completed
     demo_mode = Column(Boolean, default=False)
+    # DPDP Act 2023: consent is recorded per session, with what was agreed to.
+    consent_given = Column(Boolean, default=False)
+    consent_scope = Column(String(120), default="")
+    consent_at = Column(DateTime, nullable=True)
     slots_json = Column(Text, default="{}")
     created_at = Column(DateTime, default=_now)
     updated_at = Column(DateTime, default=_now, onupdate=_now)
@@ -145,8 +149,29 @@ class RecommendationRecord(Base):
     created_at = Column(DateTime, default=_now)
 
 
+def _ensure_columns():
+    """Tiny forward-migration for SQLite demo databases created by an older
+    build (Base.metadata.create_all never adds columns to existing tables)."""
+    if not DATABASE_URL.startswith("sqlite"):
+        return
+    from sqlalchemy import text
+    wanted = {
+        "consent_given": "BOOLEAN DEFAULT 0",
+        "consent_scope": "VARCHAR(120) DEFAULT ''",
+        "consent_at": "DATETIME",
+    }
+    with engine.begin() as conn:
+        existing = {row[1] for row in conn.execute(text("PRAGMA table_info(conversation_sessions)"))}
+        if not existing:
+            return
+        for column, ddl in wanted.items():
+            if column not in existing:
+                conn.execute(text(f"ALTER TABLE conversation_sessions ADD COLUMN {column} {ddl}"))
+
+
 def init_db():
     Base.metadata.create_all(bind=engine)
+    _ensure_columns()
 
 
 def get_db():

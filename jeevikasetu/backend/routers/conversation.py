@@ -1,5 +1,6 @@
 """Conversation endpoints — stateful voice interview across web / IVR / WhatsApp."""
 
+import datetime as dt
 import uuid
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -18,6 +19,14 @@ class StartRequest(BaseModel):
     language: str = "hi"
     channel: str = "web"
     demo_mode: bool = False
+    consent_given: bool = False
+    consent_scope: str = "voice-profiling"
+
+
+class ConsentRequest(BaseModel):
+    session_id: str
+    consent_given: bool
+    consent_scope: str = "voice-profiling"
 
 
 class MessageRequest(BaseModel):
@@ -58,6 +67,9 @@ def script():
 def start(req: StartRequest, db: Session = Depends(get_db)):
     session = ConversationSession(id=str(uuid.uuid4())[:8], language=req.language,
                                   channel=req.channel, demo_mode=req.demo_mode,
+                                  consent_given=req.consent_given,
+                                  consent_scope=req.consent_scope if req.consent_given else "",
+                                  consent_at=dt.datetime.utcnow() if req.consent_given else None,
                                   slots_json=dumps({"slots": {}, "asked_probes": []}))
     db.add(session)
     db.commit()
@@ -106,6 +118,32 @@ def message(req: MessageRequest, db: Session = Depends(get_db)):
             "next_slot": turn.next_slot, "slots": turn.slots, "progress": turn.progress,
             "completed": turn.completed, "summary": turn.summary, "engine": turn.engine,
             "ai_mode": AI_MODE}
+
+
+@router.post("/consent")
+def record_consent(req: ConsentRequest, db: Session = Depends(get_db)):
+    """Record (or withdraw) DPDP consent for an existing session.
+
+    Withdrawal erases the conversation content immediately — the right to
+    erasure has to be operational, not just stated in a policy page.
+    """
+    session = db.query(ConversationSession).filter(
+        ConversationSession.id == req.session_id).first()
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    session.consent_given = req.consent_given
+    session.consent_scope = req.consent_scope if req.consent_given else ""
+    session.consent_at = dt.datetime.utcnow() if req.consent_given else None
+
+    erased = 0
+    if not req.consent_given:
+        erased = db.query(Message).filter(Message.session_id == session.id).delete()
+        session.slots_json = dumps({"slots": {}, "asked_probes": []})
+        session.status = "withdrawn"
+    db.commit()
+    return {"session_id": session.id, "consent_given": session.consent_given,
+            "consent_scope": session.consent_scope, "messages_erased": erased}
 
 
 @router.get("/{session_id}")

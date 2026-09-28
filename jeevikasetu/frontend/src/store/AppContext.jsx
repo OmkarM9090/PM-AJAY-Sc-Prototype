@@ -15,6 +15,14 @@ export function AppProvider({ children }) {
   const [profile, setProfile] = useState(null)
   const [recommendations, setRecommendations] = useState(null)
   const [health, setHealth] = useState(null)
+  const [consent, setConsentState] = useState(
+    () => localStorage.getItem('js-consent') === 'granted',
+  )
+
+  const setConsent = useCallback((granted) => {
+    setConsentState(granted)
+    localStorage.setItem('js-consent', granted ? 'granted' : 'withdrawn')
+  }, [])
 
   useEffect(() => {
     api.health().then(setHealth).catch(() => setHealth({ status: 'offline', ai_mode: 'unreachable' }))
@@ -42,9 +50,10 @@ export function AppProvider({ children }) {
       transcript, setTranscript,
       profile, setProfile,
       recommendations, setRecommendations,
-      health, reset,
+      health, consent, setConsent, reset,
     }),
-    [language, demoMode, largeText, highContrast, session, transcript, profile, recommendations, health, reset],
+    [language, demoMode, largeText, highContrast, session, transcript, profile,
+     recommendations, health, consent, setConsent, reset],
   )
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>

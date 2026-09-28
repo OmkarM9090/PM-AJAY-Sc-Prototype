@@ -53,12 +53,13 @@ Three things happen in one 4-minute conversation:
 | Stage | What runs |
 |---|---|
 | Channel | Web voice · IVR toll-free (feature phone) · WhatsApp voice note |
-| Speech in | OpenAI Whisper, or the browser Web Speech API offline |
+| Speech in | **Bhashini (MeitY)** first → OpenAI Whisper → browser Web Speech API |
 | Understanding | Language auto-detection (script + marker words) → dialogue manager (GPT-4o-mini or deterministic engine) |
 | Extraction | Beneficiary Profile JSON + **informal-skill lexicon** ("chamde ka kaam" → leather cutting, stitching, hide processing, finishing) |
 | Matching | 51 NSQF QPs scored; gaps computed; RPL decided; geo/mobility/education/health filters |
 | Support | PM-AJAY GIA heads mapped to the chosen pathway |
-| Speech out | OpenAI TTS or browser SpeechSynthesis — **same language the person spoke** |
+| Speech out | Bhashini TTS → OpenAI TTS → browser SpeechSynthesis — **same language the person spoke** |
+| Consent | DPDP-compliant consent gate before any recording; one tap to withdraw and erase |
 
 ---
 
@@ -78,9 +79,20 @@ Three things happen in one 4-minute conversation:
    RPL fee, toolkit grant, enterprise capital, stipend, travel/hostel, placement.
 8. **Explainable by design** — each card exposes its score breakdown and a
    plain-language "why". A District Officer can defend every recommendation.
-9. **Multi-channel last mile** — web, IVR, WhatsApp, all on one engine.
+9. **Multi-channel last mile** — web, IVR and WhatsApp on one engine, with real
+   Twilio / Exotel / Meta webhooks implemented (`/api/telephony/*`), not mocked.
+   A dropped rural call resumes on redial instead of restarting the interview.
 10. **Officer dashboard** — reach by channel/language, skills surfaced, district
     demand heat map, indicative GIA outlay.
+
+**Plus two things government buyers ask about first**
+
+* **Bhashini-first language stack** — India's own ASR/TTS/NMT is the primary
+  provider; OpenAI is only a fallback and the browser engine a last resort, so
+  the system can run entirely on sovereign language infrastructure.
+* **DPDP Act 2023 by construction** — explicit consent before the mic opens,
+  purpose limitation shown in plain Hindi, one-tap withdrawal that erases the
+  transcript, and phone numbers stored only as salted hashes.
 
 ---
 
@@ -144,8 +156,9 @@ centre distance served, training-to-placement conversion, GIA disbursal per dist
 
 ## Slide 9 — Feasibility & viability
 
-* **Built, not conceptual** — FastAPI + React prototype, 32 automated engine tests
-  passing, runs end-to-end on a laptop with no API keys.
+* **Built, not conceptual** — FastAPI + React prototype, **57 automated tests**
+  (engine, channel webhooks, consent, PDF) passing, runs end-to-end on a laptop
+  with no API keys.
 * **Cost** — voice-only interaction is ~₹2–4 per beneficiary at scale in live AI
   mode; the deterministic engine costs nothing and is the demo-safe default.
 * **Scale path** — SQLite → PostgreSQL by one env var; stateless API behind a load
@@ -164,11 +177,11 @@ centre distance served, training-to-placement conversion, GIA disbursal per dist
 
 **Frontend** React 19 · Vite · Tailwind · Framer Motion · Recharts · Leaflet
 **Backend** Python 3.11 · FastAPI · SQLAlchemy · ReportLab · SQLite/PostgreSQL
-**AI** OpenAI Whisper · GPT-4o-mini · OpenAI TTS (swap-in: Bhashini ASR/TTS/NMT)
+**AI** Bhashini ULCA ASR/TTS/NMT (primary) · OpenAI Whisper · GPT-4o-mini · OpenAI TTS (fallbacks)
 **Channels** Browser WebRTC/MediaRecorder · Exotel/Twilio IVR · WhatsApp Business API
 
 Repository layout: `backend/` (routers, services, prompts, curated data, tests),
 `frontend/` (components, pages, data, utils), `docs/`.
 
-Ask for the hackathon round: Bhashini API access, a sandbox NSQF/NCVET QP feed and
+Ask for the hackathon round: Bhashini production credentials (the adapter is written), a sandbox NSQF/NCVET QP feed and
 an IVR number to move the demo from simulation to a live toll-free line.

@@ -26,7 +26,7 @@ import ConversationProgress from './ConversationProgress'
 export default function VoiceAgent({ channel = 'web', onComplete, compact = false }) {
   const {
     language, setLanguage, demoMode, session, setSession,
-    transcript, setTranscript, health,
+    transcript, setTranscript, health, consent,
   } = useApp()
 
   const [status, setStatus] = useState('idle')      // idle|connecting|speaking|listening|processing|done
@@ -73,7 +73,7 @@ export default function VoiceAgent({ channel = 'web', onComplete, compact = fals
     setPartial('')
     demoIdx.current = 0
     try {
-      const res = await api.startConversation(language, channel, demoMode)
+      const res = await api.startConversation(language, channel, demoMode, consent)
       setSession({ id: res.session_id, channel })
       setEngine(res.engine)
       setProgress(res.progress)
@@ -84,7 +84,7 @@ export default function VoiceAgent({ channel = 'web', onComplete, compact = fals
       setError('Backend not reachable. Start the API with:  cd backend && python main.py')
       setStatus('idle')
     }
-  }, [language, channel, demoMode, setSession, setTranscript, say])
+  }, [language, channel, demoMode, consent, setSession, setTranscript, say])
 
   /** Send one user utterance through the dialogue engine. */
   const submit = useCallback(

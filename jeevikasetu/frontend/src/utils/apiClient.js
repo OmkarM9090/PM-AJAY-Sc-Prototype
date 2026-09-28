@@ -25,8 +25,17 @@ export const api = {
   languages: () => request('/voice/languages'),
 
   // ---- conversation ----
-  startConversation: (language = 'hi', channel = 'web', demoMode = false) =>
-    request('/conversation/start', { method: 'POST', body: { language, channel, demo_mode: demoMode } }),
+  startConversation: (language = 'hi', channel = 'web', demoMode = false, consent = true) =>
+    request('/conversation/start', {
+      method: 'POST',
+      body: { language, channel, demo_mode: demoMode, consent_given: consent,
+              consent_scope: 'voice-profiling' },
+    }),
+  recordConsent: (sessionId, granted) =>
+    request('/conversation/consent', {
+      method: 'POST',
+      body: { session_id: sessionId, consent_given: granted, consent_scope: 'voice-profiling' },
+    }),
   sendMessage: (sessionId, text, language) =>
     request('/conversation/message', { method: 'POST', body: { session_id: sessionId, text, language } }),
   getConversation: (sessionId) => request(`/conversation/${sessionId}`),

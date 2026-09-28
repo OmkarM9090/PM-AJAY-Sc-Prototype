@@ -49,16 +49,20 @@ cp .env.example .env          # optional: add OPENAI_API_KEY for live AI mode
 python main.py                # → http://localhost:8000  (docs at /docs)
 ```
 
-### Tests (32 engine tests, < 1 s)
+### Tests (57 tests, < 3 s)
 
 ```bash
-cd jeevikasetu/backend && pip install pytest && pytest -q
+cd jeevikasetu/backend && pip install -r requirements.txt && pytest -q
 ```
 
-They pin the behaviour a government evaluator would challenge: one question per
-turn in all 6 languages, informal work → NSQF competencies, RPL only when the
-overlap is real, education/mobility/health constraints respected, and a
-reproducible ranking.
+| File | What it pins |
+|---|---|
+| `tests/test_engines.py` | One question per turn in all 6 languages, informal work → NSQF competencies, RPL only when the overlap is real, education / mobility / health constraints respected, reproducible ranking |
+| `tests/test_channels.py` | Health probe, DPDP consent + withdrawal erasure, Twilio & Exotel IVR turns, WhatsApp webhook, dropped-call resume, no raw phone numbers in the DB, full journey conversation → profile → recommend → PDF |
+| `tests/test_report.py` | PDF renders Devanagari / Tamil / Telugu / Bengali names with embedded fonts, and the download header is RFC 5987-safe |
+
+Each run uses a throw-away SQLite file (`tests/conftest.py`), so results are
+deterministic. Bugs these tests actually caught are listed in §11.
 
 ### Frontend — React + Vite
 
@@ -78,11 +82,18 @@ beneficiaries so the official dashboard is populated for the demo.
 
 | | **LIVE AI MODE** (`OPENAI_API_KEY` set) | **OFFLINE DEMO MODE** (no key) |
 |---|---|---|
-| Speech-to-Text | OpenAI **Whisper** (server) | Browser **Web Speech API** |
+| Speech-to-Text | **Bhashini (ULCA)** if credentials are set, else OpenAI **Whisper** | Browser **Web Speech API** |
 | Dialogue | **GPT-4o-mini** with the empathetic system prompt | Deterministic multilingual slot-filling engine |
 | Profile extraction | GPT-4o-mini JSON extraction + lexicon enrichment | Rule-based parsers + informal-skill lexicon |
-| Text-to-Speech | OpenAI **TTS** (mp3 streamed to the browser) | Browser **SpeechSynthesis** |
+| Text-to-Speech | **Bhashini (ULCA)** if credentials are set, else OpenAI **TTS** | Browser **SpeechSynthesis** |
 | Recommendations | Same deterministic NSQF matcher (reproducible & explainable) | Same |
+
+**Speech provider order — Bhashini → OpenAI → browser.** Bhashini is the
+Government of India's own language stack (MeitY), so it is tried first for STT,
+TTS and translation: set `BHASHINI_USER_ID`, `BHASHINI_API_KEY` and optionally
+`BHASHINI_PIPELINE_ID` in `.env` (`backend/services/bhashini_service.py`). With
+no credentials each layer falls through silently to the next; `GET /api/health`
+reports a `providers` block saying exactly which one is live.
 
 The mode is shown as a badge in the header and returned by `GET /api/health`.
 Both modes expose identical APIs — the frontend code path never changes. This is
@@ -106,7 +117,27 @@ so the flow can be shown even in a noisy hall or with no microphone.
 | 5 · Opportunity matching | `backend/services/data_store.py` (haversine distance, mobility & education filters) + `frontend/src/components/OpportunityExplorer.jsx` (jobs / ventures / centres / NSQF catalogue with live filters) |
 | 6 · Web application | `frontend/src/pages/*`, `frontend/src/components/*` |
 | 7 · Backend API | `backend/main.py`, `backend/routers/*` |
-| 8 · WhatsApp voice notes | `frontend/src/components/WhatsAppChat.jsx` |
+| 8 · WhatsApp voice notes | `frontend/src/components/WhatsAppChat.jsx` (in-app simulation) + `backend/routers/telephony.py` (real Meta Cloud API webhook) |
+
+### Real channel adapters (`backend/routers/telephony.py`)
+
+The IVR and WhatsApp screens in the UI are simulations of the same engine, but
+the production webhooks are implemented and can be curled without any provider
+credentials:
+
+| Endpoint | Provider contract |
+|---|---|
+| `POST /api/telephony/twilio/voice` | Inbound call → TwiML language menu (`1 hi, 2 en, 3 mr, 4 ta, 5 te, 6 bn`) |
+| `POST /api/telephony/twilio/gather` | Speech result in → next question out as TwiML |
+| `POST /api/telephony/exotel/voice` | Exotel Voicebot applet (JSON in, JSON out) |
+| `GET  /api/telephony/whatsapp/webhook` | Meta verification handshake |
+| `POST /api/telephony/whatsapp/webhook` | Inbound text / voice note → dialogue turn + reply payload |
+| `GET  /api/telephony/status` | Integration summary and which credentials are configured |
+
+Every channel calls the **same** `services/dialogue_manager.next_turn`, so the
+interview can never drift between web, phone and WhatsApp. A caller whose
+network drops mid-interview resumes where they left off on redial (24 h window);
+a finished interview starts clean and the old transcript is erased.
 
 ### API surface
 
@@ -117,6 +148,7 @@ POST /api/voice/synthesize               text + lang → mp3 (OpenAI TTS / brows
 POST /api/voice/detect-language          script + marker-word language detection
 POST /api/conversation/start             open a session (web | ivr | whatsapp)
 POST /api/conversation/message           one dialogue turn (+ slot state, progress)
+POST /api/conversation/consent           record or withdraw consent (withdrawal erases)
 GET  /api/conversation/{id}              full transcript
 GET  /api/conversation/demo/script       pre-recorded demo conversation
 POST /api/profile/extract                transcript → structured profile JSON
@@ -131,6 +163,9 @@ POST /api/report/generate                PDF recommendation report
 GET  /api/dashboard/stats                aggregate programme analytics
 GET  /api/dashboard/beneficiaries        filterable beneficiary register
 GET  /api/dashboard/scheme-utilisation   indicative GIA outlay by head
+POST /api/telephony/{twilio,exotel}/...  real IVR webhooks (TwiML / JSON applet)
+ANY  /api/telephony/whatsapp/webhook     Meta Cloud API verification + messages
+GET  /api/telephony/status               channel integration status
 ```
 
 ---
@@ -233,8 +268,31 @@ schema via `JS_DATABASE_URL`) · OpenAI Whisper / GPT-4o-mini / TTS (optional).
 
 ## 10. Privacy & governance notes
 
+* **DPDP Act 2023 consent gate.** The voice interview cannot start until the
+  beneficiary agrees to a plain-language notice (`components/ConsentGate.jsx`);
+  consent text, scope and timestamp are stored on the session. "Withdraw &
+  erase" deletes every stored message, clears the extracted slots and marks the
+  session `withdrawn` — verified by a test.
+* **Phone numbers are never stored.** IVR and WhatsApp sessions are keyed by a
+  salted SHA-256 hash of the number (`ivr…`, `wh…`), so the database holds no
+  direct identifier.
 * No Aadhaar, bank or caste-certificate numbers are ever requested.
 * Voice is transcribed and discarded; only the derived profile is stored.
 * The dashboard is aggregate-first and can be served anonymised.
 * All scheme amounts are labelled indicative; nothing is presented as an
   official government extract.
+
+---
+
+## 11. Bugs the test suite caught (and how they were fixed)
+
+Kept here because "we wrote tests" means little without evidence they bite.
+
+| Bug | Fix |
+|---|---|
+| "pattern making" was treated as a synonym of "cutting", inflating skill-match % | Split the lexicon entries; match % recomputed |
+| Travel / hostel GIA support did not trigger when a centre was beyond the beneficiary's stated mobility but within 10 km | Support heads now keyed off the gap, not the raw distance |
+| The mobility question asked two things in one turn | One question per turn, enforced by a test in all 6 languages |
+| A Devanagari name crashed the PDF download (latin-1 `Content-Disposition`) | RFC 5987 `filename*` + ASCII fallback (`routers/report.py::_disposition`) |
+| Indic text rendered as black boxes in the PDF | Bundled Noto Sans Devanagari / Tamil / Telugu / Bengali, with per-script font switching (`services/pdf_fonts.py`) |
+| A redial reused the caller's session and treated "नमस्ते" as an answer to the pending question | Resume policy + fresh-session detection in `routers/telephony.py`, plus a "welcome back" turn in the dialogue engine |
