@@ -1,127 +1,31 @@
 "use client";
 
-import { useAppStore } from "@/store/useAppStore";
-import { useState } from "react";
-import dynamic from 'next/dynamic';
-import { Target, MapPin, Navigation, Map as MapIcon, ChevronRight } from "lucide-react";
+import dynamic from "next/dynamic";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Opportunity } from "@/core/models/types";
+import { Award, ChevronDown, ChevronUp, Download, ExternalLink, LoaderCircle, MapPin, Route, Sparkles } from "lucide-react";
+import { api, BeneficiaryProfile, Recommendation } from "@/lib/api";
+import { readSavedSession, saveSavedSession } from "@/lib/session";
 
-const Map = dynamic(() => import('@/components/Map'), { 
-  ssr: false,
-  loading: () => <div className="w-full h-full bg-gray-100 animate-pulse rounded-2xl flex items-center justify-center text-gray-400"><MapIcon /></div>
-});
+const Map = dynamic(() => import("@/components/Map"), { ssr: false, loading: () => <div className="map-frame" style={{ display: "grid", placeItems: "center" }}>Loading map…</div> });
+const centers: Record<string, [number, number]> = { Varanasi: [25.3176,82.9739], Lucknow:[26.8467,80.9462], Chennai:[13.0827,80.2707], Hyderabad:[17.385,78.4867], Pune:[18.5204,73.8567], Jaipur:[26.9124,75.7873], Patna:[25.5941,85.1376], Nagpur:[21.1458,79.0882] };
 
 export default function RecommendationsPage() {
-  const { recommendations, profile } = useAppStore();
-  const [filter, setFilter] = useState<'all' | 'training' | 'job' | 'self-employment'>('all');
   const router = useRouter();
+  const [sessionId, setSessionId] = useState<string | undefined>(() => readSavedSession().sessionId); const [profile, setProfile] = useState<BeneficiaryProfile | undefined>(() => readSavedSession().profile);
+  const [recommendations, setRecommendations] = useState<Recommendation[]>(() => readSavedSession().recommendations || []); const [expanded, setExpanded] = useState<number | null>(1); const [loading, setLoading] = useState(() => Boolean(readSavedSession().sessionId)); const [downloading, setDownloading] = useState(false); const [error, setError] = useState("");
+  useEffect(() => { if (!sessionId) return; api.recommend(sessionId).then((result) => { setRecommendations(result.recommendations); saveSavedSession({ recommendations: result.recommendations }); }).catch((caught) => setError(caught instanceof Error ? caught.message : "Could not refresh recommendations.")).finally(() => setLoading(false)); }, [sessionId]);
+  const mapCenter = useMemo<[number,number]>(() => centers[profile?.location.district || ""] || [20.5937,78.9629], [profile?.location.district]);
+  const download = async () => { if (!sessionId) return; setDownloading(true); try { const response = await api.report(sessionId); if (!response.ok) throw new Error(); const url = URL.createObjectURL(await response.blob()); const anchor = document.createElement("a"); anchor.href = url; anchor.download = "JeevikaSetu-pathway-summary.pdf"; anchor.click(); URL.revokeObjectURL(url); } catch { setError("The report could not be generated. Please try again."); } finally { setDownloading(false); } };
+  const demo = async () => { try { const data = await api.loadDemo("ramesh", readSavedSession().language); setSessionId(data.session_id); setProfile(data.profile); setRecommendations(data.recommendations); saveSavedSession({ sessionId: data.session_id, profile: data.profile, recommendations: data.recommendations }); } catch { setError("Demo recommendations could not be loaded."); } };
+  if (loading) return <div className="page-shell"><div className="loading-panel card"><LoaderCircle className="animate-spin"/> Matching skills with pathways…</div></div>;
+  if (!recommendations.length) return <div className="page-shell"><p className="page-eyebrow">Pathway matching</p><h1 className="page-title">Recommendations appear after a profile review.</h1><p className="page-subtitle">Start a conversation, or load the fictional Ramesh profile to show the full judges&apos; demo flow.</p><div style={{ display:"flex", gap:10, marginTop:22, flexWrap:"wrap" }}><button className="btn btn-primary" onClick={() => router.push("/voice")}>Start voice conversation</button><button className="btn btn-secondary" onClick={demo}><Sparkles size={17}/> Load Demo Mode</button></div>{error && <p className="notice" style={{marginTop:16}}>{error}</p>}</div>;
+  const mapMarkers = recommendations.filter((item) => item.nearest_center?.lat && item.nearest_center?.lng).map((item) => ({ id: item.qualification_pack.qp_code, lat: item.nearest_center!.lat!, lng: item.nearest_center!.lng!, title: item.nearest_center!.name, type: item.qualification_pack.sector }));
+  return <div className="page-shell"><p className="page-eyebrow">NSQF / RPL mapping • illustrative decision support</p><h1 className="page-title">Top pathways for {profile?.name || "the beneficiary"}</h1><p className="page-subtitle">Ranked using skill overlap, stated interest, education fit, travel range and work preference. A counsellor must verify every referral.</p>{error && <div className="notice" style={{marginTop:16}}>{error}</div>}<div className="download-row"><button className="btn btn-primary btn-small" onClick={download} disabled={downloading}>{downloading ? <LoaderCircle className="animate-spin" size={15}/> : <Download size={15}/>} Download pathway summary (PDF)</button><button className="btn btn-secondary btn-small" onClick={() => router.push("/profile")}>Edit profile</button></div><div className="rec-layout"><section className="rec-list">{recommendations.map((item) => <RecommendationCard item={item} expanded={expanded === item.rank} key={item.qualification_pack.qp_code} toggle={() => setExpanded(expanded === item.rank ? null : item.rank)}/>)}</section><aside><article className="map-card card"><h2 className="section-heading"><MapPin size={18} style={{verticalAlign:"-3px", marginRight:5}}/> Nearby training centres</h2><p className="muted" style={{fontSize:12,margin:0}}>Centres are illustrative sample listings mapped against the stated district and travel range.</p><div className="map-frame"><Map center={mapCenter} radiusKm={profile?.mobility_km || 30} markers={mapMarkers}/></div><div className="map-center-list">{recommendations.slice(0,3).map((item) => <div className="center-line" key={item.rank}><b>{item.nearest_center?.name || "Centre to be confirmed"}</b><span>{item.nearest_center?.district || ""} {item.nearest_center?.estimated_distance_km != null ? `• approx. ${item.nearest_center.estimated_distance_km} km` : ""}</span></div>)}</div></article></aside></div><div className="notice" style={{marginTop:20}}>All listed qualification packs, centres, opportunities and GIA pathway prompts are curated <b>demo data</b>. Validate current QP/NOS, enrolment, support and eligibility with the relevant authorised source.</div></div>;
+}
 
-  const filteredRecs = filter === 'all' 
-    ? recommendations 
-    : recommendations.filter(r => r.opportunity.type === filter);
-
-  const getMarkerData = () => {
-    return filteredRecs.map(r => ({
-      id: r.opportunity.id,
-      lat: r.opportunity.lat,
-      lng: r.opportunity.lng,
-      title: r.opportunity.title,
-      type: r.opportunity.type
-    }));
-  };
-
-  return (
-    <div className="flex-1 bg-surface flex flex-col p-6 max-w-7xl mx-auto w-full">
-      <div className="flex justify-between items-end mb-8">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Opportunities for you</h1>
-          <p className="text-gray-500 mt-2">
-            Based on your {profile.skills?.length || 0} skills and {profile.radius || 'any'}km limit
-          </p>
-        </div>
-        
-        <div className="flex bg-gray-100 p-1 rounded-xl">
-          {['all', 'training', 'job', 'self-employment'].map((f) => (
-            <button 
-              key={f}
-              onClick={() => setFilter(f as any)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium capitalize transition ${
-                filter === f ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
-              }`}
-            >
-              {f === 'all' ? 'All Types' : f}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="flex gap-8 h-[calc(100vh-200px)]">
-        
-        {/* LIST */}
-        <div className="w-1/2 flex flex-col gap-4 overflow-y-auto pr-4 custom-scrollbar">
-          {filteredRecs.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-64 bg-white rounded-3xl border border-gray-100 border-dashed text-gray-500 text-center p-8">
-              <Target className="w-12 h-12 mb-4 text-gray-300" />
-              <p>No opportunities found for the current filters.</p>
-              <p className="text-sm mt-2">Try changing your preferences or search radius.</p>
-            </div>
-          ) : (
-            filteredRecs.map((rec, i) => (
-              <div 
-                key={rec.opportunity.id} 
-                className="bg-white p-5 rounded-2xl border border-gray-200 hover:border-primary/50 hover:shadow-lg transition cursor-pointer group"
-                onClick={() => router.push(`/recommendations/${rec.opportunity.id}`)}
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="font-bold text-gray-900 text-lg group-hover:text-primary transition">{rec.opportunity.title}</h3>
-                  <span className="px-2 py-1 bg-green-50 text-green-700 text-xs font-bold rounded-md whitespace-nowrap ml-4 border border-green-100">
-                    {(rec.scoreComponents.total * 100).toFixed(0)}% MATCH
-                  </span>
-                </div>
-                
-                <p className="text-sm text-gray-500 mb-4">{rec.opportunity.provider}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs font-medium capitalize flex items-center gap-1">
-                    {rec.opportunity.type}
-                  </span>
-                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs font-medium flex items-center gap-1">
-                    <Navigation className="w-3 h-3" /> {Math.round(rec.distance)} km away
-                  </span>
-                  {rec.opportunity.nsqfLevel && (
-                    <span className="px-2 py-1 bg-purple-50 text-purple-700 border border-purple-100 rounded text-xs font-medium">
-                      NSQF L{rec.opportunity.nsqfLevel}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex justify-between items-center border-t border-gray-100 pt-4">
-                  <p className="text-sm text-gray-600 line-clamp-1">{rec.whyThisMatch.reasons[0]}</p>
-                  <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-primary transition" />
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-
-        {/* MAP */}
-        <div className="w-1/2 h-full bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-sm relative">
-          <Map 
-            center={[profile.location?.lat || 19.2183, profile.location?.lng || 73.0867]}
-            radiusKm={profile.radius}
-            markers={getMarkerData()}
-          />
-          <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-xl shadow-md border border-gray-200 z-[400]">
-            <h3 className="font-bold text-gray-900 text-sm flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-primary" /> 
-              {profile.location?.locationName || 'Your Location'}
-            </h3>
-            <p className="text-xs text-gray-500 mt-1">Showing {filteredRecs.length} opportunities within {profile.radius || 50}km</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  );
+function RecommendationCard({ item, expanded, toggle }: { item: Recommendation; expanded: boolean; toggle: () => void }) {
+  const qp = item.qualification_pack;
+  const medal = item.rank === 1 ? "🥇" : item.rank === 2 ? "🥈" : item.rank === 3 ? "🥉" : `#${item.rank}`;
+  return <article className="rec-card card"><div className="rec-summary"><div className="rank-medal">{medal}</div><div><h2 className="rec-title">{qp.qp_name}</h2><p className="rec-sub">{qp.qp_code} • {qp.sector} • NSQF Level {qp.nsqf_level}</p><div className="rec-metrics"><span className="tag">Skill match: {item.skill_match_percent}%</span><span className={item.interest_match === "HIGH" ? "tag tag--green" : "tag"}>Interest: {item.interest_match}</span>{item.rpl_eligible && <span className="tag tag--saffron"><Award size={13}/> RPL screen: eligible</span>}</div></div><button className="expand-button" onClick={toggle} aria-expanded={expanded}>{expanded ? <ChevronUp size={18}/> : <ChevronDown size={18}/>}</button></div>{expanded && <div className="rec-expanded"><div className="gap-grid"><div className="gap-box"><h4>Recognised / transferable signals</h4><ul>{item.already_have.map((skill) => <li key={skill}>{skill}</li>)}</ul></div><div className="gap-box"><h4>Gap to validate and build</h4><ul>{item.skill_gaps.map((skill) => <li key={skill}>{skill}</li>)}</ul></div></div><p style={{fontSize:13,margin:"0 0 10px"}}><b>Training:</b> {qp.duration_hours} hours &nbsp;•&nbsp; <b>Income reference:</b> {qp.avg_monthly_income_range}</p><p style={{fontSize:13,margin:"0 0 10px"}}><b>Centre:</b> {item.nearest_center?.name || "Confirm with district team"} {item.nearest_center?.estimated_distance_km != null ? `(${item.nearest_center.estimated_distance_km} km est.)` : ""}<br/><b>Travel fit:</b> {item.mobility_match}</p><p style={{fontSize:13,margin:"0 0 12px"}}><b>Path:</b> {item.pathway}</p><div className="roadmap-mini">{item.roadmap.map((step) => <span key={step}><Route size={13} style={{verticalAlign:"-2px",marginRight:5,color:"#138808"}}/>{step}</span>)}</div>{item.gia_benefits.map((benefit) => <div className="benefit-note" key={benefit.id}><b>GIA pathway prompt — {benefit.name}:</b> {benefit.support}<br/><small>{benefit.verification}</small></div>)}<div style={{marginTop:12}}><button className="btn btn-secondary btn-small">Know more <ExternalLink size={14}/></button></div></div>}</article>;
 }

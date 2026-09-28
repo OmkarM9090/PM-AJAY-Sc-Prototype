@@ -1,0 +1,1 @@
+Extract only data explicitly stated or safely implied from livelihood conversation transcript. Return valid JSON with name, age, location, education, family_occupation, current_livelihood, identified_skills, interests, employment_preference, mobility_km, physical_constraints and languages_spoken. Never infer sensitive identifiers or make eligibility decisions.
