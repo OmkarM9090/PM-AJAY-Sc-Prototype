@@ -1,0 +1,2013 @@
+{
+  "meta": {
+    "label": "JeevikaSetu curated demo catalogue",
+    "disclaimer": "All listings are illustrative prototype data. Validate NSQF/QP, provider availability, opportunities and PM-AJAY GIA eligibility with official sources before operational use."
+  },
+  "qualification_packs": [
+    {
+      "qp_code": "AGR/Q1001",
+      "qp_name": "Organic Grower",
+      "sector": "Agriculture & Allied",
+      "nsqf_level": 4,
+      "required_skills": [
+        "soil preparation",
+        "organic farming",
+        "pest management",
+        "irrigation"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 300,
+      "certification_body": "ASCI",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹8,000–15,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "AGR/Q1102",
+      "qp_name": "Dairy Farmer",
+      "sector": "Agriculture & Allied",
+      "nsqf_level": 4,
+      "required_skills": [
+        "animal care",
+        "milking",
+        "fodder management",
+        "record keeping"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 240,
+      "certification_body": "ASCI",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹9,000–18,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "AGR/Q1203",
+      "qp_name": "Poultry Farm Worker",
+      "sector": "Agriculture & Allied",
+      "nsqf_level": 3,
+      "required_skills": [
+        "bird care",
+        "feed management",
+        "hygiene",
+        "disease observation"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 180,
+      "certification_body": "ASCI",
+      "rpl_eligible": true,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹8,000–14,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "AGR/Q1304",
+      "qp_name": "Farm Equipment Operator",
+      "sector": "Agriculture & Allied",
+      "nsqf_level": 4,
+      "required_skills": [
+        "tractor operation",
+        "equipment maintenance",
+        "field safety",
+        "irrigation"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 300,
+      "certification_body": "ASCI",
+      "rpl_eligible": false,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹12,000–20,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "CON/Q0102",
+      "qp_name": "Assistant Mason",
+      "sector": "Construction",
+      "nsqf_level": 3,
+      "required_skills": [
+        "brick masonry",
+        "mortar mixing",
+        "measurement",
+        "site safety"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 300,
+      "certification_body": "CSDCI",
+      "rpl_eligible": true,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹11,000–18,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "CON/Q0203",
+      "qp_name": "Bar Bender and Steel Fixer",
+      "sector": "Construction",
+      "nsqf_level": 4,
+      "required_skills": [
+        "bar bending",
+        "steel fixing",
+        "measurement",
+        "site safety"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 360,
+      "certification_body": "CSDCI",
+      "rpl_eligible": true,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹13,000–22,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "CON/Q0304",
+      "qp_name": "Construction Supervisor",
+      "sector": "Construction",
+      "nsqf_level": 5,
+      "required_skills": [
+        "site supervision",
+        "blueprint reading",
+        "safety protocols",
+        "work planning"
+      ],
+      "required_education": "10th pass",
+      "duration_hours": 480,
+      "certification_body": "CSDCI",
+      "rpl_eligible": false,
+      "self_employment_potential": "low",
+      "avg_monthly_income_range": "₹15,000–25,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "CON/Q0405",
+      "qp_name": "Assistant Electrician",
+      "sector": "Construction",
+      "nsqf_level": 3,
+      "required_skills": [
+        "basic wiring",
+        "electrical safety",
+        "tool handling",
+        "fault finding"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 300,
+      "certification_body": "CSDCI",
+      "rpl_eligible": true,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹12,000–20,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "LFS/Q0201",
+      "qp_name": "Leather Goods Maker",
+      "sector": "Leather",
+      "nsqf_level": 3,
+      "required_skills": [
+        "leather cutting",
+        "leather stitching",
+        "product finishing",
+        "quality checking"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 240,
+      "certification_body": "LSSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹10,000–18,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "LFS/Q0402",
+      "qp_name": "Footwear Stitching Operator",
+      "sector": "Leather",
+      "nsqf_level": 4,
+      "required_skills": [
+        "leather cutting",
+        "machine stitching",
+        "pattern reading",
+        "quality checking"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 360,
+      "certification_body": "LSSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹12,000–20,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "LFS/Q0503",
+      "qp_name": "Leather Craft Artisan",
+      "sector": "Leather",
+      "nsqf_level": 4,
+      "required_skills": [
+        "leather crafting",
+        "design",
+        "leather stitching",
+        "product finishing"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 300,
+      "certification_body": "LSSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹12,000–22,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "TEL/Q1101",
+      "qp_name": "Handloom Weaver",
+      "sector": "Textile & Handloom",
+      "nsqf_level": 4,
+      "required_skills": [
+        "loom operation",
+        "yarn preparation",
+        "weaving",
+        "quality checking"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 360,
+      "certification_body": "TSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹10,000–20,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "TEL/Q1202",
+      "qp_name": "Sewing Machine Operator",
+      "sector": "Textile & Handloom",
+      "nsqf_level": 3,
+      "required_skills": [
+        "machine stitching",
+        "fabric cutting",
+        "measurement",
+        "quality checking"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 240,
+      "certification_body": "TSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹10,000–17,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "TEL/Q1303",
+      "qp_name": "Traditional Embroidery Artisan",
+      "sector": "Textile & Handloom",
+      "nsqf_level": 3,
+      "required_skills": [
+        "hand embroidery",
+        "design",
+        "colour matching",
+        "finishing"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 240,
+      "certification_body": "TSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹9,000–18,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "AUT/Q0601",
+      "qp_name": "Automotive Service Technician",
+      "sector": "Automotive",
+      "nsqf_level": 4,
+      "required_skills": [
+        "vehicle inspection",
+        "basic repairs",
+        "tool handling",
+        "customer service"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 420,
+      "certification_body": "ASDC",
+      "rpl_eligible": false,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹14,000–24,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "AUT/Q0702",
+      "qp_name": "Two-Wheeler Service Technician",
+      "sector": "Automotive",
+      "nsqf_level": 3,
+      "required_skills": [
+        "two-wheeler repair",
+        "diagnostics",
+        "tool handling",
+        "customer service"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 300,
+      "certification_body": "ASDC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹12,000–22,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "AUT/Q0803",
+      "qp_name": "Auto Rickshaw Driver",
+      "sector": "Automotive",
+      "nsqf_level": 3,
+      "required_skills": [
+        "safe driving",
+        "route planning",
+        "vehicle upkeep",
+        "customer service"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 180,
+      "certification_body": "ASDC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹12,000–25,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "ELE/Q8101",
+      "qp_name": "Mobile Phone Repair Technician",
+      "sector": "Electronics & Hardware",
+      "nsqf_level": 4,
+      "required_skills": [
+        "mobile repair",
+        "circuit diagnosis",
+        "soldering",
+        "customer service"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 360,
+      "certification_body": "ESSCI",
+      "rpl_eligible": false,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹12,000–20,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "ELE/Q8202",
+      "qp_name": "Field Technician – Home Appliances",
+      "sector": "Electronics & Hardware",
+      "nsqf_level": 4,
+      "required_skills": [
+        "appliance repair",
+        "fault diagnosis",
+        "tool handling",
+        "customer service"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 360,
+      "certification_body": "ESSCI",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹14,000–24,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "ELE/Q8303",
+      "qp_name": "Solar Panel Installation Technician",
+      "sector": "Electronics & Hardware",
+      "nsqf_level": 4,
+      "required_skills": [
+        "electrical wiring",
+        "solar installation",
+        "site safety",
+        "maintenance"
+      ],
+      "required_education": "10th pass",
+      "duration_hours": 360,
+      "certification_body": "ESSCI",
+      "rpl_eligible": false,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹15,000–25,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "BWS/Q0201",
+      "qp_name": "Assistant Beauty Therapist",
+      "sector": "Beauty & Wellness",
+      "nsqf_level": 3,
+      "required_skills": [
+        "basic beauty services",
+        "hygiene",
+        "client care",
+        "product knowledge"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 300,
+      "certification_body": "B&WSSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹10,000–20,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "BWS/Q0302",
+      "qp_name": "Hair Stylist",
+      "sector": "Beauty & Wellness",
+      "nsqf_level": 4,
+      "required_skills": [
+        "hair cutting",
+        "hair styling",
+        "hygiene",
+        "client consultation"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 360,
+      "certification_body": "B&WSSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹12,000–24,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "HSS/Q2301",
+      "qp_name": "General Duty Assistant",
+      "sector": "Healthcare",
+      "nsqf_level": 4,
+      "required_skills": [
+        "patient support",
+        "hygiene",
+        "vital signs",
+        "communication"
+      ],
+      "required_education": "10th pass",
+      "duration_hours": 420,
+      "certification_body": "HSSC",
+      "rpl_eligible": false,
+      "self_employment_potential": "low",
+      "avg_monthly_income_range": "₹13,000–20,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "HSS/Q2402",
+      "qp_name": "Home Health Aide",
+      "sector": "Healthcare",
+      "nsqf_level": 4,
+      "required_skills": [
+        "elder care",
+        "patient support",
+        "hygiene",
+        "communication"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 360,
+      "certification_body": "HSSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹12,000–20,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "ITE/Q0501",
+      "qp_name": "Domestic Data Entry Operator",
+      "sector": "IT/ITES",
+      "nsqf_level": 4,
+      "required_skills": [
+        "computer basics",
+        "data entry",
+        "typing",
+        "digital safety"
+      ],
+      "required_education": "10th pass",
+      "duration_hours": 360,
+      "certification_body": "NASSCOM",
+      "rpl_eligible": false,
+      "self_employment_potential": "low",
+      "avg_monthly_income_range": "₹12,000–20,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "ITE/Q0602",
+      "qp_name": "Digital Service Associate",
+      "sector": "IT/ITES",
+      "nsqf_level": 4,
+      "required_skills": [
+        "computer basics",
+        "digital services",
+        "customer service",
+        "data entry"
+      ],
+      "required_education": "10th pass",
+      "duration_hours": 360,
+      "certification_body": "NASSCOM",
+      "rpl_eligible": false,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹12,000–22,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "FIC/Q0101",
+      "qp_name": "Food Processing Technician",
+      "sector": "Food Processing",
+      "nsqf_level": 4,
+      "required_skills": [
+        "food handling",
+        "hygiene",
+        "packaging",
+        "quality checking"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 300,
+      "certification_body": "FICSI",
+      "rpl_eligible": true,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹11,000–18,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "FIC/Q0202",
+      "qp_name": "Bakery Assistant",
+      "sector": "Food Processing",
+      "nsqf_level": 3,
+      "required_skills": [
+        "baking",
+        "food hygiene",
+        "measurement",
+        "packaging"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 240,
+      "certification_body": "FICSI",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹10,000–18,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "RET/Q0101",
+      "qp_name": "Retail Sales Associate",
+      "sector": "Retail",
+      "nsqf_level": 4,
+      "required_skills": [
+        "customer service",
+        "billing",
+        "inventory",
+        "communication"
+      ],
+      "required_education": "10th pass",
+      "duration_hours": 300,
+      "certification_body": "RASCI",
+      "rpl_eligible": false,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹12,000–20,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "RET/Q0202",
+      "qp_name": "Store Operations Assistant",
+      "sector": "Retail",
+      "nsqf_level": 3,
+      "required_skills": [
+        "stock handling",
+        "billing",
+        "customer service",
+        "safety"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 240,
+      "certification_body": "RASCI",
+      "rpl_eligible": true,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹11,000–17,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "PLB/Q0101",
+      "qp_name": "Assistant Plumber",
+      "sector": "Plumbing",
+      "nsqf_level": 3,
+      "required_skills": [
+        "pipe fitting",
+        "leak repair",
+        "tool handling",
+        "site safety"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 300,
+      "certification_body": "IPSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹12,000–21,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "PLB/Q0202",
+      "qp_name": "Plumber General II",
+      "sector": "Plumbing",
+      "nsqf_level": 4,
+      "required_skills": [
+        "pipe fitting",
+        "water systems",
+        "leak repair",
+        "site safety"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 360,
+      "certification_body": "IPSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹14,000–25,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "THC/Q0101",
+      "qp_name": "Housekeeping Attendant",
+      "sector": "Tourism & Hospitality",
+      "nsqf_level": 3,
+      "required_skills": [
+        "cleaning",
+        "hygiene",
+        "guest service",
+        "safety"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 240,
+      "certification_body": "THSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "low",
+      "avg_monthly_income_range": "₹10,000–16,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "THC/Q0202",
+      "qp_name": "Food and Beverage Service Steward",
+      "sector": "Tourism & Hospitality",
+      "nsqf_level": 4,
+      "required_skills": [
+        "guest service",
+        "food service",
+        "hygiene",
+        "communication"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 300,
+      "certification_body": "THSC",
+      "rpl_eligible": false,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹12,000–20,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "HCR/Q0101",
+      "qp_name": "Cane and Bamboo Worker",
+      "sector": "Handicrafts & Carpet",
+      "nsqf_level": 3,
+      "required_skills": [
+        "bamboo craft",
+        "design",
+        "tool handling",
+        "finishing"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 300,
+      "certification_body": "HCSSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹9,000–18,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "HCR/Q0202",
+      "qp_name": "Carpet Weaver",
+      "sector": "Handicrafts & Carpet",
+      "nsqf_level": 3,
+      "required_skills": [
+        "loom operation",
+        "carpet weaving",
+        "colour matching",
+        "finishing"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 360,
+      "certification_body": "HCSSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹9,000–18,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "DWC/Q0101",
+      "qp_name": "Domestic Worker",
+      "sector": "Domestic Worker",
+      "nsqf_level": 3,
+      "required_skills": [
+        "home cleaning",
+        "cooking assistance",
+        "elder care",
+        "hygiene"
+      ],
+      "required_education": "No minimum",
+      "duration_hours": 180,
+      "certification_body": "DWSSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹8,000–15,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "DWC/Q0202",
+      "qp_name": "Caregiver – Elderly",
+      "sector": "Domestic Worker",
+      "nsqf_level": 4,
+      "required_skills": [
+        "elder care",
+        "hygiene",
+        "communication",
+        "emergency support"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 300,
+      "certification_body": "DWSSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹11,000–18,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "RUB/Q0101",
+      "qp_name": "Rubber Product Maker",
+      "sector": "Rubber",
+      "nsqf_level": 3,
+      "required_skills": [
+        "moulding",
+        "machine operation",
+        "quality checking",
+        "safety"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 300,
+      "certification_body": "RSDC",
+      "rpl_eligible": true,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹10,000–17,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "GRN/Q0101",
+      "qp_name": "Green Job Assistant",
+      "sector": "Green Jobs",
+      "nsqf_level": 3,
+      "required_skills": [
+        "waste sorting",
+        "safety",
+        "recycling",
+        "record keeping"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 240,
+      "certification_body": "GJSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹11,000–18,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "LOG/Q0101",
+      "qp_name": "Warehouse Packer",
+      "sector": "Logistics",
+      "nsqf_level": 3,
+      "required_skills": [
+        "packing",
+        "inventory",
+        "material handling",
+        "safety"
+      ],
+      "required_education": "5th pass",
+      "duration_hours": 240,
+      "certification_body": "LSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "medium",
+      "avg_monthly_income_range": "₹10,000–16,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    },
+    {
+      "qp_code": "LOG/Q0202",
+      "qp_name": "Delivery Associate",
+      "sector": "Logistics",
+      "nsqf_level": 3,
+      "required_skills": [
+        "route planning",
+        "safe driving",
+        "customer service",
+        "digital payments"
+      ],
+      "required_education": "8th pass",
+      "duration_hours": 180,
+      "certification_body": "LSC",
+      "rpl_eligible": true,
+      "self_employment_potential": "high",
+      "avg_monthly_income_range": "₹12,000–22,000",
+      "source_note": "Illustrative NSQF-aligned demo catalogue — verify current QP/NOS details with NCVET before programme use."
+    }
+  ],
+  "training_centers": [
+    {
+      "id": "TC01",
+      "name": "Kaushal Vikas Kendra, Varanasi",
+      "district": "Varanasi",
+      "state": "Uttar Pradesh",
+      "lat": 25.3176,
+      "lng": 82.9739,
+      "sectors": [
+        "Leather",
+        "Electronics & Hardware",
+        "Construction"
+      ],
+      "working_hours": "09:30–17:30",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC02",
+      "name": "Government ITI, Varanasi",
+      "district": "Varanasi",
+      "state": "Uttar Pradesh",
+      "lat": 25.3021,
+      "lng": 82.9852,
+      "sectors": [
+        "Construction",
+        "Automotive",
+        "Electronics & Hardware"
+      ],
+      "working_hours": "09:00–16:00",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC03",
+      "name": "Bunkar Training Centre, Varanasi",
+      "district": "Varanasi",
+      "state": "Uttar Pradesh",
+      "lat": 25.2852,
+      "lng": 82.9577,
+      "sectors": [
+        "Textile & Handloom",
+        "Handicrafts & Carpet"
+      ],
+      "working_hours": "10:00–17:00",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC04",
+      "name": "Skill India Centre, Lucknow",
+      "district": "Lucknow",
+      "state": "Uttar Pradesh",
+      "lat": 26.8467,
+      "lng": 80.9462,
+      "sectors": [
+        "IT/ITES",
+        "Retail",
+        "Healthcare"
+      ],
+      "working_hours": "09:00–17:00",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC05",
+      "name": "Government ITI, Lucknow",
+      "district": "Lucknow",
+      "state": "Uttar Pradesh",
+      "lat": 26.8615,
+      "lng": 80.916,
+      "sectors": [
+        "Automotive",
+        "Plumbing",
+        "Construction"
+      ],
+      "working_hours": "09:00–16:00",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC06",
+      "name": "Chennai Community Skill Hub",
+      "district": "Chennai",
+      "state": "Tamil Nadu",
+      "lat": 13.0674,
+      "lng": 80.2376,
+      "sectors": [
+        "Electronics & Hardware",
+        "Beauty & Wellness",
+        "Healthcare"
+      ],
+      "working_hours": "09:30–17:30",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC07",
+      "name": "Government ITI, Guindy",
+      "district": "Chennai",
+      "state": "Tamil Nadu",
+      "lat": 13.0067,
+      "lng": 80.2206,
+      "sectors": [
+        "Automotive",
+        "Construction",
+        "IT/ITES"
+      ],
+      "working_hours": "09:00–16:00",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC08",
+      "name": "Hyderabad Livelihood Centre",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "lat": 17.385,
+      "lng": 78.4867,
+      "sectors": [
+        "IT/ITES",
+        "Retail",
+        "Food Processing"
+      ],
+      "working_hours": "09:30–17:30",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC09",
+      "name": "Government ITI, Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "lat": 17.4375,
+      "lng": 78.4482,
+      "sectors": [
+        "Automotive",
+        "Electronics & Hardware",
+        "Plumbing"
+      ],
+      "working_hours": "09:00–16:00",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC10",
+      "name": "Pune Skill Development Centre",
+      "district": "Pune",
+      "state": "Maharashtra",
+      "lat": 18.5204,
+      "lng": 73.8567,
+      "sectors": [
+        "IT/ITES",
+        "Healthcare",
+        "Retail"
+      ],
+      "working_hours": "09:30–17:30",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC11",
+      "name": "Government ITI, Aundh",
+      "district": "Pune",
+      "state": "Maharashtra",
+      "lat": 18.5588,
+      "lng": 73.8073,
+      "sectors": [
+        "Automotive",
+        "Construction",
+        "Electronics & Hardware"
+      ],
+      "working_hours": "09:00–16:00",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC12",
+      "name": "Jaipur Artisan Training Centre",
+      "district": "Jaipur",
+      "state": "Rajasthan",
+      "lat": 26.9124,
+      "lng": 75.7873,
+      "sectors": [
+        "Handicrafts & Carpet",
+        "Textile & Handloom",
+        "Beauty & Wellness"
+      ],
+      "working_hours": "10:00–17:00",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC13",
+      "name": "Government ITI, Jaipur",
+      "district": "Jaipur",
+      "state": "Rajasthan",
+      "lat": 26.85,
+      "lng": 75.78,
+      "sectors": [
+        "Construction",
+        "Plumbing",
+        "Automotive"
+      ],
+      "working_hours": "09:00–16:00",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC14",
+      "name": "Patna Skill Resource Centre",
+      "district": "Patna",
+      "state": "Bihar",
+      "lat": 25.5941,
+      "lng": 85.1376,
+      "sectors": [
+        "Healthcare",
+        "Retail",
+        "Food Processing"
+      ],
+      "working_hours": "09:30–17:30",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC15",
+      "name": "Government ITI, Patna",
+      "district": "Patna",
+      "state": "Bihar",
+      "lat": 25.618,
+      "lng": 85.152,
+      "sectors": [
+        "Construction",
+        "Electronics & Hardware",
+        "Automotive"
+      ],
+      "working_hours": "09:00–16:00",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC16",
+      "name": "Nagpur Community Training Hub",
+      "district": "Nagpur",
+      "state": "Maharashtra",
+      "lat": 21.1458,
+      "lng": 79.0882,
+      "sectors": [
+        "Leather",
+        "Textile & Handloom",
+        "Agriculture & Allied"
+      ],
+      "working_hours": "09:30–17:30",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC17",
+      "name": "Bengaluru Skill Centre",
+      "district": "Bengaluru Urban",
+      "state": "Karnataka",
+      "lat": 12.9716,
+      "lng": 77.5946,
+      "sectors": [
+        "IT/ITES",
+        "Electronics & Hardware",
+        "Healthcare"
+      ],
+      "working_hours": "09:30–17:30",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC18",
+      "name": "Kolkata Livelihood Centre",
+      "district": "Kolkata",
+      "state": "West Bengal",
+      "lat": 22.5726,
+      "lng": 88.3639,
+      "sectors": [
+        "Food Processing",
+        "Retail",
+        "Textile & Handloom"
+      ],
+      "working_hours": "09:30–17:30",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC19",
+      "name": "Bhopal Government ITI",
+      "district": "Bhopal",
+      "state": "Madhya Pradesh",
+      "lat": 23.2599,
+      "lng": 77.4126,
+      "sectors": [
+        "Construction",
+        "Automotive",
+        "Plumbing"
+      ],
+      "working_hours": "09:00–16:00",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC20",
+      "name": "Ranchi Tribal Artisan Hub",
+      "district": "Ranchi",
+      "state": "Jharkhand",
+      "lat": 23.3441,
+      "lng": 85.3096,
+      "sectors": [
+        "Handicrafts & Carpet",
+        "Agriculture & Allied",
+        "Food Processing"
+      ],
+      "working_hours": "10:00–17:00",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC21",
+      "name": "Madurai Skills Campus",
+      "district": "Madurai",
+      "state": "Tamil Nadu",
+      "lat": 9.9252,
+      "lng": 78.1198,
+      "sectors": [
+        "Textile & Handloom",
+        "Beauty & Wellness",
+        "Tourism & Hospitality"
+      ],
+      "working_hours": "09:30–17:30",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    },
+    {
+      "id": "TC22",
+      "name": "Ahmedabad Livelihood Centre",
+      "district": "Ahmedabad",
+      "state": "Gujarat",
+      "lat": 23.0225,
+      "lng": 72.5714,
+      "sectors": [
+        "Textile & Handloom",
+        "Retail",
+        "Automotive"
+      ],
+      "working_hours": "09:30–17:30",
+      "active": true,
+      "source_note": "Illustrative training-centre data for prototype demonstration; availability must be confirmed before referral."
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OP01",
+      "title": "Leather Goods Micro-Enterprise",
+      "type": "self-employment",
+      "sector": "Leather",
+      "district": "Varanasi",
+      "state": "Uttar Pradesh",
+      "starting_income": 12000,
+      "investment_required": 25000,
+      "required_skills": [
+        "leather crafting",
+        "leather stitching"
+      ],
+      "income_range": "₹12,000–22,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP02",
+      "title": "Footwear Unit Stitching Operator",
+      "type": "job",
+      "sector": "Leather",
+      "district": "Varanasi",
+      "state": "Uttar Pradesh",
+      "starting_income": 15000,
+      "investment_required": 0,
+      "required_skills": [
+        "machine stitching",
+        "leather cutting"
+      ],
+      "income_range": "₹12,000–18,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP03",
+      "title": "Mobile Repair Kiosk",
+      "type": "self-employment",
+      "sector": "Electronics & Hardware",
+      "district": "Varanasi",
+      "state": "Uttar Pradesh",
+      "starting_income": 18000,
+      "investment_required": 30000,
+      "required_skills": [
+        "mobile repair",
+        "soldering"
+      ],
+      "income_range": "₹12,000–20,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP04",
+      "title": "Construction Site Assistant",
+      "type": "job",
+      "sector": "Construction",
+      "district": "Varanasi",
+      "state": "Uttar Pradesh",
+      "starting_income": 9000,
+      "investment_required": 0,
+      "required_skills": [
+        "brick masonry",
+        "site safety"
+      ],
+      "income_range": "₹11,000–16,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP05",
+      "title": "Organic Vegetable Grower",
+      "type": "self-employment",
+      "sector": "Agriculture & Allied",
+      "district": "Varanasi",
+      "state": "Uttar Pradesh",
+      "starting_income": 8000,
+      "investment_required": 12000,
+      "required_skills": [
+        "organic farming",
+        "irrigation"
+      ],
+      "income_range": "₹8,000–16,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP06",
+      "title": "Home Appliance Repair Service",
+      "type": "self-employment",
+      "sector": "Electronics & Hardware",
+      "district": "Lucknow",
+      "state": "Uttar Pradesh",
+      "starting_income": 16000,
+      "investment_required": 35000,
+      "required_skills": [
+        "appliance repair",
+        "fault diagnosis"
+      ],
+      "income_range": "₹15,000–25,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP07",
+      "title": "Retail Sales Associate",
+      "type": "job",
+      "sector": "Retail",
+      "district": "Lucknow",
+      "state": "Uttar Pradesh",
+      "starting_income": 12000,
+      "investment_required": 0,
+      "required_skills": [
+        "customer service",
+        "billing"
+      ],
+      "income_range": "₹12,000–18,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP08",
+      "title": "Two-Wheeler Service Technician",
+      "type": "job",
+      "sector": "Automotive",
+      "district": "Lucknow",
+      "state": "Uttar Pradesh",
+      "starting_income": 14000,
+      "investment_required": 0,
+      "required_skills": [
+        "two-wheeler repair",
+        "diagnostics"
+      ],
+      "income_range": "₹14,000–21,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP09",
+      "title": "Tailoring and Alteration Studio",
+      "type": "self-employment",
+      "sector": "Textile & Handloom",
+      "district": "Lucknow",
+      "state": "Uttar Pradesh",
+      "starting_income": 12000,
+      "investment_required": 18000,
+      "required_skills": [
+        "machine stitching",
+        "fabric cutting"
+      ],
+      "income_range": "₹10,000–18,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP10",
+      "title": "Digital Seva Desk",
+      "type": "self-employment",
+      "sector": "IT/ITES",
+      "district": "Lucknow",
+      "state": "Uttar Pradesh",
+      "starting_income": 12000,
+      "investment_required": 22000,
+      "required_skills": [
+        "computer basics",
+        "digital services"
+      ],
+      "income_range": "₹12,000–22,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP11",
+      "title": "Community Health Support Worker",
+      "type": "job",
+      "sector": "Healthcare",
+      "district": "Chennai",
+      "state": "Tamil Nadu",
+      "starting_income": 14000,
+      "investment_required": 0,
+      "required_skills": [
+        "patient support",
+        "hygiene"
+      ],
+      "income_range": "₹14,000–20,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP12",
+      "title": "Mobile Accessories and Repair",
+      "type": "self-employment",
+      "sector": "Electronics & Hardware",
+      "district": "Chennai",
+      "state": "Tamil Nadu",
+      "starting_income": 16000,
+      "investment_required": 28000,
+      "required_skills": [
+        "mobile repair",
+        "customer service"
+      ],
+      "income_range": "₹12,000–22,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP13",
+      "title": "Beauty Services at Home",
+      "type": "self-employment",
+      "sector": "Beauty & Wellness",
+      "district": "Chennai",
+      "state": "Tamil Nadu",
+      "starting_income": 10000,
+      "investment_required": 14000,
+      "required_skills": [
+        "basic beauty services",
+        "hygiene"
+      ],
+      "income_range": "₹10,000–20,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP14",
+      "title": "Food Packaging Associate",
+      "type": "job",
+      "sector": "Food Processing",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "starting_income": 12000,
+      "investment_required": 0,
+      "required_skills": [
+        "food handling",
+        "packaging"
+      ],
+      "income_range": "₹12,000–17,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP15",
+      "title": "Delivery Associate",
+      "type": "job",
+      "sector": "Logistics",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "starting_income": 15000,
+      "investment_required": 0,
+      "required_skills": [
+        "route planning",
+        "customer service"
+      ],
+      "income_range": "₹14,000–22,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP16",
+      "title": "Home Care Service",
+      "type": "self-employment",
+      "sector": "Domestic Worker",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "starting_income": 12000,
+      "investment_required": 8000,
+      "required_skills": [
+        "elder care",
+        "hygiene"
+      ],
+      "income_range": "₹12,000–20,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP17",
+      "title": "Data Entry Associate",
+      "type": "job",
+      "sector": "IT/ITES",
+      "district": "Pune",
+      "state": "Maharashtra",
+      "starting_income": 16000,
+      "investment_required": 0,
+      "required_skills": [
+        "computer basics",
+        "data entry"
+      ],
+      "income_range": "₹14,000–21,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP18",
+      "title": "Auto Repair Assistant",
+      "type": "job",
+      "sector": "Automotive",
+      "district": "Pune",
+      "state": "Maharashtra",
+      "starting_income": 15000,
+      "investment_required": 0,
+      "required_skills": [
+        "vehicle inspection",
+        "tool handling"
+      ],
+      "income_range": "₹14,000–20,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP19",
+      "title": "Handmade Leather Accessories",
+      "type": "self-employment",
+      "sector": "Leather",
+      "district": "Pune",
+      "state": "Maharashtra",
+      "starting_income": 14000,
+      "investment_required": 20000,
+      "required_skills": [
+        "leather crafting",
+        "design"
+      ],
+      "income_range": "₹12,000–24,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP20",
+      "title": "Handloom Product Collective",
+      "type": "self-employment",
+      "sector": "Textile & Handloom",
+      "district": "Jaipur",
+      "state": "Rajasthan",
+      "starting_income": 11000,
+      "investment_required": 15000,
+      "required_skills": [
+        "loom operation",
+        "weaving"
+      ],
+      "income_range": "₹10,000–20,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP21",
+      "title": "Hand Embroidery Artisan",
+      "type": "self-employment",
+      "sector": "Textile & Handloom",
+      "district": "Jaipur",
+      "state": "Rajasthan",
+      "starting_income": 9000,
+      "investment_required": 10000,
+      "required_skills": [
+        "hand embroidery",
+        "finishing"
+      ],
+      "income_range": "₹9,000–18,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP22",
+      "title": "Plumbing Service Team",
+      "type": "self-employment",
+      "sector": "Plumbing",
+      "district": "Jaipur",
+      "state": "Rajasthan",
+      "starting_income": 15000,
+      "investment_required": 18000,
+      "required_skills": [
+        "pipe fitting",
+        "leak repair"
+      ],
+      "income_range": "₹14,000–24,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP23",
+      "title": "Bakery Assistant",
+      "type": "job",
+      "sector": "Food Processing",
+      "district": "Patna",
+      "state": "Bihar",
+      "starting_income": 11000,
+      "investment_required": 0,
+      "required_skills": [
+        "baking",
+        "food hygiene"
+      ],
+      "income_range": "₹10,000–16,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP24",
+      "title": "Housekeeping Attendant",
+      "type": "job",
+      "sector": "Tourism & Hospitality",
+      "district": "Patna",
+      "state": "Bihar",
+      "starting_income": 10000,
+      "investment_required": 0,
+      "required_skills": [
+        "cleaning",
+        "guest service"
+      ],
+      "income_range": "₹10,000–15,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP25",
+      "title": "Poultry Micro-Enterprise",
+      "type": "self-employment",
+      "sector": "Agriculture & Allied",
+      "district": "Patna",
+      "state": "Bihar",
+      "starting_income": 9000,
+      "investment_required": 25000,
+      "required_skills": [
+        "bird care",
+        "feed management"
+      ],
+      "income_range": "₹9,000–18,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP26",
+      "title": "Leather Craft Cluster Worker",
+      "type": "job",
+      "sector": "Leather",
+      "district": "Nagpur",
+      "state": "Maharashtra",
+      "starting_income": 13000,
+      "investment_required": 0,
+      "required_skills": [
+        "leather cutting",
+        "product finishing"
+      ],
+      "income_range": "₹12,000–18,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP27",
+      "title": "Dairy Services Enterprise",
+      "type": "self-employment",
+      "sector": "Agriculture & Allied",
+      "district": "Nagpur",
+      "state": "Maharashtra",
+      "starting_income": 12000,
+      "investment_required": 40000,
+      "required_skills": [
+        "animal care",
+        "milking"
+      ],
+      "income_range": "₹10,000–20,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP28",
+      "title": "Computer Service Kiosk",
+      "type": "self-employment",
+      "sector": "IT/ITES",
+      "district": "Bengaluru Urban",
+      "state": "Karnataka",
+      "starting_income": 18000,
+      "investment_required": 32000,
+      "required_skills": [
+        "computer basics",
+        "customer service"
+      ],
+      "income_range": "₹15,000–25,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP29",
+      "title": "Solar Installation Assistant",
+      "type": "job",
+      "sector": "Electronics & Hardware",
+      "district": "Bengaluru Urban",
+      "state": "Karnataka",
+      "starting_income": 17000,
+      "investment_required": 0,
+      "required_skills": [
+        "electrical wiring",
+        "site safety"
+      ],
+      "income_range": "₹16,000–24,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP30",
+      "title": "Food Stall Enterprise",
+      "type": "self-employment",
+      "sector": "Food Processing",
+      "district": "Kolkata",
+      "state": "West Bengal",
+      "starting_income": 12000,
+      "investment_required": 22000,
+      "required_skills": [
+        "food handling",
+        "hygiene"
+      ],
+      "income_range": "₹12,000–22,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP31",
+      "title": "Retail Store Operations Assistant",
+      "type": "job",
+      "sector": "Retail",
+      "district": "Kolkata",
+      "state": "West Bengal",
+      "starting_income": 12000,
+      "investment_required": 0,
+      "required_skills": [
+        "stock handling",
+        "billing"
+      ],
+      "income_range": "₹11,000–17,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP32",
+      "title": "Masonry Crew",
+      "type": "job",
+      "sector": "Construction",
+      "district": "Bhopal",
+      "state": "Madhya Pradesh",
+      "starting_income": 14000,
+      "investment_required": 0,
+      "required_skills": [
+        "brick masonry",
+        "measurement"
+      ],
+      "income_range": "₹13,000–20,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP33",
+      "title": "Pipe Repair Service",
+      "type": "self-employment",
+      "sector": "Plumbing",
+      "district": "Bhopal",
+      "state": "Madhya Pradesh",
+      "starting_income": 15000,
+      "investment_required": 15000,
+      "required_skills": [
+        "pipe fitting",
+        "leak repair"
+      ],
+      "income_range": "₹14,000–24,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP34",
+      "title": "Bamboo Craft Enterprise",
+      "type": "self-employment",
+      "sector": "Handicrafts & Carpet",
+      "district": "Ranchi",
+      "state": "Jharkhand",
+      "starting_income": 10000,
+      "investment_required": 18000,
+      "required_skills": [
+        "bamboo craft",
+        "finishing"
+      ],
+      "income_range": "₹9,000–19,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP35",
+      "title": "Handloom Weaver Collective",
+      "type": "self-employment",
+      "sector": "Textile & Handloom",
+      "district": "Madurai",
+      "state": "Tamil Nadu",
+      "starting_income": 11000,
+      "investment_required": 15000,
+      "required_skills": [
+        "loom operation",
+        "weaving"
+      ],
+      "income_range": "₹10,000–20,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    },
+    {
+      "id": "OP36",
+      "title": "Garment Machine Operator",
+      "type": "job",
+      "sector": "Textile & Handloom",
+      "district": "Ahmedabad",
+      "state": "Gujarat",
+      "starting_income": 13000,
+      "investment_required": 0,
+      "required_skills": [
+        "machine stitching",
+        "quality checking"
+      ],
+      "income_range": "₹12,000–19,000",
+      "eligibility": "Eligibility and vacancies must be verified with provider.",
+      "status": "illustrative",
+      "source_note": "Illustrative local opportunity for prototype demonstration; not a live vacancy or guaranteed placement."
+    }
+  ],
+  "gia_benefits": [
+    {
+      "id": "GIA-SKILL",
+      "name": "Skills pathway referral",
+      "applies_to": [
+        "training",
+        "rpl"
+      ],
+      "support": "Potential linkage to approved skilling pathway subject to current GIA guidelines and local sanction.",
+      "verification": "Confirm current eligibility, funding and training-provider empanelment with district implementation authority."
+    },
+    {
+      "id": "GIA-TOOLKIT",
+      "name": "Toolkit / equipment pathway",
+      "applies_to": [
+        "self-employment",
+        "Leather",
+        "Electronics & Hardware",
+        "Beauty & Wellness",
+        "Plumbing",
+        "Textile & Handloom"
+      ],
+      "support": "Potential toolkit or productive-asset pathway for an approved livelihood plan; amount is not represented as guaranteed.",
+      "verification": "Scheme terms, ceiling and beneficiary contribution must be verified locally."
+    },
+    {
+      "id": "GIA-ENTERPRISE",
+      "name": "Enterprise enablement referral",
+      "applies_to": [
+        "self-employment"
+      ],
+      "support": "Potential referral for enterprise planning, group linkage or converged credit support as locally available.",
+      "verification": "Subject to current PM-AJAY GIA norms, appraisal and sanction."
+    },
+    {
+      "id": "GIA-ACCESS",
+      "name": "Training participation support",
+      "applies_to": [
+        "training"
+      ],
+      "support": "Ask the district team about locally available travel, wage-loss or participation support.",
+      "verification": "No benefit amount is promised in this prototype."
+    }
+  ],
+  "personas": [
+    {
+      "id": "ramesh",
+      "name": "Ramesh Kumar",
+      "age": 28,
+      "location": {
+        "village": "Chandpur",
+        "district": "Varanasi",
+        "state": "Uttar Pradesh"
+      },
+      "education": "8th pass",
+      "category": "SC",
+      "family_occupation": "Leather work (traditional)",
+      "current_livelihood": "Daily wage labour in construction",
+      "identified_skills": [
+        "leather crafting",
+        "leather cutting",
+        "leather stitching",
+        "product finishing",
+        "basic construction",
+        "manual labor"
+      ],
+      "interests": [
+        "mobile repair",
+        "driving"
+      ],
+      "mobility_km": 30,
+      "physical_constraints": "None mentioned",
+      "employment_preference": "self-employment",
+      "languages_spoken": [
+        "Hindi",
+        "Bhojpuri"
+      ],
+      "additional_notes": "Demo persona — consented fictional profile."
+    },
+    {
+      "id": "meena",
+      "name": "Meena Devi",
+      "age": 32,
+      "location": {
+        "village": "Mohanlalganj",
+        "district": "Lucknow",
+        "state": "Uttar Pradesh"
+      },
+      "education": "10th pass",
+      "category": "SC",
+      "family_occupation": "Tailoring",
+      "current_livelihood": "Home-based stitching",
+      "identified_skills": [
+        "machine stitching",
+        "fabric cutting",
+        "hand embroidery",
+        "customer service"
+      ],
+      "interests": [
+        "boutique work",
+        "beauty services"
+      ],
+      "mobility_km": 10,
+      "physical_constraints": "Cannot travel overnight",
+      "employment_preference": "self-employment",
+      "languages_spoken": [
+        "Hindi"
+      ],
+      "additional_notes": "Demo persona — consented fictional profile."
+    },
+    {
+      "id": "kavitha",
+      "name": "Kavitha M",
+      "age": 24,
+      "location": {
+        "village": "Tambaram",
+        "district": "Chennai",
+        "state": "Tamil Nadu"
+      },
+      "education": "12th pass",
+      "category": "SC",
+      "family_occupation": "Domestic work",
+      "current_livelihood": "Care support at home",
+      "identified_skills": [
+        "elder care",
+        "hygiene",
+        "communication"
+      ],
+      "interests": [
+        "healthcare",
+        "computer work"
+      ],
+      "mobility_km": 15,
+      "physical_constraints": "None mentioned",
+      "employment_preference": "job",
+      "languages_spoken": [
+        "Tamil",
+        "English"
+      ],
+      "additional_notes": "Demo persona — consented fictional profile."
+    },
+    {
+      "id": "santosh",
+      "name": "Santosh Jadhav",
+      "age": 31,
+      "location": {
+        "village": "Hadapsar",
+        "district": "Pune",
+        "state": "Maharashtra"
+      },
+      "education": "ITI",
+      "category": "SC",
+      "family_occupation": "Auto repair",
+      "current_livelihood": "Garage helper",
+      "identified_skills": [
+        "vehicle inspection",
+        "basic repairs",
+        "tool handling"
+      ],
+      "interests": [
+        "two-wheeler repair",
+        "own garage"
+      ],
+      "mobility_km": 20,
+      "physical_constraints": "None mentioned",
+      "employment_preference": "self-employment",
+      "languages_spoken": [
+        "Marathi",
+        "Hindi"
+      ],
+      "additional_notes": "Demo persona — consented fictional profile."
+    },
+    {
+      "id": "sanjay",
+      "name": "Sanjay Paswan",
+      "age": 26,
+      "location": {
+        "village": "Phulwari",
+        "district": "Patna",
+        "state": "Bihar"
+      },
+      "education": "8th pass",
+      "category": "SC",
+      "family_occupation": "Farming",
+      "current_livelihood": "Seasonal farm work",
+      "identified_skills": [
+        "animal care",
+        "irrigation",
+        "food handling"
+      ],
+      "interests": [
+        "poultry farming",
+        "food business"
+      ],
+      "mobility_km": 25,
+      "physical_constraints": "Mild back pain; avoid heavy lifting",
+      "employment_preference": "self-employment",
+      "languages_spoken": [
+        "Hindi",
+        "Bhojpuri"
+      ],
+      "additional_notes": "Demo persona — consented fictional profile."
+    }
+  ]
+}

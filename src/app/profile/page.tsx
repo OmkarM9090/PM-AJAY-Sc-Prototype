@@ -1,75 +1,34 @@
 "use client";
 
-import { useAppStore } from "@/store/useAppStore";
-import { User, MapPin, Briefcase, BookOpen, Clock, AlertCircle } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { BriefcaseBusiness, FileCheck2, LoaderCircle, MapPin, PencilLine, Save, Sparkles, UserRound } from "lucide-react";
+import { api, BeneficiaryProfile } from "@/lib/api";
+import { readSavedSession, saveSavedSession } from "@/lib/session";
+import { SkillRadar } from "@/components/jeevika/SkillRadar";
+
+const blankProfile: BeneficiaryProfile = { name: "", location: {}, education: "", family_occupation: "", current_livelihood: "", identified_skills: [], interests: [], physical_constraints: "", employment_preference: "", languages_spoken: [] };
 
 export default function ProfilePage() {
-  const { profile } = useAppStore();
-
-  return (
-    <div className="flex-1 bg-surface p-6 max-w-4xl mx-auto w-full">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">My Profile</h1>
-        <p className="text-gray-500 mt-2">Information built automatically from our conversation.</p>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-6">
-        
-        <div className="bg-white p-6 rounded-3xl border border-gray-200 shadow-sm">
-          <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-4">
-            <BookOpen className="w-6 h-6" />
-          </div>
-          <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Education</h2>
-          <p className="text-xl font-bold text-gray-900">{profile.education || <span className="text-gray-400 italic font-medium">Not detected yet</span>}</p>
-        </div>
-
-        <div className="bg-white p-6 rounded-3xl border border-gray-200 shadow-sm">
-          <div className="w-12 h-12 bg-green-50 text-green-600 rounded-full flex items-center justify-center mb-4">
-            <Briefcase className="w-6 h-6" />
-          </div>
-          <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Employment Preference</h2>
-          <p className="text-xl font-bold text-gray-900 capitalize">{profile.employmentPreference || <span className="text-gray-400 italic font-medium">Not decided yet</span>}</p>
-        </div>
-
-        <div className="bg-white p-6 rounded-3xl border border-gray-200 shadow-sm">
-          <div className="w-12 h-12 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center mb-4">
-            <MapPin className="w-6 h-6" />
-          </div>
-          <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Location</h2>
-          <p className="text-xl font-bold text-gray-900">{profile.location?.locationName || <span className="text-gray-400 italic font-medium">Not detected yet</span>}</p>
-          {profile.location?.pincode && <p className="text-sm text-gray-500 mt-1">Pincode: {profile.location.pincode}</p>}
-        </div>
-
-        <div className="bg-white p-6 rounded-3xl border border-gray-200 shadow-sm">
-          <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mb-4">
-            <AlertCircle className="w-6 h-6" />
-          </div>
-          <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Mobility Limit</h2>
-          <p className="text-xl font-bold text-gray-900">{profile.mobility || <span className="text-gray-400 italic font-medium">No limit set</span>}</p>
-        </div>
-
-      </div>
-
-      <div className="mt-8 bg-white p-8 rounded-3xl border border-gray-200 shadow-sm">
-        <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-          <Clock className="w-6 h-6 text-primary" /> Profile Status
-        </h2>
-        <div className="space-y-4">
-          {['education', 'skills', 'employmentPreference', 'radius'].map(slot => {
-            const isFilled = (profile as any)[slot] && (profile as any)[slot].length > 0;
-            return (
-              <div key={slot} className="flex justify-between items-center p-4 bg-gray-50 rounded-2xl border border-gray-100">
-                <span className="font-medium text-gray-700 capitalize">{slot.replace(/([A-Z])/g, ' $1').trim()}</span>
-                {isFilled ? (
-                  <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Detected</span>
-                ) : (
-                  <span className="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-bold">Missing</span>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
+  const router = useRouter();
+  const [sessionId, setSessionId] = useState<string | undefined>(() => readSavedSession().sessionId);
+  const [profile, setProfile] = useState<BeneficiaryProfile | undefined>(() => readSavedSession().profile);
+  const [editing, setEditing] = useState(false);
+  const [loading, setLoading] = useState(() => Boolean(readSavedSession().sessionId));
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    if (!sessionId) return;
+    api.getSession(sessionId).then((data) => setProfile(data.profile)).catch(() => setError("The saved conversation is unavailable. You can begin a new one or load Demo Mode.")).finally(() => setLoading(false));
+  }, [sessionId]);
+  const set = <K extends keyof BeneficiaryProfile>(key: K, value: BeneficiaryProfile[K]) => setProfile((current) => ({ ...(current || blankProfile), [key]: value }));
+  const save = async () => { if (!sessionId || !profile) return; setSaving(true); try { const result = await api.updateProfile(sessionId, profile); setProfile(result.profile); saveSavedSession({ profile: result.profile }); setEditing(false); } catch (caught) { setError(caught instanceof Error ? caught.message : "Could not save the change."); } finally { setSaving(false); } };
+  const demo = async () => { setLoading(true); try { const result = await api.loadDemo("ramesh", readSavedSession().language); setSessionId(result.session_id); setProfile(result.profile); saveSavedSession({ sessionId: result.session_id, profile: result.profile, recommendations: result.recommendations }); } catch { setError("Demo profile could not be loaded."); } finally { setLoading(false); } };
+  const generate = async () => { if (!sessionId || !profile) return; setSaving(true); try { const result = await api.recommend(sessionId); saveSavedSession({ profile, recommendations: result.recommendations }); router.push("/recommendations"); } catch (caught) { setError(caught instanceof Error ? caught.message : "Could not generate recommendations."); } finally { setSaving(false); } };
+  if (loading) return <div className="page-shell"><div className="loading-panel card"><LoaderCircle className="animate-spin"/> Loading your profile…</div></div>;
+  if (!profile) return <div className="page-shell"><p className="page-eyebrow">Beneficiary profile</p><h1 className="page-title">Let&apos;s first understand your story.</h1><p className="page-subtitle">A profile appears after the voice conversation. For a judge presentation, you can safely load the fictional Ramesh demo profile.</p><div style={{ display: "flex", gap: 10, marginTop: 22, flexWrap: "wrap" }}><button className="btn btn-primary" onClick={() => router.push("/voice")}>Start voice conversation</button><button className="btn btn-secondary" onClick={demo}><Sparkles size={17}/> Load Ramesh Demo Mode</button></div>{error && <p className="notice" style={{ marginTop: 18 }}>{error}</p>}</div>;
+  const locationText = [profile.location.village, profile.location.district, profile.location.state].filter(Boolean).join(", ") || "Not captured";
+  return <div className="page-shell"><p className="page-eyebrow">Beneficiary dashboard</p><h1 className="page-title">Profile understood from the conversation</h1><p className="page-subtitle">Please review this information together with the beneficiary. Corrections improve the suggested pathway.</p>{error && <div className="notice" style={{ marginTop: 16 }}>{error}</div>}<div className="two-col" style={{ marginTop: 22 }}><section><article className="profile-card card"><div className="profile-identity"><div style={{ display: "flex", gap: 12, alignItems: "center" }}><div className="avatar"><UserRound size={21}/></div><div><h2 className="profile-name">{profile.name || "Beneficiary"}</h2><p className="profile-location"><MapPin size={13}/>{locationText}</p></div></div><button className="btn btn-secondary btn-small" onClick={() => setEditing(!editing)}><PencilLine size={14}/>{editing ? "Close edit" : "Edit"}</button></div><div className="detail-grid"><Detail label="Education" value={profile.education} editable={editing} onChange={(value) => set("education", value)}/><Detail label="Work preference" value={profile.employment_preference} editable={editing} onChange={(value) => set("employment_preference", value)}/><Detail label="Traditional work" value={profile.family_occupation} editable={editing} onChange={(value) => set("family_occupation", value)}/><Detail label="Current livelihood" value={profile.current_livelihood} editable={editing} onChange={(value) => set("current_livelihood", value)}/><Detail label="Training travel" value={profile.mobility_km ? `${profile.mobility_km} km` : "Not captured"} editable={editing} onChange={(value) => set("mobility_km", Number(value.replace(/\D/g, "")) || null)}/><Detail label="Constraints" value={profile.physical_constraints || "None mentioned"} editable={editing} onChange={(value) => set("physical_constraints", value)}/></div><div className="skills-box"><h3>Identified skills</h3>{editing ? <input className="edit-input" value={profile.identified_skills.join(", ")} onChange={(event) => set("identified_skills", event.target.value.split(",").map((item) => item.trim()).filter(Boolean))}/> : <div className="tag-row">{profile.identified_skills.length ? profile.identified_skills.map((skill) => <span className="tag tag--green" key={skill}>{skill}</span>) : <span className="muted">No skills captured yet</span>}</div>}</div><div className="skills-box"><h3>Interests and aspirations</h3>{editing ? <input className="edit-input" value={profile.interests.join(", ")} onChange={(event) => set("interests", event.target.value.split(",").map((item) => item.trim()).filter(Boolean))}/> : <div className="tag-row">{profile.interests.map((interest) => <span className="tag tag--saffron" key={interest}>{interest}</span>)}</div>}</div>{editing && <button className="btn btn-primary" style={{ marginTop: 18 }} disabled={saving} onClick={save}>{saving ? <LoaderCircle className="animate-spin" size={16}/> : <Save size={16}/>} Save corrections</button>}</article><article className="profile-action-card card"><div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}><FileCheck2 color="#138808"/><div><h2 className="section-heading" style={{ marginBottom: 5 }}>Ready for a pathway review?</h2><p className="muted" style={{ fontSize: 13, margin: 0 }}>Compare informal skills with an illustrative NSQF-aligned catalogue and screen for RPL.</p></div></div><button className="btn btn-green" style={{ marginTop: 16 }} disabled={saving} onClick={generate}>{saving ? <LoaderCircle className="animate-spin" size={17}/> : <BriefcaseBusiness size={17}/>} Generate recommendations</button></article></section><aside><SkillRadar profile={profile}/><article className="side-card card" style={{ marginTop: 18 }}><h3>Conversation details</h3><p className="muted" style={{ fontSize: 12, lineHeight: 1.65, margin: 0 }}><b>Language:</b> {profile.languages_spoken.join(", ") || "Not captured"}<br/><b>Category:</b> {profile.category || "SC"}<br/><b>Data use:</b> Prototype session; no Aadhaar is collected.</p></article></aside></div></div>;
 }
+
+function Detail({ label, value, editable, onChange }: { label: string; value: string; editable: boolean; onChange: (value: string) => void }) { return <div className="detail-block"><span>{label}</span>{editable ? <input className="edit-input" value={value} onChange={(event) => onChange(event.target.value)}/> : <strong>{value || "Not captured"}</strong>}</div>; }

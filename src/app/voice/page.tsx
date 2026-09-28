@@ -1,307 +1,162 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useAppStore } from "@/store/useAppStore";
-import { BrowserVoiceAdapter } from "@/core/adapters/browserVoiceAdapter";
-import { ConversationEngine } from "@/core/engine/ConversationEngine";
-import { Mic, PhoneCall, Phone, PhoneOff, Settings2, Globe, VolumeX } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import { Bot, CheckCircle2, Keyboard, LoaderCircle, Mic, PhoneOff, Sparkles, Volume2, VolumeX } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { api, BeneficiaryProfile, ChatMessage, LanguageCode } from "@/lib/api";
+import { speechLocale } from "@/lib/languages";
+import { getRecognitionConstructor, RecognitionLike } from "@/lib/speech";
+import { readSavedSession, saveSavedSession } from "@/lib/session";
+import { ScreenRecorder } from "@/components/jeevika/ScreenRecorder";
 
-let voiceAdapter: BrowserVoiceAdapter | null = null;
+type VoiceState = "idle" | "listening" | "processing" | "speaking" | "understood";
+const TOPICS = [
+  ["name", "Name"], ["location", "Location"], ["education", "Education"], ["family_occupation", "Traditional work"],
+  ["current_livelihood", "Current work"], ["interests", "Goals"], ["employment_preference", "Work preference"], ["mobility_km", "Travel"], ["physical_constraints", "Constraints"],
+];
 
-export default function VoiceAssistantPage() {
-  const { currentSession, startSession, updateSessionStatus, addMessage, profile, updateProfile, language } = useAppStore();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [isSpeaking, setIsSpeaking] = useState(false);
-  const [isListening, setIsListening] = useState(false);
-  const [currentText, setCurrentText] = useState("");
+export default function VoiceConversationPage() {
+  const router = useRouter();
+  const [language, setLanguage] = useState<LanguageCode>("hi");
+  const [sessionId, setSessionId] = useState<string>();
+  const [profile, setProfile] = useState<BeneficiaryProfile>();
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [voiceState, setVoiceState] = useState<VoiceState>("idle");
+  const [interim, setInterim] = useState("");
+  const [typedText, setTypedText] = useState("");
+  const [error, setError] = useState("");
+  const [detectedLanguage, setDetectedLanguage] = useState<LanguageCode>();
+  const [showConsent, setShowConsent] = useState(false);
+  const [progress, setProgress] = useState({ completed: 0, total: 9, covered: [] as string[] });
+  const recognition = useRef<RecognitionLike | null>(null);
+  const recorder = useRef<MediaRecorder | null>(null);
+  const recorderStream = useRef<MediaStream | null>(null);
+  const recorderChunks = useRef<Blob[]>([]);
+  const audio = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      voiceAdapter = new BrowserVoiceAdapter();
-    }
-    return () => {
-      voiceAdapter?.stopListening();
-      voiceAdapter?.stopSpeaking();
-    };
+    const saved = readSavedSession();
+    // Defer local-storage hydration until after the initial server render.
+    const timer = window.setTimeout(() => {
+      setLanguage(saved.language);
+      if (saved.sessionId) {
+        setSessionId(saved.sessionId);
+        if (saved.profile) setProfile(saved.profile);
+        api.getSession(saved.sessionId).then((session) => {
+          setSessionId(session.id); setProfile(session.profile); setMessages(session.messages); setProgress(session.progress);
+        }).catch(() => { /* an expired backend session simply starts fresh */ });
+      }
+    }, 0);
+    return () => { window.clearTimeout(timer); recognition.current?.abort(); recorder.current?.stop(); audio.current?.pause(); window.speechSynthesis?.cancel(); };
   }, []);
 
-  useEffect(() => {
-    let evtSource: EventSource | null = null;
-    if (currentSession?.sessionId) {
-      evtSource = new EventSource(`http://localhost:8000/api/events/${currentSession.sessionId}`);
-      
-      evtSource.addEventListener("PROFILE_UPDATED", (e) => {
-        const data = JSON.parse(e.data);
-        updateProfile(data);
-      });
-      
-      evtSource.addEventListener("RECOMMENDATIONS_UPDATED", (e) => {
-        const data = JSON.parse(e.data);
-        useAppStore.setState({ recommendations: data });
-      });
-      
-      evtSource.addEventListener("TRANSCRIPT_UPDATED", (e) => {
-        const data = JSON.parse(e.data);
-        if (data.speaker !== 'agent') {
-           addMessage(data.text, data.speaker);
-        }
-      });
-    }
-    return () => {
-      if (evtSource) evtSource.close();
-    };
-  }, [currentSession?.sessionId]);
-
-  const handleStartWebCall = () => {
-    setModalOpen(false);
-    startSession('web');
-    startConversationFlow();
+  const browserSpeak = (text: string, lang: LanguageCode, onEnd: () => void) => {
+    if (!("speechSynthesis" in window)) { onEnd(); return; }
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text); utterance.lang = speechLocale(lang); utterance.rate = 0.93;
+    utterance.onend = onEnd; utterance.onerror = onEnd; window.speechSynthesis.speak(utterance);
   };
 
-  const handleStartPhoneCall = () => {
-    setModalOpen(false);
-    startSession('phone');
-    // For phone call demo, it would integrate with an actual webhook. Here we just show the state.
-    addMessage("Ringing Livelihood Mitra...", "system");
-  };
-
-  const startConversationFlow = () => {
-    const greeting = ConversationEngine.getInitialGreeting(language);
-    addMessage(greeting, "agent");
-    speakAgentResponse(greeting);
-  };
-
-  const speakAgentResponse = (text: string) => {
-    setIsSpeaking(true);
-    voiceAdapter?.speak(text, language, () => {
-      setIsSpeaking(false);
-      // Automatically start listening when agent finishes speaking
-      startListening();
-    });
-  };
-
-  const startListening = () => {
-    if (!voiceAdapter) return;
-    setIsListening(true);
-    voiceAdapter.startListening(
-      (text, isFinal) => {
-        setCurrentText(text);
-        if (isFinal) {
-          setIsListening(false);
-          addMessage(text, "user");
-          setCurrentText("");
-          processUserResponse(text);
-        }
-      },
-      (err) => {
-        console.error(err);
-        setIsListening(false);
-        addMessage("Sorry, I didn't catch that.", "agent");
+  const speak = async (text: string, lang: LanguageCode) => {
+    setVoiceState("speaking");
+    const done = () => setVoiceState("understood");
+    try {
+      const response = await api.synthesize(text, lang);
+      if (response.headers.get("content-type")?.includes("audio/")) {
+        const url = URL.createObjectURL(await response.blob());
+        const player = new Audio(url); audio.current = player;
+        player.onended = () => { URL.revokeObjectURL(url); done(); };
+        player.onerror = () => { URL.revokeObjectURL(url); browserSpeak(text, lang, done); };
+        await player.play(); return;
       }
-    );
+    } catch { /* browser speech is the intentional local fallback */ }
+    browserSpeak(text, lang, done);
   };
 
-  const processUserResponse = async (text: string) => {
-    updateSessionStatus('active'); // processing state
-    
-    // Create a new session on backend if needed, or pass current one
-    const sid = currentSession?.sessionId || "temp-session-" + Date.now();
-    
-    const result = await ConversationEngine.processUserInput(text, profile, sid);
-    updateProfile(result.profileUpdates);
-    
-    addMessage(result.agentResponse, "agent");
-    speakAgentResponse(result.agentResponse);
+  const startConversation = async () => {
+    setError(""); setVoiceState("processing");
+    try {
+      const created = await api.createSession("web", language, true);
+      setSessionId(created.session_id); setProfile(created.profile); setProgress(created.progress);
+      setMessages([{ speaker: "agent", text: created.greeting, language }]);
+      saveSavedSession({ sessionId: created.session_id, language, profile: created.profile, recommendations: [] });
+      await speak(created.greeting, language);
+    } catch (caught) { setVoiceState("idle"); setError(caught instanceof Error ? caught.message : "We could not start the conversation."); }
   };
 
-  const handleEndCall = () => {
-    updateSessionStatus('completed');
-    voiceAdapter?.stopListening();
-    voiceAdapter?.stopSpeaking();
-    setIsSpeaking(false);
-    setIsListening(false);
+  const sendTurn = async (text: string) => {
+    if (!sessionId || !text.trim()) return;
+    recognition.current?.stop?.(); setInterim(""); setVoiceState("processing"); setError("");
+    const user: ChatMessage = { speaker: "user", text: text.trim(), language };
+    setMessages((existing) => [...existing, user]); setTypedText("");
+    try {
+      const result = await api.sendMessage(sessionId, text.trim(), language);
+      const agent: ChatMessage = { speaker: "agent", text: result.agent_text, language: result.response_language };
+      setMessages((existing) => [...existing, agent]); setProfile(result.profile); setProgress(result.progress); setDetectedLanguage(result.detected_language as LanguageCode);
+      saveSavedSession({ sessionId, language, profile: result.profile });
+      await speak(result.agent_text, result.response_language as LanguageCode);
+      if (result.completed) setVoiceState("understood");
+    } catch (caught) { setVoiceState("understood"); setError(caught instanceof Error ? caught.message : "We could not understand that. Please try again."); }
   };
 
-  return (
-    <div className="flex-1 bg-surface flex flex-col items-center justify-center relative overflow-hidden min-h-[calc(100vh-64px)]">
-      
-      {/* Background decoration */}
-      <div className="absolute top-0 w-full h-full bg-gradient-to-br from-blue-50 to-indigo-50/50 -z-10" />
+  const stopRecorder = () => { if (recorder.current && recorder.current.state !== "inactive") recorder.current.stop(); };
+  const startMediaRecorder = async () => {
+    try {
+      recorderStream.current = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const media = new MediaRecorder(recorderStream.current); recorder.current = media; recorderChunks.current = [];
+      media.ondataavailable = (event) => { if (event.data.size) recorderChunks.current.push(event.data); };
+      media.onstop = async () => {
+        recorderStream.current?.getTracks().forEach((track) => track.stop()); setVoiceState("processing");
+        try {
+          const result = await api.transcribe(new Blob(recorderChunks.current, { type: media.mimeType || "audio/webm" }), language);
+          if (result.transcript) await sendTurn(result.transcript); else { setVoiceState("understood"); setError(result.message || "Please use the text box; server transcription is not configured."); }
+        } catch (caught) { setVoiceState("understood"); setError(caught instanceof Error ? caught.message : "Microphone transcription failed."); }
+      };
+      media.start(); setVoiceState("listening");
+    } catch { setVoiceState("understood"); setError("Microphone permission was not granted. You can type your answer instead."); }
+  };
 
-      {!currentSession || currentSession.status === 'completed' ? (
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="text-center flex flex-col items-center max-w-lg p-8 bg-white rounded-3xl shadow-xl border border-gray-100"
-        >
-          <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-            <Mic className="w-12 h-12 text-primary" />
-          </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Voice Assistant</h1>
-          <p className="text-gray-500 mb-8">Start a conversation to find the right livelihood opportunities based on your skills.</p>
-          
-          <button 
-            onClick={() => setModalOpen(true)}
-            className="w-full py-4 px-6 bg-primary text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-primary-700 transition shadow-lg shadow-primary/25"
-          >
-            <PhoneCall className="w-5 h-5" />
-            Connect with Mitra
-          </button>
-        </motion.div>
-      ) : (
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="w-full max-w-3xl flex flex-col h-full py-12 px-6"
-        >
-          {/* Header */}
-          <div className="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-gray-100 mb-8">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                {currentSession.channel === 'phone' ? <Phone className="w-6 h-6 text-blue-600"/> : <Globe className="w-6 h-6 text-blue-600"/>}
-              </div>
-              <div>
-                <h3 className="font-bold text-gray-900">Livelihood Mitra</h3>
-                <p className="text-sm text-gray-500 flex items-center gap-2">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                  </span>
-                  {isSpeaking ? "AI is speaking" : isListening ? "Listening..." : "Processing"}
-                </p>
-              </div>
-            </div>
-            
-            <button 
-              onClick={handleEndCall}
-              className="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center hover:bg-red-200 transition"
-            >
-              <PhoneOff className="w-5 h-5" />
-            </button>
-          </div>
+  const toggleListening = async () => {
+    if (!sessionId) { setShowConsent(true); return; }
+    if (voiceState === "listening") { recognition.current?.stop?.(); stopRecorder(); return; }
+    setError(""); window.speechSynthesis?.cancel(); audio.current?.pause();
+    const Recognition = getRecognitionConstructor();
+    if (!Recognition) { await startMediaRecorder(); return; }
+    const nextRecognition = new Recognition(); recognition.current = nextRecognition;
+    nextRecognition.lang = speechLocale(language); nextRecognition.continuous = false; nextRecognition.interimResults = true;
+    nextRecognition.onstart = () => setVoiceState("listening");
+    nextRecognition.onresult = (event) => {
+      let finalText = ""; let partial = "";
+      for (let index = event.resultIndex; index < event.results.length; index += 1) {
+        if (event.results[index].isFinal) finalText += event.results[index][0].transcript; else partial += event.results[index][0].transcript;
+      }
+      setInterim(partial); if (finalText) { nextRecognition.stop(); void sendTurn(finalText); }
+    };
+    nextRecognition.onerror = (event) => { setVoiceState("understood"); if (event.error !== "no-speech" && event.error !== "aborted") setError("I could not hear that clearly. Please try again or type your answer."); };
+    nextRecognition.onend = () => setInterim("");
+    try { nextRecognition.start(); } catch { await startMediaRecorder(); }
+  };
 
-          {/* Transcript Area */}
-          <div className="flex-1 overflow-y-auto mb-8 space-y-4 px-2 custom-scrollbar">
-            {currentSession.messages.map((msg, idx) => (
-              <div key={idx} className={`flex w-full ${msg.speaker === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[80%] p-4 rounded-2xl ${
-                  msg.speaker === 'user' ? 'bg-primary text-white rounded-tr-none' : 
-                  msg.speaker === 'system' ? 'bg-gray-100 text-gray-500 text-sm text-center w-full mx-auto italic' : 
-                  'bg-white text-gray-800 shadow-sm border border-gray-100 rounded-tl-none'
-                }`}>
-                  {msg.text}
-                </div>
-              </div>
-            ))}
-            
-            {currentText && (
-              <div className="flex w-full justify-end">
-                <div className="max-w-[80%] p-4 rounded-2xl bg-primary/20 text-gray-800 rounded-tr-none animate-pulse">
-                  {currentText}
-                </div>
-              </div>
-            )}
-          </div>
+  const submitText = (event: FormEvent) => { event.preventDefault(); void sendTurn(typedText); };
+  const loadDemo = async () => { try { const demo = await api.loadDemo("ramesh", language); saveSavedSession({ sessionId: demo.session_id, language, profile: demo.profile, recommendations: demo.recommendations }); router.push("/profile"); } catch { setError("Demo profile could not be loaded. Please start a live conversation."); } };
+  const stateLabel: Record<VoiceState, string> = { idle: "Ready", listening: "Listening…", processing: "Processing…", speaking: "Speaking…", understood: "Understood" };
 
-          {/* Voice Visualizer / Controls */}
-          <div className="flex flex-col items-center justify-center gap-6">
-            <div className="h-16 flex items-center gap-1">
-              {[...Array(9)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  animate={{
-                    height: (isSpeaking || isListening) ? [20, Math.random() * 40 + 20, 20] : 10
-                  }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 0.5 + (Math.random() * 0.5),
-                  }}
-                  className={`w-2 rounded-full ${isSpeaking ? 'bg-blue-500' : isListening ? 'bg-green-500' : 'bg-gray-300'}`}
-                />
-              ))}
-            </div>
-            
-            <div className="flex gap-4">
-              <button 
-                onClick={() => {}}
-                className="w-14 h-14 bg-white text-gray-700 rounded-full flex items-center justify-center shadow-sm border border-gray-200"
-              >
-                <Settings2 className="w-6 h-6" />
-              </button>
-              
-              <button 
-                onClick={() => isListening ? voiceAdapter?.stopListening() : startListening()}
-                className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition ${
-                  isListening ? 'bg-red-500 text-white' : 'bg-primary text-white hover:bg-primary-700'
-                }`}
-              >
-                <Mic className="w-6 h-6" />
-              </button>
-              
-              <button 
-                onClick={() => voiceAdapter?.stopSpeaking()}
-                className="w-14 h-14 bg-white text-gray-700 rounded-full flex items-center justify-center shadow-sm border border-gray-200"
-              >
-                <VolumeX className="w-6 h-6" />
-              </button>
-            </div>
-          </div>
-
-        </motion.div>
-      )}
-
-      {/* Call Modal */}
-      <AnimatePresence>
-        {modalOpen && (
-          <div className="absolute inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl relative"
-            >
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Call with Livelihood Mitra</h2>
-              
-              <div className="space-y-4">
-                <button 
-                  onClick={handleStartPhoneCall}
-                  className="w-full flex items-center p-4 bg-gray-50 border border-gray-200 rounded-2xl hover:bg-gray-100 hover:border-gray-300 transition group"
-                >
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100 mr-4">
-                    <Phone className="w-6 h-6 text-gray-700 group-hover:text-primary transition" />
-                  </div>
-                  <div className="text-left">
-                    <h4 className="font-bold text-gray-900">Phone Call</h4>
-                    <p className="text-sm text-gray-500">+91 800-123-4567</p>
-                  </div>
-                </button>
-                
-                <button 
-                  onClick={handleStartWebCall}
-                  className="w-full flex items-center p-4 bg-blue-50 border border-blue-200 rounded-2xl hover:bg-blue-100 transition group"
-                >
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-blue-100 mr-4">
-                    <Globe className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div className="text-left">
-                    <h4 className="font-bold text-blue-900">Web Call</h4>
-                    <p className="text-sm text-blue-600/80">Using your browser audio</p>
-                  </div>
-                </button>
-              </div>
-
-              <button 
-                onClick={() => setModalOpen(false)}
-                className="mt-6 w-full text-center text-gray-500 font-medium py-2 hover:bg-gray-50 rounded-xl"
-              >
-                Cancel
-              </button>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-
+  return <div className="voice-layout">
+    <div className="voice-top"><div><p className="page-eyebrow">WebRTC-style browser voice channel</p><h1 className="page-title" style={{ fontSize: "clamp(28px,4vw,38px)" }}>Talk to JeevikaSetu</h1><p className="page-subtitle" style={{ fontSize: 14 }}>Speak naturally or use the text fallback. The assistant asks one simple question at a time and saves each understood detail.</p></div><div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}><ScreenRecorder/><button className="btn btn-secondary btn-small" onClick={loadDemo}><Sparkles size={15}/> Demo Mode: Ramesh</button></div></div>
+    <div className="notice notice--blue" style={{ marginBottom: 18 }}><b>Consent first:</b> Voice is used only for this prototype conversation. Do not share Aadhaar, bank details or other sensitive IDs. Audio is not retained by the local fallback.</div>
+    <div className="voice-grid">
+      <section className="conversation-card card" aria-live="polite">
+        <div className="conversation-meta"><div className="agent-mini"><span className="avatar"><Bot size={20}/></span><div><b>JeevikaSetu</b><span>Warm livelihood guide</span></div></div><span className={`status-pill status-${voiceState}`}>{voiceState === "processing" && <LoaderCircle size={12} style={{ verticalAlign: "-2px", marginRight: 4 }} className="animate-spin"/>}{stateLabel[voiceState]}</span></div>
+        {error && <div className="voice-error">{error}</div>}
+        <div className="transcript">
+          {!messages.length && <div className="bubble bubble--agent">{language === "hi" ? "बात शुरू करने के लिए नीचे microphone दबाइए।" : "Press the microphone below to begin."}</div>}
+          {messages.map((message, index) => <div className={`bubble bubble--${message.speaker === "user" ? "user" : "agent"}`} key={`${message.text}-${index}`}>{message.text}</div>)}
+          {interim && <div className="bubble bubble--user bubble--interim">{interim}</div>}
+        </div>
+        <div className="voice-controls"><div className={voiceState === "listening" || voiceState === "speaking" ? "wave wave--active" : "wave"}>{Array.from({ length: 11 }).map((_, index) => <i key={index}/>)}</div><div className="mic-row"><button className="btn btn-secondary btn-small" aria-label="Stop assistant voice" onClick={() => { audio.current?.pause(); window.speechSynthesis?.cancel(); setVoiceState("understood"); }}><VolumeX size={16}/></button><button className={voiceState === "listening" ? "mic-button mic-button--live" : "mic-button"} aria-label={voiceState === "listening" ? "Stop listening" : "Start listening"} onClick={() => void toggleListening()}><Mic size={27}/></button><button className="btn btn-secondary btn-small" aria-label="End session" onClick={() => { recognition.current?.stop?.(); stopRecorder(); setVoiceState("idle"); }}><PhoneOff size={16}/></button></div><form className="composer" onSubmit={submitText}><input value={typedText} onChange={(event) => setTypedText(event.target.value)} placeholder={language === "hi" ? "या अपना जवाब लिखें…" : "Or type your answer…"} aria-label="Text fallback"/><button className="btn btn-primary btn-small" type="submit"><Keyboard size={15}/>Send</button></form><p className="recorder-note">Uses browser Speech Recognition when available; MediaRecorder → Whisper is used when a server key is configured.</p></div>
+      </section>
+      <aside className="voice-side"><section className="side-card card"><h3>Conversation progress</h3><div className="progress-steps">{TOPICS.map(([id, label]) => <div key={id} className={progress.covered.includes(id) ? "progress-step progress-step--done" : progress.covered.length === TOPICS.findIndex(([topic]) => topic === id) ? "progress-step progress-step--current" : "progress-step"}>{progress.covered.includes(id) ? <CheckCircle2 size={13}/> : null} {label}</div>)}</div><p className="muted" style={{ fontSize: 11, marginTop: 12 }}>{progress.completed} of {progress.total} topics understood</p></section><section className="side-card card"><h3><Volume2 size={15} style={{ verticalAlign: "-3px" }}/> Language signal</h3><p style={{ margin: 0, fontSize: 13 }}>Selected response language: <b>{({ hi: "Hindi", en: "English", mr: "Marathi", ta: "Tamil", te: "Telugu", bn: "Bengali" } as Record<string,string>)[language]}</b></p>{detectedLanguage && <p className="tag tag--green" style={{ marginTop: 8 }}>Detected this turn: {({ hi: "Hindi", en: "English", mr: "Marathi", ta: "Tamil", te: "Telugu", bn: "Bengali" } as Record<string,string>)[detectedLanguage]}</p>}<p className="muted" style={{ fontSize: 11, lineHeight: 1.5 }}>Speech language is detected on every turn. Your selected language remains stable for clear replies.</p></section><section className="side-card card"><h3>After the conversation</h3><p className="muted" style={{ fontSize: 12, lineHeight: 1.5 }}>Review or correct your profile, then see skill gaps, RPL screening and nearby illustrative centres.</p>{profile && <button className="btn btn-green btn-small" style={{ width: "100%" }} onClick={() => router.push("/profile")}>Review profile</button>}</section></aside>
     </div>
-  );
+    {showConsent && <div className="consent-modal" role="dialog" aria-modal="true"><div className="consent-box card"><h2>{language === "hi" ? "क्या आप voice conversation के लिए सहमत हैं?" : "Do you consent to a voice conversation?"}</h2><p>{language === "hi" ? "हम आपकी आवाज़ से आपके हुनर और रोज़गार की ज़रूरत समझेंगे। कृपया Aadhaar, बैंक जानकारी या अन्य sensitive ID न बोलें।" : "We use your voice to understand skills and livelihood needs. Please do not say Aadhaar, bank information or other sensitive IDs."}</p><div className="consent-actions"><button className="btn btn-secondary" onClick={() => setShowConsent(false)}>Not now</button><button className="btn btn-primary" onClick={() => { setShowConsent(false); void startConversation(); }}>I agree & start</button></div></div></div>}
+  </div>;
 }

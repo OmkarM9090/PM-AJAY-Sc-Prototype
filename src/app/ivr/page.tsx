@@ -1,0 +1,20 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Headphones, PhoneCall, Radio } from "lucide-react";
+import { api, LanguageCode } from "@/lib/api";
+import { saveSavedSession } from "@/lib/session";
+
+const IVR_OPTIONS: { key: string; label: string; code: LanguageCode; prompt: string }[] = [
+  { key: "1", label: "हिंदी", code: "hi", prompt: "Namaste. Hindi chunne ke liye dhanyavaad. Aapka naam kya hai?" },
+  { key: "2", label: "English", code: "en", prompt: "Hello. Thank you for choosing English. What is your name?" },
+  { key: "3", label: "मराठी", code: "mr", prompt: "Namaskar. Marathi nivadlyabaddal dhanyavaad. Tumche nav kay aahe?" },
+];
+
+export default function IVRPage() {
+  const router = useRouter(); const [dialled, setDialled] = useState(""); const [option, setOption] = useState<typeof IVR_OPTIONS[number]>(); const [starting, setStarting] = useState(false); const [error, setError] = useState("");
+  const choose = (picked: typeof IVR_OPTIONS[number]) => { setOption(picked); setDialled(picked.key); };
+  const start = async () => { const selected = option || IVR_OPTIONS[0]; setStarting(true); setError(""); try { const session = await api.createSession("ivr", selected.code, true); saveSavedSession({ sessionId: session.session_id, language: selected.code, profile: session.profile, recommendations: [] }); router.push("/voice?channel=ivr"); } catch { setError("The IVR demo could not connect. Please try again."); } finally { setStarting(false); } };
+  return <div className="ivr-layout"><div className="phone-shell"><div className="phone-speaker"/><div className="phone-screen">{!option ? <><b>JeevikaSetu IVR</b><br/>Welcome to the voice livelihood helpline.<br/><br/>Press 1 for Hindi<br/>Press 2 for English<br/>Press 3 for Marathi</> : <><b>Connected • {option.label}</b><br/>{option.prompt}<br/><br/><span style={{fontSize:11}}>Voice interview opens in the browser for this demo.</span></>}</div><div className="dial-pad">{["1","2","3","4","5","6","7","8","9","*","0","#"].map((key) => <button className="dial-key" key={key} onClick={() => { const found = IVR_OPTIONS.find((item) => item.key === key); if (found) choose(found); else setDialled(key); }}>{key}{key === "1" && <small>HINDI</small>}{key === "2" && <small>ENGLISH</small>}{key === "3" && <small>MARATHI</small>}</button>)}</div><button className="call-key" onClick={() => void start()} disabled={starting}>{starting ? "Connecting…" : <><PhoneCall size={16} style={{verticalAlign:"-3px",marginRight:6}}/> Call demo line</>}</button></div><div className="ivr-copy"><p className="page-eyebrow">Feature-phone accessibility channel</p><h1>Simple IVR. Same empathetic conversation.</h1><p>The production path can connect an inbound number to a voice-agent provider. This browser simulation is an account-free backup for the prototype presentation.</p><div className="ivr-steps"><div className="ivr-step"><b>1</b><span>Caller dials the helpline and selects a familiar language.</span></div><div className="ivr-step"><b>2</b><span>Voice agent collects skills and constraints, one question at a time.</span></div><div className="ivr-step"><b>3</b><span>Same profile and pathway engine creates a counsellor-ready view.</span></div></div><div className="notice notice--blue"><Headphones size={16} style={{verticalAlign:"-3px",marginRight:5}}/> <b>Demo cue:</b> Press a language key, then start the browser interview. A deployed version needs a verified provider number and HTTPS webhook.</div><div className="ivr-selection">{IVR_OPTIONS.map((item) => <button className={option?.key === item.key ? "active" : ""} key={item.key} onClick={() => choose(item)}>Press {item.key}: {item.label}</button>)}</div>{dialled && <p className="muted" style={{fontSize:12}}>Selected: {dialled} {option ? `• ${option.label}` : ""}</p>}{error && <p className="notice">{error}</p>}<p style={{fontSize:11,color:"#687a8e",marginTop:18}}><Radio size={13} style={{verticalAlign:"-2px"}}/> Telephony adapter endpoint included: <code>/api/twilio/twiml</code></p></div></div>;
+}
