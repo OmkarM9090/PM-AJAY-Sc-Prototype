@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-govgrey text-slate-800 font-sans antialiased;
+}
+
+/* ---------- Accessibility modes (toggled from the header) ---------- */
+html.large-text {
+  font-size: 19px;
+}
+html.high-contrast body {
+  @apply bg-black text-white;
+}
+html.high-contrast .gov-card {
+  @apply bg-black text-white border-2 border-yellow-300;
+}
+html.high-contrast .text-slate-500,
+html.high-contrast .text-slate-600 {
+  @apply text-yellow-100;
+}
+
+/* ---------- Reusable government-portal components ---------- */
+@layer components {
+  .gov-card {
+    @apply bg-white rounded-xl shadow-card border border-slate-200;
+  }
+  .gov-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-semibold
+           transition focus:outline-none focus:ring-4 focus:ring-govblue/30 disabled:opacity-50
+           disabled:cursor-not-allowed;
+  }
+  .gov-btn-primary {
+    @apply gov-btn bg-govblue text-white hover:bg-govblue-dark;
+  }
+  .gov-btn-saffron {
+    @apply gov-btn bg-saffron text-white hover:bg-saffron-dark;
+  }
+  .gov-btn-green {
+    @apply gov-btn bg-indiagreen text-white hover:bg-indiagreen-dark;
+  }
+  .gov-btn-outline {
+    @apply gov-btn border-2 border-govblue text-govblue bg-white hover:bg-govblue-50;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+  .section-title {
+    @apply text-xl md:text-2xl font-bold text-govblue;
+  }
+  .tricolour-bar {
+    background: linear-gradient(90deg, #ff9933 33.3%, #ffffff 33.3% 66.6%, #138808 66.6%);
+  }
+}
+
+/* Leaflet inside rounded cards */
+.leaflet-container {
+  @apply rounded-lg z-0;
+  font-family: inherit;
+}

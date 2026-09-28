@@ -1,0 +1,112 @@
+{
+  "scheme": "PM-AJAY (Pradhan Mantri Anusuchit Jaati Abhyuday Yojana)",
+  "component": "Grants-in-Aid (GIA) to States / UTs",
+  "ministry": "Ministry of Social Justice and Empowerment",
+  "disclaimer": "Indicative prototype values for demonstration. Actual entitlements are notified by MoSJE / State SC Welfare Departments.",
+  "benefit_heads": [
+    {
+      "id": "skill_training_support",
+      "name": "Skill Training Support",
+      "name_hi": "कौशल प्रशिक्षण सहायता",
+      "description": "Full course fee sponsorship for NSQF-aligned training of SC beneficiaries at empanelled centres.",
+      "indicative_amount_inr": "Up to 40,000 per candidate (course-linked common norms)",
+      "eligibility": [
+        "SC category",
+        "Family income below state threshold",
+        "Enrolment in NSQF-aligned QP"
+      ],
+      "applies_to_pathways": [
+        "training",
+        "training_plus_rpl"
+      ]
+    },
+    {
+      "id": "rpl_assessment_support",
+      "name": "RPL Assessment & Bridge Course Support",
+      "name_hi": "पूर्व अधिगम मान्यता (RPL) सहायता",
+      "description": "Covers RPL assessment fee plus 12-60 hour bridge/orientation module for experienced workers.",
+      "indicative_amount_inr": "Up to 7,500 per candidate",
+      "eligibility": [
+        "SC category",
+        "Minimum 1 year relevant work experience",
+        "Skill overlap 70% or above"
+      ],
+      "applies_to_pathways": [
+        "rpl"
+      ]
+    },
+    {
+      "id": "toolkit_grant",
+      "name": "Toolkit / Equipment Grant",
+      "name_hi": "औजार एवं उपकरण अनुदान",
+      "description": "One-time grant for tools and equipment so a certified beneficiary can start work immediately.",
+      "indicative_amount_inr": "Up to 50,000 per beneficiary",
+      "eligibility": [
+        "Certified in relevant QP or RPL",
+        "Self-employment pathway chosen"
+      ],
+      "applies_to_pathways": [
+        "self_employment"
+      ]
+    },
+    {
+      "id": "enterprise_capital",
+      "name": "Enterprise Capital Support (Grant + Subsidised Credit)",
+      "name_hi": "उद्यम पूँजी सहायता",
+      "description": "Seed grant component blended with NSFDC / bank credit linkage for micro-enterprise setup.",
+      "indicative_amount_inr": "Grant up to 1,00,000 + credit linkage up to 5,00,000",
+      "eligibility": [
+        "SC category",
+        "Viable enterprise plan",
+        "Certified or RPL-certified in the trade"
+      ],
+      "applies_to_pathways": [
+        "self_employment"
+      ]
+    },
+    {
+      "id": "wage_compensation",
+      "name": "Stipend / Wage Compensation During Training",
+      "name_hi": "प्रशिक्षण के दौरान मजदूरी क्षतिपूर्ति",
+      "description": "Daily stipend to offset lost daily wages while attending full-time training.",
+      "indicative_amount_inr": "Rs. 250 per training day (max 90 days)",
+      "eligibility": [
+        "Daily wage worker",
+        "Attendance above 80%"
+      ],
+      "applies_to_pathways": [
+        "training",
+        "training_plus_rpl"
+      ]
+    },
+    {
+      "id": "travel_hostel_support",
+      "name": "Travel & Hostel Support",
+      "name_hi": "यात्रा एवं छात्रावास सहायता",
+      "description": "Conveyance allowance for centres beyond 10 km and hostel charges for residential batches.",
+      "indicative_amount_inr": "Rs. 1,500 per month conveyance / Rs. 3,000 per month hostel",
+      "eligibility": [
+        "Training centre beyond 10 km from residence"
+      ],
+      "applies_to_pathways": [
+        "training",
+        "training_plus_rpl",
+        "rpl"
+      ]
+    },
+    {
+      "id": "placement_linkage",
+      "name": "Placement & Post-Placement Support",
+      "name_hi": "नियोजन सहायता",
+      "description": "Placement facilitation through NCS plus post-placement retention support for 3 months.",
+      "indicative_amount_inr": "Rs. 2,000 per month for 3 months",
+      "eligibility": [
+        "Wage employment pathway",
+        "Placed through empanelled agency"
+      ],
+      "applies_to_pathways": [
+        "wage_employment"
+      ]
+    }
+  ]
+}

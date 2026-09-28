@@ -1,0 +1,175 @@
+[
+  {
+    "persona_id": "P001",
+    "demo_default": true,
+    "name": "Ramesh Kumar",
+    "age": 28,
+    "gender": "male",
+    "location": {
+      "village": "Chandpur",
+      "district": "Varanasi",
+      "state": "Uttar Pradesh"
+    },
+    "education": "8th pass",
+    "category": "SC",
+    "family_occupation": "Leather work (traditional)",
+    "current_livelihood": "Daily wage labour in construction",
+    "identified_skills": [
+      "leather cutting",
+      "leather stitching",
+      "hand tooling",
+      "manual labor",
+      "basic construction"
+    ],
+    "interests": [
+      "mobile repair",
+      "driving"
+    ],
+    "mobility_range_km": 30,
+    "physical_constraints": "none",
+    "employment_preference": "self-employment",
+    "languages_spoken": [
+      "Hindi",
+      "Bhojpuri"
+    ],
+    "story": "Traditional leather worker turned daily wage labourer; wants his own small shop."
+  },
+  {
+    "persona_id": "P002",
+    "demo_default": false,
+    "name": "Lakshmi Devi",
+    "age": 34,
+    "gender": "female",
+    "location": {
+      "village": "Kotla",
+      "district": "Jaipur",
+      "state": "Rajasthan"
+    },
+    "education": "5th pass",
+    "category": "SC",
+    "family_occupation": "Pottery and mehendi work",
+    "current_livelihood": "Home-based mehendi application during wedding season",
+    "identified_skills": [
+      "mehendi application",
+      "design creation",
+      "clay preparation",
+      "customer handling"
+    ],
+    "interests": [
+      "beauty parlour work",
+      "tailoring"
+    ],
+    "mobility_range_km": 10,
+    "physical_constraints": "cannot stay away overnight (child care)",
+    "employment_preference": "self-employment",
+    "languages_spoken": [
+      "Hindi",
+      "Marwari"
+    ],
+    "story": "Skilled home-based artisan constrained by mobility; ideal RPL + toolkit grant case."
+  },
+  {
+    "persona_id": "P003",
+    "demo_default": false,
+    "name": "Murugan S",
+    "age": 22,
+    "gender": "male",
+    "location": {
+      "village": "Perumbakkam",
+      "district": "Chennai",
+      "state": "Tamil Nadu"
+    },
+    "education": "10th pass",
+    "category": "SC",
+    "family_occupation": "Footwear stitching unit workers",
+    "current_livelihood": "Helper in a two-wheeler garage",
+    "identified_skills": [
+      "tool handling",
+      "basic servicing",
+      "machine stitching",
+      "customer handling"
+    ],
+    "interests": [
+      "auto electrician work",
+      "CCTV installation"
+    ],
+    "mobility_range_km": 50,
+    "physical_constraints": "none",
+    "employment_preference": "wage-employment",
+    "languages_spoken": [
+      "Tamil",
+      "English"
+    ],
+    "story": "Young helper ready to formalise garage experience into a certified technician job."
+  },
+  {
+    "persona_id": "P004",
+    "demo_default": false,
+    "name": "Sunita Pawar",
+    "age": 41,
+    "gender": "female",
+    "location": {
+      "village": "Wagholi",
+      "district": "Pune",
+      "state": "Maharashtra"
+    },
+    "education": "No formal education",
+    "category": "SC",
+    "family_occupation": "Agricultural labour",
+    "current_livelihood": "Domestic help in three households",
+    "identified_skills": [
+      "cleaning",
+      "cooking",
+      "child care",
+      "household hygiene",
+      "time management"
+    ],
+    "interests": [
+      "elderly care",
+      "cooking / catering"
+    ],
+    "mobility_range_km": 15,
+    "physical_constraints": "mild back pain — cannot lift heavy weights",
+    "employment_preference": "either",
+    "languages_spoken": [
+      "Marathi",
+      "Hindi"
+    ],
+    "story": "Informal domestic worker whose daily experience maps cleanly to DWC and healthcare QPs."
+  },
+  {
+    "persona_id": "P005",
+    "demo_default": false,
+    "name": "Bipin Manjhi",
+    "age": 19,
+    "gender": "male",
+    "location": {
+      "village": "Dhanauti",
+      "district": "Patna",
+      "state": "Bihar"
+    },
+    "education": "12th pass",
+    "category": "SC",
+    "family_occupation": "Landless agricultural labour",
+    "current_livelihood": "Unemployed, occasional farm work",
+    "identified_skills": [
+      "computer basics",
+      "typing",
+      "communication",
+      "manual labor"
+    ],
+    "interests": [
+      "computer job",
+      "CSC centre",
+      "data entry"
+    ],
+    "mobility_range_km": 40,
+    "physical_constraints": "none",
+    "employment_preference": "wage-employment",
+    "languages_spoken": [
+      "Hindi",
+      "Magahi"
+    ],
+    "story": "Educated rural youth with no work exposure; strong IT/ITES and CSC operator fit."
+  }
+]

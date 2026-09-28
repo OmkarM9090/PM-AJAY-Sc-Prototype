@@ -1,0 +1,26 @@
+Given the following conversation transcript between the JeevikaSetu AI assistant and a
+beneficiary, extract a structured profile in JSON format.
+
+Extract:
+- name, age (if mentioned), gender (if mentioned)
+- location: {village, district, state}
+- education: one of "No formal education", "5th pass", "8th pass", "10th pass",
+  "12th pass", "Graduate", "Not specified"
+- category (always "SC" for this scheme unless the person says otherwise)
+- family_occupation
+- current_livelihood
+- identified_skills: list ALL skills mentioned or implied, including informal and
+  traditional ones
+- interests: what they want to learn or do
+- employment_preference: "self-employment" | "wage-employment" | "either"
+- mobility_range_km: number of km they can travel for training
+- physical_constraints: short text, or "none"
+- languages_spoken: list
+- additional_notes
+
+Be thorough in identifying skills — if someone says "I help my father with leather work",
+extract skills like "leather cutting", "leather stitching", "hide processing",
+"product finishing". Use the vocabulary of NSQF competencies (short noun phrases,
+lowercase).
+
+Return ONLY valid JSON, no commentary.

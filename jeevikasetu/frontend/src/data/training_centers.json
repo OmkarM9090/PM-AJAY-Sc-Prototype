@@ -1,0 +1,495 @@
+[
+  {
+    "center_id": "TC001",
+    "name": "Varanasi Skill Development Centre (PM-AJAY)",
+    "district": "Varanasi",
+    "state": "Uttar Pradesh",
+    "latitude": 25.3176,
+    "longitude": 82.9739,
+    "sectors": [
+      "Electronics & Hardware",
+      "Leather",
+      "Automotive"
+    ],
+    "courses_offered": [
+      "ELE/Q3104",
+      "LSS/Q2301",
+      "ASC/Q1401"
+    ],
+    "annual_capacity": 120,
+    "hostel_available": false,
+    "pmajay_empanelled": true,
+    "contact": "+91-9700137731",
+    "next_batch_start": "2026-11-01"
+  },
+  {
+    "center_id": "TC002",
+    "name": "Sarnath RPL Assessment Hub",
+    "district": "Varanasi",
+    "state": "Uttar Pradesh",
+    "latitude": 25.3811,
+    "longitude": 83.0217,
+    "sectors": [
+      "Leather",
+      "Handicrafts & Carpet",
+      "Textile & Apparel"
+    ],
+    "courses_offered": [
+      "LSS/Q2301",
+      "HCS/Q7801",
+      "AMH/Q0301"
+    ],
+    "annual_capacity": 80,
+    "hostel_available": false,
+    "pmajay_empanelled": true,
+    "contact": "+91-9700275462",
+    "next_batch_start": "2026-11-20"
+  },
+  {
+    "center_id": "TC003",
+    "name": "Chandauli Rural Livelihood Institute",
+    "district": "Chandauli",
+    "state": "Uttar Pradesh",
+    "latitude": 25.2575,
+    "longitude": 83.2686,
+    "sectors": [
+      "Agriculture & Allied",
+      "Food Processing"
+    ],
+    "courses_offered": [
+      "AGR/Q1101",
+      "AGR/Q4102",
+      "FIC/Q0101"
+    ],
+    "annual_capacity": 90,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9700413193",
+    "next_batch_start": "2026-12-05"
+  },
+  {
+    "center_id": "TC004",
+    "name": "Kashi Construction Skills Academy",
+    "district": "Varanasi",
+    "state": "Uttar Pradesh",
+    "latitude": 25.282,
+    "longitude": 82.9563,
+    "sectors": [
+      "Construction",
+      "Plumbing"
+    ],
+    "courses_offered": [
+      "CON/Q0106",
+      "CON/Q8301",
+      "PSC/Q0102"
+    ],
+    "annual_capacity": 150,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9700550924",
+    "next_batch_start": "2026-10-15"
+  },
+  {
+    "center_id": "TC005",
+    "name": "Bhadohi Carpet Craft Institute",
+    "district": "Bhadohi",
+    "state": "Uttar Pradesh",
+    "latitude": 25.3949,
+    "longitude": 82.5703,
+    "sectors": [
+      "Handicrafts & Carpet"
+    ],
+    "courses_offered": [
+      "HCS/Q8701",
+      "HCS/Q7801"
+    ],
+    "annual_capacity": 100,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9700688655",
+    "next_batch_start": "2026-11-01"
+  },
+  {
+    "center_id": "TC006",
+    "name": "Lucknow Mega Skill Centre",
+    "district": "Lucknow",
+    "state": "Uttar Pradesh",
+    "latitude": 26.8467,
+    "longitude": 80.9462,
+    "sectors": [
+      "Healthcare",
+      "Retail",
+      "Beauty & Wellness",
+      "IT/ITES"
+    ],
+    "courses_offered": [
+      "HSS/Q5101",
+      "RAS/Q0103",
+      "BWS/Q0301",
+      "SSC/Q2212"
+    ],
+    "annual_capacity": 250,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9700826386",
+    "next_batch_start": "2026-11-20"
+  },
+  {
+    "center_id": "TC007",
+    "name": "Kanpur Leather Technology Centre",
+    "district": "Kanpur",
+    "state": "Uttar Pradesh",
+    "latitude": 26.4499,
+    "longitude": 80.3319,
+    "sectors": [
+      "Leather"
+    ],
+    "courses_offered": [
+      "LSS/Q0102",
+      "LSS/Q1801",
+      "LSS/Q3601"
+    ],
+    "annual_capacity": 180,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9700964117",
+    "next_batch_start": "2026-12-05"
+  },
+  {
+    "center_id": "TC008",
+    "name": "Agra Footwear Design Institute",
+    "district": "Agra",
+    "state": "Uttar Pradesh",
+    "latitude": 27.1767,
+    "longitude": 78.0081,
+    "sectors": [
+      "Leather"
+    ],
+    "courses_offered": [
+      "LSS/Q0102",
+      "LSS/Q2301"
+    ],
+    "annual_capacity": 140,
+    "hostel_available": false,
+    "pmajay_empanelled": true,
+    "contact": "+91-9701101848",
+    "next_batch_start": "2026-10-15"
+  },
+  {
+    "center_id": "TC009",
+    "name": "Patna Livelihood Skill Bhavan",
+    "district": "Patna",
+    "state": "Bihar",
+    "latitude": 25.5941,
+    "longitude": 85.1376,
+    "sectors": [
+      "Automotive",
+      "Electronics & Hardware",
+      "Food Processing"
+    ],
+    "courses_offered": [
+      "ASC/Q1401",
+      "ELE/Q3104",
+      "FIC/Q5001"
+    ],
+    "annual_capacity": 200,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9701239579",
+    "next_batch_start": "2026-11-01"
+  },
+  {
+    "center_id": "TC010",
+    "name": "Bhagalpur Handloom Cluster Centre",
+    "district": "Bhagalpur",
+    "state": "Bihar",
+    "latitude": 25.2425,
+    "longitude": 86.9842,
+    "sectors": [
+      "Textile & Apparel",
+      "Handicrafts & Carpet"
+    ],
+    "courses_offered": [
+      "HCS/Q7801",
+      "TSC/Q2301",
+      "TSC/Q6102"
+    ],
+    "annual_capacity": 110,
+    "hostel_available": false,
+    "pmajay_empanelled": true,
+    "contact": "+91-9701377310",
+    "next_batch_start": "2026-11-20"
+  },
+  {
+    "center_id": "TC011",
+    "name": "Ranchi Tribal & SC Livelihood Academy",
+    "district": "Ranchi",
+    "state": "Jharkhand",
+    "latitude": 23.3441,
+    "longitude": 85.3096,
+    "sectors": [
+      "Agriculture & Allied",
+      "Handicrafts & Carpet",
+      "IT/ITES"
+    ],
+    "courses_offered": [
+      "AGR/Q5302",
+      "HCS/Q9601",
+      "SSC/Q0110"
+    ],
+    "annual_capacity": 130,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9701515041",
+    "next_batch_start": "2026-12-05"
+  },
+  {
+    "center_id": "TC012",
+    "name": "Chennai Advanced Skills Institute",
+    "district": "Chennai",
+    "state": "Tamil Nadu",
+    "latitude": 13.0827,
+    "longitude": 80.2707,
+    "sectors": [
+      "Automotive",
+      "Healthcare",
+      "Leather"
+    ],
+    "courses_offered": [
+      "ASC/Q3501",
+      "HSS/Q5101",
+      "LSS/Q3601"
+    ],
+    "annual_capacity": 240,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9701652772",
+    "next_batch_start": "2026-10-15"
+  },
+  {
+    "center_id": "TC013",
+    "name": "Kanchipuram Handloom Excellence Centre",
+    "district": "Kanchipuram",
+    "state": "Tamil Nadu",
+    "latitude": 12.8342,
+    "longitude": 79.7036,
+    "sectors": [
+      "Textile & Apparel",
+      "Handicrafts & Carpet"
+    ],
+    "courses_offered": [
+      "HCS/Q7801",
+      "AMH/Q1947"
+    ],
+    "annual_capacity": 120,
+    "hostel_available": false,
+    "pmajay_empanelled": true,
+    "contact": "+91-9701790503",
+    "next_batch_start": "2026-11-01"
+  },
+  {
+    "center_id": "TC014",
+    "name": "Tiruppur Apparel Training Hub",
+    "district": "Tiruppur",
+    "state": "Tamil Nadu",
+    "latitude": 11.1085,
+    "longitude": 77.3411,
+    "sectors": [
+      "Textile & Apparel"
+    ],
+    "courses_offered": [
+      "AMH/Q1947",
+      "AMH/Q0301"
+    ],
+    "annual_capacity": 300,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9701928234",
+    "next_batch_start": "2026-11-20"
+  },
+  {
+    "center_id": "TC015",
+    "name": "Hyderabad Skill Mission Centre",
+    "district": "Hyderabad",
+    "state": "Telangana",
+    "latitude": 17.385,
+    "longitude": 78.4867,
+    "sectors": [
+      "IT/ITES",
+      "Electronics & Hardware",
+      "Healthcare",
+      "Retail"
+    ],
+    "courses_offered": [
+      "SSC/Q2212",
+      "ELE/Q4601",
+      "HSS/Q0301",
+      "RAS/Q0103"
+    ],
+    "annual_capacity": 280,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9702065965",
+    "next_batch_start": "2026-12-05"
+  },
+  {
+    "center_id": "TC016",
+    "name": "Medak Rural Agri Skills Centre",
+    "district": "Medak",
+    "state": "Telangana",
+    "latitude": 18.0463,
+    "longitude": 78.2646,
+    "sectors": [
+      "Agriculture & Allied",
+      "Food Processing"
+    ],
+    "courses_offered": [
+      "AGR/Q5302",
+      "FIC/Q7601",
+      "AGR/Q1101"
+    ],
+    "annual_capacity": 100,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9702203696",
+    "next_batch_start": "2026-10-15"
+  },
+  {
+    "center_id": "TC017",
+    "name": "Pune Industrial Training Institute (PM-AJAY Wing)",
+    "district": "Pune",
+    "state": "Maharashtra",
+    "latitude": 18.5204,
+    "longitude": 73.8567,
+    "sectors": [
+      "Construction",
+      "Plumbing",
+      "Automotive",
+      "Power & Electrical"
+    ],
+    "courses_offered": [
+      "CON/Q0106",
+      "PSC/Q0102",
+      "ASC/Q1401",
+      "PWD/Q3101"
+    ],
+    "annual_capacity": 320,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9702341427",
+    "next_batch_start": "2026-11-01"
+  },
+  {
+    "center_id": "TC018",
+    "name": "Nagpur Skill & Enterprise Centre",
+    "district": "Nagpur",
+    "state": "Maharashtra",
+    "latitude": 21.1458,
+    "longitude": 79.0882,
+    "sectors": [
+      "Food Processing",
+      "Retail",
+      "Power & Electrical"
+    ],
+    "courses_offered": [
+      "FIC/Q7601",
+      "RAS/Q0203",
+      "PWD/Q2201"
+    ],
+    "annual_capacity": 150,
+    "hostel_available": false,
+    "pmajay_empanelled": true,
+    "contact": "+91-9702479158",
+    "next_batch_start": "2026-11-20"
+  },
+  {
+    "center_id": "TC019",
+    "name": "Nashik Agri-Entrepreneurship Institute",
+    "district": "Nashik",
+    "state": "Maharashtra",
+    "latitude": 19.9975,
+    "longitude": 73.7898,
+    "sectors": [
+      "Agriculture & Allied"
+    ],
+    "courses_offered": [
+      "AGR/Q1101",
+      "AGR/Q7601",
+      "AGR/Q4102"
+    ],
+    "annual_capacity": 120,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9702616889",
+    "next_batch_start": "2026-12-05"
+  },
+  {
+    "center_id": "TC020",
+    "name": "Jaipur Craft & Solar Skill Centre",
+    "district": "Jaipur",
+    "state": "Rajasthan",
+    "latitude": 26.9124,
+    "longitude": 75.7873,
+    "sectors": [
+      "Handicrafts & Carpet",
+      "Power & Electrical",
+      "Beauty & Wellness"
+    ],
+    "courses_offered": [
+      "HCS/Q1502",
+      "PWD/Q2201",
+      "BWS/Q2001"
+    ],
+    "annual_capacity": 170,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9702754620",
+    "next_batch_start": "2026-10-15"
+  },
+  {
+    "center_id": "TC021",
+    "name": "Ajmer Community Skill Centre",
+    "district": "Ajmer",
+    "state": "Rajasthan",
+    "latitude": 26.4499,
+    "longitude": 74.6399,
+    "sectors": [
+      "Beauty & Wellness",
+      "Retail",
+      "Domestic Worker"
+    ],
+    "courses_offered": [
+      "BWS/Q0101",
+      "RAS/Q0103",
+      "DWC/Q0101"
+    ],
+    "annual_capacity": 90,
+    "hostel_available": false,
+    "pmajay_empanelled": true,
+    "contact": "+91-9702892351",
+    "next_batch_start": "2026-11-01"
+  },
+  {
+    "center_id": "TC022",
+    "name": "Kolkata Urban Livelihood Centre",
+    "district": "Kolkata",
+    "state": "West Bengal",
+    "latitude": 22.5726,
+    "longitude": 88.3639,
+    "sectors": [
+      "Handicrafts & Carpet",
+      "Tourism & Hospitality",
+      "Domestic Worker"
+    ],
+    "courses_offered": [
+      "HCS/Q1502",
+      "THC/Q0301",
+      "DWC/Q0301"
+    ],
+    "annual_capacity": 160,
+    "hostel_available": true,
+    "pmajay_empanelled": true,
+    "contact": "+91-9703030082",
+    "next_batch_start": "2026-11-20"
+  }
+]

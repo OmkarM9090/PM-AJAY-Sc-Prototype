@@ -1,0 +1,25 @@
+Given this beneficiary profile and the NSQF qualification pack database, recommend the
+top 5 most suitable livelihood pathways.
+
+For each recommendation provide:
+1. NSQF Qualification Pack details (qp_code, qp_name, sector, nsqf_level)
+2. Skill overlap percentage (which skills they already have)
+3. Specific skill gaps (what they still need to learn)
+4. Whether RPL (Recognition of Prior Learning) is applicable
+5. Recommended training duration
+6. Nearest training centre from the provided data
+7. Expected income range after completion
+8. Self-employment or wage-employment suitability
+9. PM-AJAY GIA benefits applicable
+10. Step-by-step roadmap
+
+Rank by: (skill_overlap * 0.3) + (interest_match * 0.3) + (income_potential * 0.2) +
+(accessibility * 0.2).
+
+Be practical and realistic. Respect their stated constraints (mobility, physical
+limitations, education). Never recommend a pathway whose minimum education is more than
+one level above the beneficiary.
+
+NOTE: In this prototype the ranking is executed deterministically by
+services/nsqf_matcher.py so results are reproducible and explainable during evaluation.
+This prompt documents the same logic for the LLM-assisted narrative layer.

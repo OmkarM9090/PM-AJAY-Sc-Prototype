@@ -1,0 +1,1212 @@
+[
+  {
+    "qp_code": "LSS/Q2301",
+    "qp_name": "Leather Goods Maker (Hand Crafted)",
+    "sector": "Leather",
+    "nsqf_level": 3,
+    "required_skills": [
+      "leather cutting",
+      "leather stitching",
+      "hand tooling",
+      "product finishing",
+      "pattern making"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 400,
+    "certification_body": "Leather Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "10000-18000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Kanpur",
+      "Chennai",
+      "Agra"
+    ]
+  },
+  {
+    "qp_code": "LSS/Q0102",
+    "qp_name": "Shoe Upper Stitcher",
+    "sector": "Leather",
+    "nsqf_level": 3,
+    "required_skills": [
+      "machine stitching",
+      "leather cutting",
+      "upper assembly",
+      "quality check"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 350,
+    "certification_body": "Leather Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "9000-16000",
+    "high_demand_districts": [
+      "Agra",
+      "Kanpur",
+      "Chennai"
+    ]
+  },
+  {
+    "qp_code": "LSS/Q1801",
+    "qp_name": "Hide and Skin Processing Operator",
+    "sector": "Leather",
+    "nsqf_level": 3,
+    "required_skills": [
+      "hide processing",
+      "soaking and liming",
+      "tanning support",
+      "chemical handling"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 300,
+    "certification_body": "Leather Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "low",
+    "avg_monthly_income_range": "11000-17000",
+    "high_demand_districts": [
+      "Kanpur",
+      "Vellore",
+      "Unnao"
+    ]
+  },
+  {
+    "qp_code": "LSS/Q3601",
+    "qp_name": "Leather Goods Quality Inspector",
+    "sector": "Leather",
+    "nsqf_level": 4,
+    "required_skills": [
+      "quality finishing techniques",
+      "defect identification",
+      "measurement",
+      "documentation"
+    ],
+    "required_education": "8th pass",
+    "duration_hours": 300,
+    "certification_body": "Leather Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "14000-22000",
+    "high_demand_districts": [
+      "Kanpur",
+      "Chennai",
+      "Agra"
+    ]
+  },
+  {
+    "qp_code": "HCS/Q7801",
+    "qp_name": "Handloom Weaver (Pit Loom)",
+    "sector": "Handicrafts & Carpet",
+    "nsqf_level": 4,
+    "required_skills": [
+      "loom setting",
+      "warping",
+      "weft insertion",
+      "design reading",
+      "yarn handling"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 400,
+    "certification_body": "Handicrafts & Carpet Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "9000-16000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Bhagalpur",
+      "Kanchipuram"
+    ]
+  },
+  {
+    "qp_code": "HCS/Q8701",
+    "qp_name": "Carpet Weaver (Hand Knotted)",
+    "sector": "Handicrafts & Carpet",
+    "nsqf_level": 3,
+    "required_skills": [
+      "knotting",
+      "colour matching",
+      "design mapping",
+      "loom maintenance"
+    ],
+    "required_education": "No formal education",
+    "duration_hours": 350,
+    "certification_body": "Handicrafts & Carpet Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "8000-15000",
+    "high_demand_districts": [
+      "Bhadohi",
+      "Mirzapur",
+      "Jaipur"
+    ]
+  },
+  {
+    "qp_code": "HCS/Q9601",
+    "qp_name": "Bamboo and Cane Craft Artisan",
+    "sector": "Handicrafts & Carpet",
+    "nsqf_level": 3,
+    "required_skills": [
+      "bamboo splitting",
+      "weaving",
+      "product shaping",
+      "natural finishing"
+    ],
+    "required_education": "No formal education",
+    "duration_hours": 300,
+    "certification_body": "Handicrafts & Carpet Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "7000-14000",
+    "high_demand_districts": [
+      "Guwahati",
+      "Ranchi",
+      "Patna"
+    ]
+  },
+  {
+    "qp_code": "HCS/Q1502",
+    "qp_name": "Terracotta and Pottery Artisan",
+    "sector": "Handicrafts & Carpet",
+    "nsqf_level": 3,
+    "required_skills": [
+      "clay preparation",
+      "wheel throwing",
+      "kiln firing",
+      "surface decoration"
+    ],
+    "required_education": "No formal education",
+    "duration_hours": 300,
+    "certification_body": "Handicrafts & Carpet Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "7000-13000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Jaipur",
+      "Kolkata"
+    ]
+  },
+  {
+    "qp_code": "AMH/Q1947",
+    "qp_name": "Sewing Machine Operator",
+    "sector": "Textile & Apparel",
+    "nsqf_level": 3,
+    "required_skills": [
+      "machine stitching",
+      "fabric handling",
+      "seam finishing",
+      "thread management"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 270,
+    "certification_body": "Apparel Made-ups & Home Furnishing SSC",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "9000-15000",
+    "high_demand_districts": [
+      "Tiruppur",
+      "Lucknow",
+      "Pune",
+      "Ludhiana"
+    ]
+  },
+  {
+    "qp_code": "AMH/Q0301",
+    "qp_name": "Self Employed Tailor",
+    "sector": "Textile & Apparel",
+    "nsqf_level": 4,
+    "required_skills": [
+      "measurement taking",
+      "pattern making",
+      "cutting",
+      "machine stitching",
+      "customer handling"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 340,
+    "certification_body": "Apparel Made-ups & Home Furnishing SSC",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "10000-22000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Patna",
+      "Jaipur",
+      "Nagpur"
+    ]
+  },
+  {
+    "qp_code": "TSC/Q2301",
+    "qp_name": "Hand Embroiderer",
+    "sector": "Textile & Apparel",
+    "nsqf_level": 3,
+    "required_skills": [
+      "hand embroidery",
+      "thread work",
+      "design tracing",
+      "finishing"
+    ],
+    "required_education": "No formal education",
+    "duration_hours": 250,
+    "certification_body": "Textile Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "6000-13000",
+    "high_demand_districts": [
+      "Lucknow",
+      "Bhagalpur",
+      "Jaipur"
+    ]
+  },
+  {
+    "qp_code": "TSC/Q6102",
+    "qp_name": "Fabric Dyeing and Printing Operator",
+    "sector": "Textile & Apparel",
+    "nsqf_level": 3,
+    "required_skills": [
+      "dye mixing",
+      "block printing",
+      "colour fastness check",
+      "chemical safety"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 300,
+    "certification_body": "Textile Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "9000-16000",
+    "high_demand_districts": [
+      "Jaipur",
+      "Surat",
+      "Bhagalpur"
+    ]
+  },
+  {
+    "qp_code": "AGR/Q1101",
+    "qp_name": "Organic Grower",
+    "sector": "Agriculture & Allied",
+    "nsqf_level": 4,
+    "required_skills": [
+      "soil testing",
+      "organic farming",
+      "pest management",
+      "compost preparation",
+      "crop planning"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 300,
+    "certification_body": "Agriculture Skill Council of India",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "8000-15000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Nashik",
+      "Patna",
+      "Hyderabad"
+    ]
+  },
+  {
+    "qp_code": "AGR/Q4102",
+    "qp_name": "Dairy Farmer / Entrepreneur",
+    "sector": "Agriculture & Allied",
+    "nsqf_level": 4,
+    "required_skills": [
+      "cattle feeding",
+      "milking",
+      "animal health monitoring",
+      "milk quality testing",
+      "record keeping"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 320,
+    "certification_body": "Agriculture Skill Council of India",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "10000-20000",
+    "high_demand_districts": [
+      "Patna",
+      "Pune",
+      "Jaipur",
+      "Varanasi"
+    ]
+  },
+  {
+    "qp_code": "AGR/Q5302",
+    "qp_name": "Poultry Farm Worker",
+    "sector": "Agriculture & Allied",
+    "nsqf_level": 3,
+    "required_skills": [
+      "bird handling",
+      "feed management",
+      "shed hygiene",
+      "vaccination support"
+    ],
+    "required_education": "No formal education",
+    "duration_hours": 250,
+    "certification_body": "Agriculture Skill Council of India",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "8000-14000",
+    "high_demand_districts": [
+      "Hyderabad",
+      "Patna",
+      "Ranchi"
+    ]
+  },
+  {
+    "qp_code": "AGR/Q7601",
+    "qp_name": "Beekeeper (Apiculture)",
+    "sector": "Agriculture & Allied",
+    "nsqf_level": 3,
+    "required_skills": [
+      "hive management",
+      "honey extraction",
+      "colony health check",
+      "packaging"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 200,
+    "certification_body": "Agriculture Skill Council of India",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "7000-15000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Nashik",
+      "Ranchi"
+    ]
+  },
+  {
+    "qp_code": "AGR/Q0801",
+    "qp_name": "Tractor Operator",
+    "sector": "Agriculture & Allied",
+    "nsqf_level": 3,
+    "required_skills": [
+      "tractor driving",
+      "implement attachment",
+      "basic maintenance",
+      "field operations"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 240,
+    "certification_body": "Agriculture Skill Council of India",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "10000-18000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Ludhiana",
+      "Nagpur"
+    ]
+  },
+  {
+    "qp_code": "AGR/Q7803",
+    "qp_name": "Mushroom Grower",
+    "sector": "Agriculture & Allied",
+    "nsqf_level": 3,
+    "required_skills": [
+      "spawn handling",
+      "substrate preparation",
+      "humidity control",
+      "harvest and packing"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 200,
+    "certification_body": "Agriculture Skill Council of India",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "8000-16000",
+    "high_demand_districts": [
+      "Patna",
+      "Ranchi",
+      "Pune"
+    ]
+  },
+  {
+    "qp_code": "CON/Q0101",
+    "qp_name": "Assistant Mason",
+    "sector": "Construction",
+    "nsqf_level": 3,
+    "required_skills": [
+      "brick laying",
+      "mortar mixing",
+      "manual labor",
+      "basic construction",
+      "levelling"
+    ],
+    "required_education": "No formal education",
+    "duration_hours": 300,
+    "certification_body": "Construction Skill Development Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "10000-16000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Lucknow",
+      "Pune",
+      "Hyderabad"
+    ]
+  },
+  {
+    "qp_code": "CON/Q0106",
+    "qp_name": "Mason General",
+    "sector": "Construction",
+    "nsqf_level": 4,
+    "required_skills": [
+      "brick laying",
+      "plastering",
+      "concrete work",
+      "measurement",
+      "tool handling"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 400,
+    "certification_body": "Construction Skill Development Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "13000-22000",
+    "high_demand_districts": [
+      "Pune",
+      "Hyderabad",
+      "Lucknow"
+    ]
+  },
+  {
+    "qp_code": "CON/Q0401",
+    "qp_name": "Bar Bender and Steel Fixer",
+    "sector": "Construction",
+    "nsqf_level": 3,
+    "required_skills": [
+      "bar bending",
+      "steel cutting",
+      "drawing reading",
+      "safety protocols"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 300,
+    "certification_body": "Construction Skill Development Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "12000-19000",
+    "high_demand_districts": [
+      "Pune",
+      "Chennai",
+      "Hyderabad"
+    ]
+  },
+  {
+    "qp_code": "CON/Q8301",
+    "qp_name": "Construction Site Supervisor",
+    "sector": "Construction",
+    "nsqf_level": 5,
+    "required_skills": [
+      "blueprint reading",
+      "safety protocols",
+      "team supervision",
+      "material estimation",
+      "quality checks"
+    ],
+    "required_education": "10th pass",
+    "duration_hours": 600,
+    "certification_body": "Construction Skill Development Council",
+    "rpl_eligible": false,
+    "self_employment_potential": "low",
+    "avg_monthly_income_range": "15000-28000",
+    "high_demand_districts": [
+      "Pune",
+      "Hyderabad",
+      "Lucknow",
+      "Chennai"
+    ]
+  },
+  {
+    "qp_code": "CON/Q0503",
+    "qp_name": "Shuttering Carpenter",
+    "sector": "Construction",
+    "nsqf_level": 3,
+    "required_skills": [
+      "formwork assembly",
+      "carpentry",
+      "measurement",
+      "de-shuttering"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 320,
+    "certification_body": "Construction Skill Development Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "12000-20000",
+    "high_demand_districts": [
+      "Pune",
+      "Chennai",
+      "Jaipur"
+    ]
+  },
+  {
+    "qp_code": "PSC/Q0102",
+    "qp_name": "Plumber (General)",
+    "sector": "Plumbing",
+    "nsqf_level": 4,
+    "required_skills": [
+      "pipe fitting",
+      "leak repair",
+      "fixture installation",
+      "tool handling",
+      "pipe threading"
+    ],
+    "required_education": "8th pass",
+    "duration_hours": 400,
+    "certification_body": "Indian Plumbing Skills Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "12000-22000",
+    "high_demand_districts": [
+      "Pune",
+      "Lucknow",
+      "Hyderabad",
+      "Jaipur"
+    ]
+  },
+  {
+    "qp_code": "PSC/Q0107",
+    "qp_name": "Plumbing Supervisor",
+    "sector": "Plumbing",
+    "nsqf_level": 5,
+    "required_skills": [
+      "drawing reading",
+      "site estimation",
+      "team coordination",
+      "quality inspection"
+    ],
+    "required_education": "10th pass",
+    "duration_hours": 500,
+    "certification_body": "Indian Plumbing Skills Council",
+    "rpl_eligible": false,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "18000-30000",
+    "high_demand_districts": [
+      "Pune",
+      "Hyderabad",
+      "Chennai"
+    ]
+  },
+  {
+    "qp_code": "PWD/Q3101",
+    "qp_name": "Domestic Electrician",
+    "sector": "Power & Electrical",
+    "nsqf_level": 4,
+    "required_skills": [
+      "house wiring",
+      "switchboard fitting",
+      "fault detection",
+      "electrical safety"
+    ],
+    "required_education": "8th pass",
+    "duration_hours": 420,
+    "certification_body": "Power Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "12000-22000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Patna",
+      "Pune",
+      "Jaipur"
+    ]
+  },
+  {
+    "qp_code": "PWD/Q2201",
+    "qp_name": "Solar Panel Installation Technician",
+    "sector": "Power & Electrical",
+    "nsqf_level": 4,
+    "required_skills": [
+      "panel mounting",
+      "DC wiring",
+      "inverter setup",
+      "site survey",
+      "electrical safety"
+    ],
+    "required_education": "8th pass",
+    "duration_hours": 360,
+    "certification_body": "Power Sector Skill Council",
+    "rpl_eligible": false,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "14000-25000",
+    "high_demand_districts": [
+      "Jaipur",
+      "Hyderabad",
+      "Nagpur",
+      "Pune"
+    ]
+  },
+  {
+    "qp_code": "ASC/Q1401",
+    "qp_name": "Two Wheeler Service Technician",
+    "sector": "Automotive",
+    "nsqf_level": 4,
+    "required_skills": [
+      "engine servicing",
+      "brake adjustment",
+      "tool handling",
+      "fault diagnosis",
+      "customer handling"
+    ],
+    "required_education": "8th pass",
+    "duration_hours": 400,
+    "certification_body": "Automotive Skills Development Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "11000-20000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Patna",
+      "Pune",
+      "Hyderabad"
+    ]
+  },
+  {
+    "qp_code": "ASC/Q0101",
+    "qp_name": "Automotive Service Technician (Level 3)",
+    "sector": "Automotive",
+    "nsqf_level": 3,
+    "required_skills": [
+      "vehicle cleaning",
+      "basic servicing",
+      "tool handling",
+      "workshop safety"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 300,
+    "certification_body": "Automotive Skills Development Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "9000-15000",
+    "high_demand_districts": [
+      "Pune",
+      "Chennai",
+      "Lucknow"
+    ]
+  },
+  {
+    "qp_code": "ASC/Q9701",
+    "qp_name": "Commercial Vehicle Driver (Goods)",
+    "sector": "Automotive",
+    "nsqf_level": 3,
+    "required_skills": [
+      "driving",
+      "route planning",
+      "vehicle checks",
+      "road safety"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 250,
+    "certification_body": "Automotive Skills Development Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "13000-24000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Nagpur",
+      "Hyderabad",
+      "Jaipur"
+    ]
+  },
+  {
+    "qp_code": "ASC/Q3501",
+    "qp_name": "Auto Electrician",
+    "sector": "Automotive",
+    "nsqf_level": 4,
+    "required_skills": [
+      "auto wiring",
+      "battery servicing",
+      "fault diagnosis",
+      "circuit testing"
+    ],
+    "required_education": "8th pass",
+    "duration_hours": 380,
+    "certification_body": "Automotive Skills Development Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "12000-21000",
+    "high_demand_districts": [
+      "Pune",
+      "Chennai",
+      "Lucknow"
+    ]
+  },
+  {
+    "qp_code": "ELE/Q3104",
+    "qp_name": "Mobile Phone Repair Technician",
+    "sector": "Electronics & Hardware",
+    "nsqf_level": 4,
+    "required_skills": [
+      "circuit diagnosis",
+      "soldering",
+      "screen replacement",
+      "software flashing",
+      "customer handling"
+    ],
+    "required_education": "8th pass",
+    "duration_hours": 360,
+    "certification_body": "Electronics Sector Skills Council of India",
+    "rpl_eligible": false,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "12000-20000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Lucknow",
+      "Patna",
+      "Hyderabad"
+    ]
+  },
+  {
+    "qp_code": "ELE/Q3103",
+    "qp_name": "Field Technician — Home Appliances",
+    "sector": "Electronics & Hardware",
+    "nsqf_level": 4,
+    "required_skills": [
+      "appliance repair",
+      "fault diagnosis",
+      "wiring",
+      "customer handling"
+    ],
+    "required_education": "8th pass",
+    "duration_hours": 340,
+    "certification_body": "Electronics Sector Skills Council of India",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "11000-19000",
+    "high_demand_districts": [
+      "Pune",
+      "Chennai",
+      "Jaipur"
+    ]
+  },
+  {
+    "qp_code": "ELE/Q4601",
+    "qp_name": "CCTV Installation Technician",
+    "sector": "Electronics & Hardware",
+    "nsqf_level": 4,
+    "required_skills": [
+      "camera mounting",
+      "cable laying",
+      "DVR configuration",
+      "network basics"
+    ],
+    "required_education": "10th pass",
+    "duration_hours": 300,
+    "certification_body": "Electronics Sector Skills Council of India",
+    "rpl_eligible": false,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "13000-22000",
+    "high_demand_districts": [
+      "Hyderabad",
+      "Pune",
+      "Lucknow"
+    ]
+  },
+  {
+    "qp_code": "BWS/Q0101",
+    "qp_name": "Assistant Beauty Therapist",
+    "sector": "Beauty & Wellness",
+    "nsqf_level": 3,
+    "required_skills": [
+      "skin care basics",
+      "hygiene practices",
+      "client handling",
+      "product knowledge"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 380,
+    "certification_body": "Beauty & Wellness Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "8000-16000",
+    "high_demand_districts": [
+      "Lucknow",
+      "Pune",
+      "Chennai",
+      "Jaipur"
+    ]
+  },
+  {
+    "qp_code": "BWS/Q0301",
+    "qp_name": "Hair Stylist / Barber",
+    "sector": "Beauty & Wellness",
+    "nsqf_level": 4,
+    "required_skills": [
+      "hair cutting",
+      "shaving",
+      "hair styling",
+      "customer handling",
+      "salon hygiene"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 400,
+    "certification_body": "Beauty & Wellness Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "10000-20000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Patna",
+      "Pune",
+      "Hyderabad"
+    ]
+  },
+  {
+    "qp_code": "BWS/Q2001",
+    "qp_name": "Mehendi and Nail Art Technician",
+    "sector": "Beauty & Wellness",
+    "nsqf_level": 3,
+    "required_skills": [
+      "mehendi application",
+      "design creation",
+      "nail care",
+      "customer handling"
+    ],
+    "required_education": "No formal education",
+    "duration_hours": 250,
+    "certification_body": "Beauty & Wellness Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "7000-15000",
+    "high_demand_districts": [
+      "Jaipur",
+      "Lucknow",
+      "Varanasi"
+    ]
+  },
+  {
+    "qp_code": "FIC/Q0101",
+    "qp_name": "Pickle and Preserve Making Technician",
+    "sector": "Food Processing",
+    "nsqf_level": 3,
+    "required_skills": [
+      "food hygiene",
+      "ingredient preparation",
+      "preservation",
+      "packaging",
+      "cooking"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 250,
+    "certification_body": "Food Industry Capacity & Skill Initiative",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "7000-14000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Patna",
+      "Nagpur"
+    ]
+  },
+  {
+    "qp_code": "FIC/Q5001",
+    "qp_name": "Baker / Bakery Products Maker",
+    "sector": "Food Processing",
+    "nsqf_level": 4,
+    "required_skills": [
+      "dough preparation",
+      "oven handling",
+      "cooking",
+      "food hygiene",
+      "packaging"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 320,
+    "certification_body": "Food Industry Capacity & Skill Initiative",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "9000-18000",
+    "high_demand_districts": [
+      "Pune",
+      "Chennai",
+      "Lucknow"
+    ]
+  },
+  {
+    "qp_code": "FIC/Q7601",
+    "qp_name": "Millet Processing Operator",
+    "sector": "Food Processing",
+    "nsqf_level": 3,
+    "required_skills": [
+      "grain cleaning",
+      "machine operation",
+      "packaging",
+      "quality check"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 240,
+    "certification_body": "Food Industry Capacity & Skill Initiative",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "8000-15000",
+    "high_demand_districts": [
+      "Hyderabad",
+      "Nagpur",
+      "Ranchi"
+    ]
+  },
+  {
+    "qp_code": "HSS/Q5101",
+    "qp_name": "General Duty Assistant",
+    "sector": "Healthcare",
+    "nsqf_level": 4,
+    "required_skills": [
+      "patient handling",
+      "hygiene practices",
+      "vital sign recording",
+      "first aid",
+      "communication"
+    ],
+    "required_education": "10th pass",
+    "duration_hours": 480,
+    "certification_body": "Healthcare Sector Skill Council",
+    "rpl_eligible": false,
+    "self_employment_potential": "low",
+    "avg_monthly_income_range": "10000-18000",
+    "high_demand_districts": [
+      "Lucknow",
+      "Pune",
+      "Chennai",
+      "Hyderabad"
+    ]
+  },
+  {
+    "qp_code": "HSS/Q5301",
+    "qp_name": "Home Health Aide",
+    "sector": "Healthcare",
+    "nsqf_level": 3,
+    "required_skills": [
+      "elderly care",
+      "personal hygiene support",
+      "medication reminders",
+      "empathy and communication"
+    ],
+    "required_education": "8th pass",
+    "duration_hours": 360,
+    "certification_body": "Healthcare Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "9000-16000",
+    "high_demand_districts": [
+      "Pune",
+      "Chennai",
+      "Hyderabad"
+    ]
+  },
+  {
+    "qp_code": "HSS/Q0301",
+    "qp_name": "Phlebotomy Technician",
+    "sector": "Healthcare",
+    "nsqf_level": 4,
+    "required_skills": [
+      "sample collection",
+      "labelling",
+      "infection control",
+      "record keeping"
+    ],
+    "required_education": "12th pass",
+    "duration_hours": 400,
+    "certification_body": "Healthcare Sector Skill Council",
+    "rpl_eligible": false,
+    "self_employment_potential": "low",
+    "avg_monthly_income_range": "12000-20000",
+    "high_demand_districts": [
+      "Lucknow",
+      "Hyderabad",
+      "Chennai"
+    ]
+  },
+  {
+    "qp_code": "RAS/Q0103",
+    "qp_name": "Retail Sales Associate",
+    "sector": "Retail",
+    "nsqf_level": 4,
+    "required_skills": [
+      "customer handling",
+      "billing",
+      "stock arrangement",
+      "basic literacy",
+      "communication"
+    ],
+    "required_education": "10th pass",
+    "duration_hours": 300,
+    "certification_body": "Retail Association's Skill Council of India",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "10000-18000",
+    "high_demand_districts": [
+      "Lucknow",
+      "Pune",
+      "Chennai",
+      "Jaipur"
+    ]
+  },
+  {
+    "qp_code": "RAS/Q0203",
+    "qp_name": "Kirana Store Entrepreneur",
+    "sector": "Retail",
+    "nsqf_level": 4,
+    "required_skills": [
+      "inventory management",
+      "billing",
+      "customer handling",
+      "basic accounting",
+      "digital payments"
+    ],
+    "required_education": "8th pass",
+    "duration_hours": 240,
+    "certification_body": "Retail Association's Skill Council of India",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "10000-25000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Patna",
+      "Nagpur"
+    ]
+  },
+  {
+    "qp_code": "SSC/Q2212",
+    "qp_name": "Domestic Data Entry Operator",
+    "sector": "IT/ITES",
+    "nsqf_level": 4,
+    "required_skills": [
+      "typing",
+      "computer basics",
+      "data accuracy",
+      "MS Office basics"
+    ],
+    "required_education": "12th pass",
+    "duration_hours": 300,
+    "certification_body": "IT-ITeS Sector Skill Council NASSCOM",
+    "rpl_eligible": false,
+    "self_employment_potential": "low",
+    "avg_monthly_income_range": "10000-18000",
+    "high_demand_districts": [
+      "Lucknow",
+      "Hyderabad",
+      "Pune"
+    ]
+  },
+  {
+    "qp_code": "SSC/Q0110",
+    "qp_name": "Common Service Centre (CSC) Operator",
+    "sector": "IT/ITES",
+    "nsqf_level": 4,
+    "required_skills": [
+      "computer basics",
+      "digital services",
+      "customer handling",
+      "document handling"
+    ],
+    "required_education": "12th pass",
+    "duration_hours": 320,
+    "certification_body": "IT-ITeS Sector Skill Council NASSCOM",
+    "rpl_eligible": false,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "12000-22000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Patna",
+      "Ranchi"
+    ]
+  },
+  {
+    "qp_code": "THC/Q0301",
+    "qp_name": "Food and Beverage Service Steward",
+    "sector": "Tourism & Hospitality",
+    "nsqf_level": 4,
+    "required_skills": [
+      "table service",
+      "customer handling",
+      "hygiene practices",
+      "communication"
+    ],
+    "required_education": "10th pass",
+    "duration_hours": 400,
+    "certification_body": "Tourism & Hospitality Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "10000-18000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Jaipur",
+      "Pune",
+      "Chennai"
+    ]
+  },
+  {
+    "qp_code": "THC/Q2601",
+    "qp_name": "Homestay Host / Rural Tourism Entrepreneur",
+    "sector": "Tourism & Hospitality",
+    "nsqf_level": 4,
+    "required_skills": [
+      "guest handling",
+      "cooking",
+      "housekeeping",
+      "basic accounting",
+      "communication"
+    ],
+    "required_education": "8th pass",
+    "duration_hours": 280,
+    "certification_body": "Tourism & Hospitality Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "high",
+    "avg_monthly_income_range": "9000-20000",
+    "high_demand_districts": [
+      "Varanasi",
+      "Jaipur",
+      "Ranchi"
+    ]
+  },
+  {
+    "qp_code": "DWC/Q0101",
+    "qp_name": "General Housekeeper (Domestic Worker)",
+    "sector": "Domestic Worker",
+    "nsqf_level": 3,
+    "required_skills": [
+      "cleaning",
+      "household hygiene",
+      "time management",
+      "communication"
+    ],
+    "required_education": "No formal education",
+    "duration_hours": 200,
+    "certification_body": "Domestic Workers Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "7000-13000",
+    "high_demand_districts": [
+      "Pune",
+      "Chennai",
+      "Hyderabad"
+    ]
+  },
+  {
+    "qp_code": "DWC/Q0301",
+    "qp_name": "Child Care Attendant",
+    "sector": "Domestic Worker",
+    "nsqf_level": 3,
+    "required_skills": [
+      "child care",
+      "hygiene practices",
+      "first aid",
+      "empathy and communication"
+    ],
+    "required_education": "5th pass",
+    "duration_hours": 240,
+    "certification_body": "Domestic Workers Sector Skill Council",
+    "rpl_eligible": true,
+    "self_employment_potential": "medium",
+    "avg_monthly_income_range": "8000-15000",
+    "high_demand_districts": [
+      "Pune",
+      "Chennai",
+      "Lucknow"
+    ]
+  }
+]
